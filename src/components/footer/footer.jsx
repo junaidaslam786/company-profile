@@ -1,7 +1,8 @@
-import FaceBook from "../icons/fb";
-import Instagram from "../icons/insta";
-import Linkedin from "../icons/linkedin";
-import X from "../icons/x";
+import React from "react";
+import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
+import { RiInstagramFill } from "react-icons/ri";
+import { BiLogoTelegram } from "react-icons/bi";
+import Link from "next/link";
 
 const Footer = () => {
   // Dummy data for each section
@@ -42,124 +43,150 @@ const Footer = () => {
     { title: "Cryptocurrency", link: "/cryptocurrency" },
   ];
 
-  const mail = [{ title: "info@labverse.co", link: "/info" }];
+  const mail = [{ title: "", link: "" }];
 
   return (
     <div
-      className="flex flex-row w-full bg-white p-5 pt-28"
+      className="flex flex-col md:flex-row w-full overflow-x-hidden bg-white p-5 pt-20"
       style={{ height: "83vh" }}
     >
-      <div className="w-2/5 pl-24 pr-60">
-        <h5 className="text-lg 2xl:text-5xl xl:text-3xl lg:text-2xl md:text-xl font-semibold text-sky-500 hover:opacity-90 cursor-pointer">
-          LABVERSE
-        </h5>
-        <p className="text-3xl text-gray-600 mt-16">
-          We help our clients transform their business ideas into tangible
-          results by developing unique software solutions.
-        </p>
-        <ul className="mt-6">
-          {mail.map((section, index) => (
-            <li key={index}>
-              <a
-                href={section.link}
-                className="text-slate-700 hover:text-amber-600 text-4xl font-semibold"
-              >
-                {section.title}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <div className="flex justify-between w-2/3 mt-16">
-          <a
-            href="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
+      <div className="w-2/5 flex flex-col items-center justify-start">
+        <div>
+          <h5
+            className="font-semibold text-sky-500 hover:opacity-90 cursor-pointer"
+            style={{ fontSize: "2.5vw" }}
           >
-            <FaceBook />
-          </a>
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
+            Labverse
+          </h5>
+          <p
+            className="text-gray-600 mt-16 leading-snug"
+            style={{ fontSize: "1vw" }}
           >
-            <Instagram />
-          </a>
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Linkedin />
-          </a>
-          <a href="#">
-            <X />
-          </a>
+            We help our clients transform their <br /> business ideas into
+            tangible results <br /> by developing unique software solutions.
+          </p>
+          <div className="mt-5">
+            <Link
+              href="/info"
+              className="text-slate-700 hover:text-orange-500 font-semibold"
+              style={{ fontSize: "1.5vw" }}
+            >
+              info@labverse.co
+            </Link>
+          </div>
+        </div>
+        <div className="flex justify-between w-1/2 mr-12 mt-5">
+          <Link href="https://www.facebook.com" target="_blank">
+            <FaFacebookF
+              className="fill-slate-700 hover:fill-orange-500"
+              style={{ fontSize: "1vw" }}
+            />
+          </Link>
+          <Link href="https://www.linkedin.com" target="_blank">
+            <FaLinkedinIn
+              className="fill-slate-700 hover:fill-orange-500"
+              style={{ fontSize: "1vw" }}
+            />
+          </Link>
+          <Link href="https://www.instagram.com" target="_blank">
+            <RiInstagramFill
+              className="fill-slate-700 hover:fill-orange-500"
+              style={{ fontSize: "1vw" }}
+            />
+          </Link>
+          <Link href="https://www.telegram.com">
+            <BiLogoTelegram
+              className="fill-slate-700 hover:fill-orange-500"
+              style={{ fontSize: "1vw" }}
+            />
+          </Link>
         </div>
       </div>
-
-      <div className="w-full h-full sm:w-1/2 md:w-1/5 px-4">
-        <h5 className="font-semibold ml-6 mt-2 text-black text-4xl">Company</h5>
-        <ul className="ml-8 mt-2 h-3/5 flex flex-col justify-around">
-          {sections.map((section, index) => (
-            <li key={index}>
-              <a
-                href={section.link}
-                className="text-black hover:text-amber-600 text-2xl"
-              >
-                {section.title}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="w-full sm:w-1/2 md:w-1/5 px-4">
-        <h5 className="font-semibold ml-6 mt-2 text-black text-4xl">
-          Services
-        </h5>
-        <ul className="ml-2 mt-2 h-3/5 flex flex-col justify-around">
-          {services.map((service, index) => (
-            <li key={index}>
-              <a
-                href={service.link}
-                className="text-black hover:text-amber-600 text-2xl"
-              >
-                {service.title}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="w-full sm:w-1/2 md:w-1/5 px-4">
-        <h5 className="font-semibold ml-6 mt-2 text-black text-4xl">
-          Services
-        </h5>
-        <ul className="ml-2 mt-2 h-3/5 flex flex-col justify-around">
-          {services1.map((service, index) => (
-            <li key={index}>
-              <a
-                href={service.link}
-                className="text-black hover:text-amber-600 text-2xl"
-              >
-                {service.title}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="w-full sm:w-1/2 md:w-1/5 px-4">
-        <h5 className="font-semibold mt-2 text-black text-4xl">Industries</h5>
-        <ul className="ml-2 mt-2 h-3/5 flex flex-col justify-around">
-          {industries.map((service, index) => (
-            <li key={index}>
-              <a
-                href={service.link}
-                className="text-black hover:text-amber-600 text-2xl"
-              >
-                {service.title}
-              </a>
-            </li>
-          ))}
-        </ul>
+      <div className="w-full md:flex md:flex-row md:justify-between grid grid-cols-2 mt-10 md:mt-0">
+        <div className="w-full h-full sm:w-1/2 md:w-1/5 px-4">
+          <h5
+            className="font-semibold mt-2 text-slate-800 font-sans"
+            style={{ fontSize: "1.2vw" }}
+          >
+            COMPANY
+          </h5>
+          <ul className="ml-2 mt-2 h-3/5">
+            {sections.map((section, index) => (
+              <li key={index} className="mt-5">
+                <Link
+                  href={section.link}
+                  className="text-slate-700 hover:text-orange-500"
+                  style={{ fontSize: "1vw" }}
+                >
+                  {section.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="w-full sm:w-1/2 md:w-1/5 px-4">
+          <h5
+            className="font-semibold mt-2 text-slate-800 font-sans"
+            style={{ fontSize: "1.2vw" }}
+          >
+            SERVICES
+          </h5>
+          <ul className="ml-2 mt-2 h-3/5">
+            {services.map((service, index) => (
+              <li key={index} className="mt-5">
+                <Link
+                  href={service.link}
+                  className="text-slate-700 hover:text-orange-500"
+                  style={{ fontSize: "1vw" }}
+                >
+                  {service.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="w-full sm:w-1/2 md:w-1/5 px-4">
+          <h5
+            className="font-semibold mt-2 text-slate-800 font-sans"
+            style={{ fontSize: "1.2vw" }}
+          >
+            SERVICES
+          </h5>
+          <ul className="ml-2 mt-2 h-3/5">
+            {services1.map((service, index) => (
+              <li key={index} className="mt-5">
+                <Link
+                  href={service.link}
+                  className="text-slate-700 hover:text-orange-500"
+                  style={{ fontSize: "1vw" }}
+                >
+                  {service.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="w-full sm:w-1/2 md:w-1/5 px-4">
+          <h5
+            className="font-semibold mt-2 text-slate-800 font-sans"
+            style={{ fontSize: "1.2vw" }}
+          >
+            INDUSTRIES
+          </h5>
+          <ul className="ml-2 mt-2 h-3/5">
+            {industries.map((service, index) => (
+              <li key={index} className="mt-5">
+                <Link
+                  href={service.link}
+                  className="text-slate-700 hover:text-orange-500"
+                  style={{ fontSize: "1vw" }}
+                >
+                  {service.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

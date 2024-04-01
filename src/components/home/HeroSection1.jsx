@@ -23,13 +23,10 @@ export default function HeroSection() {
 
   return (
     <div
-      className="hero-container h-screen w-screen bg-white px-36"
-    //   style={{
-    //     backgroundImage: 'url("/heroImage1.webp")',
-    //     backgroundSize: "cover",
-    //     backgroundPosition: "center",
-    //     height: "100vh",
-    //   }}
+      className="hero-container h-screen w-full bg-white"
+      style={{
+        margin:'0'
+      }}
     >
       <div
         className="text-container flex flex-col w-full"
@@ -38,7 +35,6 @@ export default function HeroSection() {
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          textAlign: "center",
         }}
       >
         {/* Main title */}
@@ -48,7 +44,7 @@ export default function HeroSection() {
             animate="visible"
             custom={{ delay: 0.2 }}
             variants={titleAnimation}
-            className="font-bold text-sky-500 uppercase tracking-wider leading-none"
+            className="font-bold text-sky-500 uppercase tracking-wider leading-none flex justify-center"
             style={{ fontSize: "7vw" }}
           >
             Custom Software
