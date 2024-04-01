@@ -5,7 +5,6 @@ import { BiLogoTelegram } from "react-icons/bi";
 import Link from "next/link";
 
 const Footer = () => {
-  // Dummy data for each section
   const sections = [
     { title: "About Us", link: "/about" },
     { title: "Cases", link: "/cases" },
@@ -42,8 +41,6 @@ const Footer = () => {
     { title: "AdTech", link: "/adtech" },
     { title: "Cryptocurrency", link: "/cryptocurrency" },
   ];
-
-  const mail = [{ title: "", link: "" }];
 
   return (
     <div
