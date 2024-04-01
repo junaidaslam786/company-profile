@@ -44,7 +44,7 @@ const Footer = () => {
 
   return (
     <div
-      className="flex flex-col md:flex-row w-full overflow-x-hidden bg-white p-5 pt-20"
+      className="flex flex-col md:flex-row w-full border-t border-gray-100 mt-5 overflow-x-hidden bg-white p-5 pt-20"
       style={{ height: "83vh" }}
     >
       <div className="w-2/5 flex flex-col items-center justify-start">
