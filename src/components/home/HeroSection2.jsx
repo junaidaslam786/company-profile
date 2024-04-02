@@ -1,13 +1,13 @@
 "use client";
 
 import React from "react";
-import Card from "../constants/Card";
+import ScrollCard from "../constants/ScrollCard";
 
 const Herosection2 = () => {
  
   return (
-    <div className="flex w-full bg-white relative" style={{ boxSizing:'border-box', backgroundAttachment:'scroll !important', unicodeBidi:"isolate"}}>
-      <div className= "w-1/3 pl-6 block sticky top-14 h-[100vh] ">
+    <div className="flex w-full bg-white relative">
+      <div className= "w-1/3 pl-6 block sticky top-14 h-[80vh] ">
         <h2
           className="mt-6"
           style={{ fontSize: "1vw", color: "#ff9a54", fontWeight: "600" }}
@@ -25,45 +25,45 @@ const Herosection2 = () => {
       <div className="w-2/3">
         <div className="flex">
           <div className="flex flex-col">
-            <Card
+            <ScrollCard
               title="Custom Software Development"
               para="Building scalable customized software solution by applying innovative technology"
             />
-            <Card
+            <ScrollCard
               title="Custom Software Development"
               para="Building scalable customized software solution by applying innovative technology"
             />
-            <Card
+            <ScrollCard
               title="Custom Software Development"
               para="Building scalable customized software solution by applying innovative technology"
             />
-            <Card
+            <ScrollCard
               title="Custom Software Development"
               para="Building scalable customized software solution by applying innovative technology"
             />
-            <Card
+            <ScrollCard
               title="Custom Software Development"
               para="Building scalable customized software solution by applying innovative technology"
             />
           </div>
           <div className="flex flex-col mt-24">
-            <Card
+            <ScrollCard
               title="Custom Software Development"
               para="Building scalable customized software solution by applying innovative technology"
             />
-            <Card
+            <ScrollCard
               title="Custom Software Development"
               para="Building scalable customized software solution by applying innovative technology"
             />
-            <Card
+            <ScrollCard
               title="Custom Software Development"
               para="Building scalable customized software solution by applying innovative technology"
             />
-            <Card
+            <ScrollCard
               title="Custom Software Development"
               para="Building scalable customized software solution by applying innovative technology"
             />
-            <Card
+            <ScrollCard
               title="Custom Software Development"
               para="Building scalable customized software solution by applying innovative technology"
             />

@@ -3,7 +3,7 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 
-const Card = ({ title, para }) => {
+const ScrollCard = ({ title, para }) => {
   return (
     <div className="flex flex-row justify-center items-center border-b border-l border-gray-200 h-80 w-full">
       <Link href="/" className="p-4 group flex flex-col items-center">
@@ -29,4 +29,4 @@ const Card = ({ title, para }) => {
   );
 };
 
-export default Card;
+export default ScrollCard;
