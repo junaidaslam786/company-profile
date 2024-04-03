@@ -80,7 +80,7 @@ const Navbar = () => {
             <div className="py-2">
               <button
                 onClick={toggleMegaMenu}
-                className="text-gray-600 hover:text-sky-500 text-lg flex items-center cursor-pointer"
+                className="text-gray-600 hover:text-sky-500 text-[1vw] text-lg flex items-center cursor-pointer"
               >
                 What We Do{" "}
                 <FontAwesomeIcon

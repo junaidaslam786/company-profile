@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const ScrollCard = ({ title, para }) => {
   return (
-    <div className="flex flex-row justify-center items-center border-b border-l border-gray-200 h-80 w-full">
+    <div className="flex flex-row justify-center items-center border-b border-l h-80 w-full">
       <Link href="/" className="p-4 group flex flex-col items-center">
         <div className="ml-96 right-10 group-hover:opacity-100 transition-opacity">
           <FontAwesomeIcon
@@ -15,12 +15,11 @@ const ScrollCard = ({ title, para }) => {
         </div>
         <div className="w-5/6">
           <h3
-            style={{ fontSize: "2vw" }}
-            className="group-hover:text-orange-500 font-semibold"
+            className="group-hover:text-orange-500 font-semibold text-[2vw] text-blue-950"
           >
             {title}
           </h3>
-          <p className="mt-2 font-semibold" style={{ fontSize: "1vw" }}>
+          <p className="mt-2 text-gray-500 text-[1vw]">
             {para}
           </p>
         </div>

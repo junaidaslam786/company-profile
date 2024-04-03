@@ -44,20 +44,17 @@ const Footer = () => {
 
   return (
     <div
-      className="flex flex-col md:flex-row w-full border-t border-gray-100 mt-5 overflow-x-hidden bg-white p-5 pt-20"
-      style={{ height: "83vh" }}
+      className="flex flex-col md:flex-row w-full border-t border-gray-100 overflow-x-hidden bg-white p-5 pt-20 h-[85vh]"
     >
       <div className="w-2/5 flex flex-col items-center justify-start">
         <div>
           <h5
-            className="font-semibold text-sky-500 hover:opacity-90 cursor-pointer"
-            style={{ fontSize: "2.5vw" }}
+            className="font-semibold text-sky-500 hover:opacity-90 cursor-pointer text-[2.5vw]"
           >
             Labverse
           </h5>
           <p
-            className="text-gray-600 mt-16 leading-snug"
-            style={{ fontSize: "1vw" }}
+            className="text-gray-600 mt-16 leading-snug text-[1vw]"
           >
             We help our clients transform their <br /> business ideas into
             tangible results <br /> by developing unique software solutions.
@@ -65,8 +62,7 @@ const Footer = () => {
           <div className="mt-5">
             <Link
               href="/info"
-              className="text-slate-700 hover:text-orange-500 font-semibold"
-              style={{ fontSize: "1.5vw" }}
+              className="text-slate-700 hover:text-orange-500 font-semibold text-[1.5vw]"
             >
               info@labverse.co
             </Link>
@@ -75,26 +71,22 @@ const Footer = () => {
         <div className="flex justify-between w-1/2 mr-12 mt-5">
           <Link href="https://www.facebook.com" target="_blank">
             <FaFacebookF
-              className="fill-slate-700 hover:fill-orange-500"
-              style={{ fontSize: "1vw" }}
+              className="fill-slate-700 hover:fill-orange-500 text-[1vw]"
             />
           </Link>
           <Link href="https://www.linkedin.com" target="_blank">
             <FaLinkedinIn
-              className="fill-slate-700 hover:fill-orange-500"
-              style={{ fontSize: "1vw" }}
+              className="fill-slate-700 hover:fill-orange-500 text-[1vw]"
             />
           </Link>
           <Link href="https://www.instagram.com" target="_blank">
             <RiInstagramFill
-              className="fill-slate-700 hover:fill-orange-500"
-              style={{ fontSize: "1vw" }}
+              className="fill-slate-700 hover:fill-orange-500 text-[1vw]"
             />
           </Link>
           <Link href="https://www.telegram.com">
             <BiLogoTelegram
-              className="fill-slate-700 hover:fill-orange-500"
-              style={{ fontSize: "1vw" }}
+              className="fill-slate-700 hover:fill-orange-500 text-[1vw]"
             />
           </Link>
         </div>
@@ -102,8 +94,7 @@ const Footer = () => {
       <div className="w-full md:flex md:flex-row md:justify-between grid grid-cols-2 mt-10 md:mt-0">
         <div className="w-full h-full sm:w-1/2 md:w-1/5 px-4">
           <h5
-            className="font-semibold mt-2 text-slate-800 font-sans"
-            style={{ fontSize: "1.2vw" }}
+            className="font-semibold mt-2 text-slate-800 font-sans text-[1.2vw]"
           >
             COMPANY
           </h5>
@@ -112,8 +103,7 @@ const Footer = () => {
               <li key={index} className="mt-5">
                 <Link
                   href={section.link}
-                  className="text-slate-700 hover:text-orange-500"
-                  style={{ fontSize: "1vw" }}
+                  className="text-slate-700 hover:text-orange-500 text-[1vw]"
                 >
                   {section.title}
                 </Link>
@@ -123,8 +113,7 @@ const Footer = () => {
         </div>
         <div className="w-full sm:w-1/2 md:w-1/5 px-4">
           <h5
-            className="font-semibold mt-2 text-slate-800 font-sans"
-            style={{ fontSize: "1.2vw" }}
+            className="font-semibold mt-2 text-slate-800 font-sans text-[1.2vw]"
           >
             SERVICES
           </h5>
@@ -133,8 +122,7 @@ const Footer = () => {
               <li key={index} className="mt-5">
                 <Link
                   href={service.link}
-                  className="text-slate-700 hover:text-orange-500"
-                  style={{ fontSize: "1vw" }}
+                  className="text-slate-700 hover:text-orange-500 text-[1vw]"
                 >
                   {service.title}
                 </Link>
@@ -144,8 +132,7 @@ const Footer = () => {
         </div>
         <div className="w-full sm:w-1/2 md:w-1/5 px-4">
           <h5
-            className="font-semibold mt-2 text-slate-800 font-sans"
-            style={{ fontSize: "1.2vw" }}
+            className="font-semibold mt-2 text-slate-800 font-sans text-[1.2vw]"
           >
             SERVICES
           </h5>
@@ -154,8 +141,7 @@ const Footer = () => {
               <li key={index} className="mt-5">
                 <Link
                   href={service.link}
-                  className="text-slate-700 hover:text-orange-500"
-                  style={{ fontSize: "1vw" }}
+                  className="text-slate-700 hover:text-orange-500 text-[1vw]"
                 >
                   {service.title}
                 </Link>
@@ -165,8 +151,7 @@ const Footer = () => {
         </div>
         <div className="w-full sm:w-1/2 md:w-1/5 px-4">
           <h5
-            className="font-semibold mt-2 text-slate-800 font-sans"
-            style={{ fontSize: "1.2vw" }}
+            className="font-semibold mt-2 text-slate-800 font-sans text-[1.2vw]"
           >
             INDUSTRIES
           </h5>
@@ -175,8 +160,7 @@ const Footer = () => {
               <li key={index} className="mt-5">
                 <Link
                   href={service.link}
-                  className="text-slate-700 hover:text-orange-500"
-                  style={{ fontSize: "1vw" }}
+                  className="text-slate-700 hover:text-orange-500 text-[1vw]"
                 >
                   {service.title}
                 </Link>
