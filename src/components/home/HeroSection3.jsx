@@ -19,7 +19,7 @@ const HeroSection3 = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 m-8">
         <ExpertCard
-          src="/65425876546fc7b49bafdd28_aws-mockup.png"
+          src="/images/65425876546fc7b49bafdd28_aws-mockup.png"
           heading={
             " Free DPF: AWS Cost Optimization: Tools,Best Practices, And Case Studies"
           }
@@ -28,7 +28,7 @@ const HeroSection3 = () => {
           }
         />
         <ExpertCard
-          src="/65425876546fc7b49bafdd28_aws-mockup.png"
+          src="/images/65425876546fc7b49bafdd28_aws-mockup.png"
           heading={
             " Free DPF: AWS Cost Optimization: Tools,Best Practices, And Case Studies"
           }

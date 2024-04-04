@@ -26,40 +26,53 @@ const Herosection2 = () => {
             <ScrollCard
               title="Custom Software Development"
               para="Building scalable customized software solution by applying innovative technology"
+              bottoms={'border-b'}
             />
             <ScrollCard
               title="Custom Software Development"
               para="Building scalable customized software solution by applying innovative technology"
+              bottoms={'border-b'}
             />
             <ScrollCard
               title="Custom Software Development"
               para="Building scalable customized software solution by applying innovative technology"
+              bottoms={'border-b'}
             />
             <ScrollCard
               title="Custom Software Development"
               para="Building scalable customized software solution by applying innovative technology"
+              bottoms={'border-b'}
+            />
+            <ScrollCard
+              title="Custom Software Development"
+              para="Building scalable customized software solution by applying innovative technology"
+              bottoms={'border-b'}
             />
             <ScrollCard
               title="Custom Software Development"
               para="Building scalable customized software solution by applying innovative technology"
             />
           </div>
-          <div className="flex flex-col mt-24">
+          <div className="flex flex-col mt-[18%]">
             <ScrollCard
               title="Custom Software Development"
               para="Building scalable customized software solution by applying innovative technology"
+              bottoms={'border-b'}
             />
             <ScrollCard
               title="Custom Software Development"
               para="Building scalable customized software solution by applying innovative technology"
+              bottoms={'border-b'}
             />
             <ScrollCard
               title="Custom Software Development"
               para="Building scalable customized software solution by applying innovative technology"
+              bottoms={'border-b'}
             />
             <ScrollCard
               title="Custom Software Development"
               para="Building scalable customized software solution by applying innovative technology"
+              bottoms={'border-b'}
             />
             <ScrollCard
               title="Custom Software Development"

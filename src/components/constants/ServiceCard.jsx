@@ -10,7 +10,7 @@ const ServiceCard = ({ detail }) => {
       >
         <div className="flex justify-between">
           <Image
-            src="/644a9965b4060da6a3dbc180_libraria-logo.svg"
+            src="/images/644a9965b4060da6a3dbc180_libraria-logo.svg"
             width={200}
             height={200}
             alt="A picture"
