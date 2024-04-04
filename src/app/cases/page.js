@@ -1,9 +1,11 @@
-import Case from "@/components/cases/case1";
+import Case from "@/components/cases/Case1";
+import Case2 from "@/components/cases/Case2";
 
 export default function Cases() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between bg-white">
-        <Case />
-    </main>
+    <div className="flex min-h-screen flex-col items-center justify-between bg-white">
+      <Case />
+      <Case2 />
+    </div>
   );
 }

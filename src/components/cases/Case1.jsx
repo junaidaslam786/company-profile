@@ -1,5 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
+import { IoRemoveOutline } from "react-icons/io5";
+import Link from "next/link";
 
 const Case = () => {
   // Animation variants for Framer Motion
@@ -23,13 +25,13 @@ const Case = () => {
 
   return (
     <div
-      className="hero-container h-screen w-full bg-white"
+      className="hero-container h-[80vh] w-[90%] border-b bg-white"
       style={{
         margin: "0",
       }}
     >
       <div
-        className="text-container flex flex-col w-full"
+        className="text-container flex flex-col w-[90%]"
         style={{
           position: "absolute",
           top: "50%",
@@ -44,56 +46,40 @@ const Case = () => {
             animate="visible"
             custom={{ delay: 0.2 }}
             variants={titleAnimation}
-            className="font-bold text-[7vw] text-sky-500 uppercase tracking-wider leading-none flex justify-center"
+            className="font-bold text-[1.5vw] text-orange-500 uppercase tracking-wider leading-none flex justify-start"
           >
-            Custom Software
+            <IoRemoveOutline /> Our Projects
           </motion.div>
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            custom={{ delay: 0.2 }}
-            variants={titleAnimation}
-            className="font-bold text-[7vw] text-blue-950 uppercase tracking-wider leading-none flex justify-start"
-          >
-            Development
-          </motion.div>
-        </div>
-
-        {/* Subtitle */}
-        <div className="flex flex-col items-center leading-none">
-          <div className="flex flex-row items-center">
-            <div className="flex flex-col items-start mr-3">
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                custom={{ delay: 0.4 }}
-                variants={subtitleAnimation}
-                className="text-blue-950 text-[1.5vw]"
-              >
-                Custom software
-              </motion.div>
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                custom={{ delay: 0.4 }}
-                variants={subtitleAnimation}
-                className="text-blue-950 text-[1.5vw]"
-              >
-                engineering service
-              </motion.div>
-            </div>
-
-            {/* Highlighted title */}
+          <div className="flex flex-row justify-between items-center mt-[7vh]">
             <motion.div
               initial="hidden"
               animate="visible"
-              custom={{ delay: 0.6 }}
+              custom={{ delay: 0.2 }}
               variants={titleAnimation}
-              className="font-bold text-[7vw] text-blue-950 uppercase tracking-wider"
+              className="font-bold text-[5.5vw] text-blue-950 uppercase tracking-wider leading-none flex justify-start"
             >
-              Company
+              Case Studies
+            </motion.div>
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              custom={{ delay: 0.4 }}
+              variants={subtitleAnimation}
+              className="text-blue-950 text-[1.2vw] w-[30%]"
+            >
+              A preview of successful partnerships and mutual vision working
+              with our clients.
             </motion.div>
           </div>
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            custom={{ delay: 0.4 }}
+            variants={subtitleAnimation}
+            className="text-blue-950 text-[1.1vw] flex flex-start mt-[15vh]"
+          >
+            <Link href={'/cases'}>Apply filters to find the most relevant cases:</Link>
+          </motion.div>
         </div>
       </div>
     </div>
