@@ -9,7 +9,7 @@ const HeroSection3 = () => {
         <div className="flex flex-col w-[90%]">
           <div className="flex flex-row text-orange-500 text-[1vw] font-semibold">__<p className="tracking-widest">UPDATES</p></div>
           <div className="flex flex-row justify-between items-center mt-16">
-            <p className="text-blue-950 text-[3.5vw] font-bold tracking-widest">What's new?</p>
+            <p className="text-blue-950 text-[3.5vw] font-bold tracking-wide">What's new?</p>
             <p className="w-1/3 text-blue-950 text-[1.3vw]">
               See fresh updates in our custom software development solutions and
               expert materials.

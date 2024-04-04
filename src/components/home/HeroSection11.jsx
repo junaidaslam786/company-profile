@@ -1,7 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
+import { BsArrowRightCircleFill } from "react-icons/bs";
 
-const HeroSection = () => {
+const HeroSection11 = () => {
   // Animation variants for Framer Motion
   const titleAnimation = {
     hidden: { y: -50, opacity: 0 },
@@ -23,10 +24,7 @@ const HeroSection = () => {
 
   return (
     <div
-      className="hero-container h-screen w-full bg-white"
-      style={{
-        margin: "0",
-      }}
+      className="hero-container relative h-[80vh] w-full bg-white"
     >
       <div
         className="text-container flex flex-col w-full"
@@ -38,29 +36,31 @@ const HeroSection = () => {
         }}
       >
         {/* Main title */}
-        <div className="flex flex-col">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            custom={{ delay: 0.2 }}
-            variants={titleAnimation}
-            className="font-bold text-[7vw] text-sky-500 uppercase tracking-wider leading-none flex justify-center"
-          >
-            Custom Software
-          </motion.div>
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            custom={{ delay: 0.2 }}
-            variants={titleAnimation}
-            className="font-bold text-[7vw] text-blue-950 uppercase tracking-wider leading-none flex justify-start"
-          >
-            Development
-          </motion.div>
+        <div className="flex flex-col items-center">
+          <div className="flex flex-row">
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              custom={{ delay: 0.2 }}
+              variants={titleAnimation}
+              className="font-extrabold text-[7vw] text-blue-950 mr-5 uppercase tracking-wider leading-none flex justify-center"
+            >
+              Let's work
+            </motion.div>
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              custom={{ delay: 0.2 }}
+              variants={titleAnimation}
+              className="text-orange-500 text-[7vw] flex justify-center"
+            >
+              <BsArrowRightCircleFill className="transition-transform transform -rotate-45" />
+            </motion.div>
+          </div>
         </div>
 
         {/* Subtitle */}
-        <div className="flex flex-col items-center leading-none">
+        <div className="flex flex-col items-center leading-none mt-5">
           <div className="flex flex-row items-center">
             <div className="flex flex-col items-start mr-3">
               <motion.div
@@ -70,7 +70,7 @@ const HeroSection = () => {
                 variants={subtitleAnimation}
                 className="text-blue-950 text-[1.5vw]"
               >
-                Custom software
+                Have an idea?
               </motion.div>
               <motion.div
                 initial="hidden"
@@ -79,7 +79,7 @@ const HeroSection = () => {
                 variants={subtitleAnimation}
                 className="text-blue-950 text-[1.5vw]"
               >
-                engineering service
+                Let's build it!
               </motion.div>
             </div>
 
@@ -89,9 +89,9 @@ const HeroSection = () => {
               animate="visible"
               custom={{ delay: 0.6 }}
               variants={titleAnimation}
-              className="font-bold text-[7vw] text-blue-950 uppercase tracking-wider"
+              className="font-extrabold text-[7vw] text-blue-950 uppercase tracking-wider"
             >
-              Company
+              Together
             </motion.div>
           </div>
         </div>
@@ -99,4 +99,5 @@ const HeroSection = () => {
     </div>
   );
 };
-export default HeroSection;
+
+export default HeroSection11;

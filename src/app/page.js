@@ -6,6 +6,10 @@ import HeroSection5 from "@/components/home/HeroSection5";
 import HeroSection6 from "@/components/home/HeroSection6";
 import HeroSection7 from "@/components/home/HeroSection7";
 import HeroSection8 from "@/components/home/HeroSection8";
+import HeroSection9 from "@/components/home/HeroSection9";
+import HeroSection10 from "@/components/home/HeroSection10";
+import HeroSection11 from "@/components/home/HeroSection11";
+import HeroSection12 from "@/components/home/HeroSection12";
 
 export default function Home() {
   return (
@@ -18,6 +22,10 @@ export default function Home() {
       <HeroSection6 />
       <HeroSection7 />
       <HeroSection8 />
+      <HeroSection9 />
+      <HeroSection10 />
+      <HeroSection11 />
+      <HeroSection12 />
     </main>
   );
 }

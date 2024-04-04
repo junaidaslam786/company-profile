@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import RecommendationCard from "@/components/constants/RecommendationCard";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 
 const HeroSection8 = () => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
@@ -37,17 +38,37 @@ const HeroSection8 = () => {
 
   return (
     <div className="w-full py-24 relative">
-      <div className="w-full flex flex-col items-center">
+      <div className="flex flex-col w-full items-center">
+        <div className="flex flex-col items-center w-[90%]">
+          <div className="flex flex-row w-full text-orange-500 text-[1vw] font-semibold">
+            __<p className="tracking-widest">TRUSTED BY CLIENTS</p>
+          </div>
+          <div className="w-5/6">
+            <p className="text-blue-950 text-[3.5vw] font-bold tracking-wide mt-10">
+              Our clients recommend us
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="w-full flex flex-col items-center mt-12">
         <div
           className="w-4/5 overflow-hidden flex flex-row"
-          style={{ scrollbarWidth: "none" }}
         >
           <div
             className="transition-transform duration-300 ease-in-out flex"
             ref={containerRef}
           >
-            <div className="mx-9" ref={cardRef}>
+            <div className="mr-9" ref={cardRef}>
               <RecommendationCard
+                rating={
+                  <>
+                    <FaStar />
+                    <FaStar />
+                    <FaStar />
+                    <FaStar />
+                    <FaStar />
+                  </>
+                }
                 content={
                   "'Their dedication and responsible attitude to work have proven that our choice was right.'"
                 }
@@ -57,6 +78,15 @@ const HeroSection8 = () => {
             </div>
             <div className="mr-9" ref={cardRef}>
               <RecommendationCard
+                rating={
+                  <>
+                    <FaStar />
+                    <FaStar />
+                    <FaStar />
+                    <FaStar />
+                    <FaStar />
+                  </>
+                }
                 content={
                   "'The team has impressed us the most as they provided a solid foundation of expertise in our business domain.'"
                 }
@@ -66,6 +96,15 @@ const HeroSection8 = () => {
             </div>
             <div className="mr-9" ref={cardRef}>
               <RecommendationCard
+                rating={
+                  <>
+                    <FaStar />
+                    <FaStar />
+                    <FaStar />
+                    <FaStar />
+                    <FaStar />
+                  </>
+                }
                 content={
                   "'Labverse has been a fantastic partner so far an we will continue to use them on our development journey.'"
                 }
@@ -75,6 +114,15 @@ const HeroSection8 = () => {
             </div>
             <div className="mr-9" ref={cardRef}>
               <RecommendationCard
+                rating={
+                  <>
+                    <FaStar />
+                    <FaStar />
+                    <FaStar />
+                    <FaStar />
+                    <FaStar />
+                  </>
+                }
                 content={
                   "'At Labverse, we have met professional software developers who have done their work responsibly and competently.'"
                 }
@@ -84,6 +132,15 @@ const HeroSection8 = () => {
             </div>
             <div className="mr-9" ref={cardRef}>
               <RecommendationCard
+                rating={
+                  <>
+                    <FaStar />
+                    <FaStar />
+                    <FaStar />
+                    <FaStar />
+                    <FaStar />
+                  </>
+                }
                 content={
                   "'Labverse's team has impressed us with their level of involvement in the project.'"
                 }
