@@ -19,21 +19,19 @@ const HeroSection8 = () => {
   }, []);
 
   const handleNext = () => {
-    if (currentCardIndex < 4) {
-      setCurrentCardIndex((prevIndex) => prevIndex + 1);
-      containerRef.current.style.transform = `translateX(-${
-        cardWidth.current * (currentCardIndex + 1)
-      }px)`;
-    }
+    const nextIndex = (currentCardIndex + 1) % 5;
+    setCurrentCardIndex(nextIndex);
+    containerRef.current.style.transform = `translateX(-${
+      cardWidth.current * nextIndex
+    }px)`;
   };
 
   const handlePrevious = () => {
-    if (currentCardIndex > 0) {
-      setCurrentCardIndex((prevIndex) => prevIndex - 1);
-      containerRef.current.style.transform = `translateX(-${
-        cardWidth.current * (currentCardIndex - 1)
-      }px)`;
-    }
+    const prevIndex = currentCardIndex === 0 ? 4 : currentCardIndex - 1;
+    setCurrentCardIndex(prevIndex);
+    containerRef.current.style.transform = `translateX(-${
+      cardWidth.current * prevIndex
+    }px)`;
   };
 
   return (
@@ -51,9 +49,7 @@ const HeroSection8 = () => {
         </div>
       </div>
       <div className="w-full flex flex-col items-center mt-12">
-        <div
-          className="w-4/5 overflow-hidden flex flex-row"
-        >
+        <div className="w-4/5 overflow-hidden flex flex-row">
           <div
             className="transition-transform duration-300 ease-in-out flex"
             ref={containerRef}
@@ -155,18 +151,14 @@ const HeroSection8 = () => {
         <button
           onClick={handlePrevious}
           className="p-2 rounded-full text-white text-[1.5vw] font-bold bg-orange-500 mr-5 opacity-80 hover:opacity-100"
-          disabled={currentCardIndex === 0}
         >
-          {" "}
-          <FaArrowLeft />{" "}
+          <FaArrowLeft />
         </button>
         <button
           onClick={handleNext}
           className="p-2 rounded-full text-white text-[1.5vw] font-bold bg-orange-500 opacity-80 hover:opacity-100"
-          disabled={currentCardIndex === 4}
         >
-          {" "}
-          <FaArrowRight />{" "}
+          <FaArrowRight />
         </button>
       </div>
     </div>

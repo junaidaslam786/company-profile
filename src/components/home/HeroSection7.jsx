@@ -23,14 +23,16 @@ const HeroSection7 = () => {
       </div>
       <div className="w-3/4 flex flex-col">
         <div className="flex flex-col items-start z-[1]">
-          <AnimationCard
-            id={"01"}
-            title={"RESULT-ORIENTED PROCESS"}
-            content={
-              "Our structured development processes ensure on-time solutions delivery"
-            }
-            hoveredColor={"hover:bg-orange-400"}
-          />
+          <div>
+            <AnimationCard
+              id={"01"}
+              title={"RESULT-ORIENTED PROCESS"}
+              content={
+                "Our structured development processes ensure on-time solutions delivery"
+              }
+              hoveredColor={"hover:bg-orange-400"}
+            />
+          </div>
         </div>
         <div className="flex flex-col items-end -mt-[15%] z-[2]">
           <AnimationCard

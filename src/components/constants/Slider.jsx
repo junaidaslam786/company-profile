@@ -63,7 +63,7 @@ const Slider = () => {
         width: "100%",
         scrollBehavior: "inherit",
         position: "sticky",
-        top: "15%",
+        top: "12vh",
       }}
     >
       <div className="h-screen w-full bg-blue-500">Media To be Added</div>
