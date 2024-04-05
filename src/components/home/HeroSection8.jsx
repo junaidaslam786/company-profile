@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import RecommendationCard from "@/components/constants/RecommendationCard";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
+import { IoRemoveOutline } from "react-icons/io5";
 
 const HeroSection8 = () => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
@@ -38,8 +39,9 @@ const HeroSection8 = () => {
     <div className="w-full py-24 relative">
       <div className="flex flex-col w-full items-center">
         <div className="flex flex-col items-center w-[90%]">
-          <div className="flex flex-row w-full text-orange-500 text-[1vw] font-semibold">
-            __<p className="tracking-widest">TRUSTED BY CLIENTS</p>
+          <div className="w-full flex flex-row items-center text-orange-500 text-[1vw] font-semibold">
+            <IoRemoveOutline />
+            <p className="tracking-widest uppercase">Trusted by clients</p>
           </div>
           <div className="w-5/6">
             <p className="text-blue-950 text-[3.5vw] font-bold tracking-wide mt-10">

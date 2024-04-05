@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import { IoRemoveOutline } from "react-icons/io5";
 
 const HeroSection9 = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -26,8 +27,9 @@ const HeroSection9 = () => {
   return (
     <div className="w-full py-24 relative">
       <div className="flex flex-col w-full items-center">
-        <div className="flex flex-row w-[90%] text-orange-500 text-[1vw] font-semibold">
-          __<p className="tracking-widest">TRUSTED BY CLIENTS</p>
+        <div className="w-[90%] flex flex-row items-center text-orange-500 text-[1vw] font-semibold">
+          <IoRemoveOutline />
+          <p className="tracking-widest uppercase">team</p>
         </div>
         <div className="w-[90%]">
           <p className="text-blue-950 text-[3.5vw] font-bold tracking-wide mt-10">
@@ -48,7 +50,7 @@ const HeroSection9 = () => {
           >
             <div className="mr-9" style={{ width: "70vmin", height: "45vmin" }}>
               <Image
-                src={"/images/IMG20240404132012.jpg"}
+                src='/images/b07e0ebccccfcba7c2801f90a44e6158.jpg'
                 width={500}
                 height={500}
                 layout="responsive"
@@ -56,7 +58,7 @@ const HeroSection9 = () => {
             </div>
             <div className="mr-9" style={{ width: "70vmin", height: "45vmin" }}>
               <Image
-                src={"/images/IMG20240404131950.jpg"}
+                src='/images/b07e0ebccccfcba7c2801f90a44e6158.jpg'
                 width={500}
                 height={500}
                 layout="responsive"
@@ -64,7 +66,7 @@ const HeroSection9 = () => {
             </div>
             <div className="mr-9" style={{ width: "70vmin", height: "45vmin" }}>
               <Image
-                src={"/images/IMG20240404132021.jpg"}
+                src='/images/b07e0ebccccfcba7c2801f90a44e6158.jpg'
                 width={500}
                 height={500}
                 layout="responsive"
@@ -72,7 +74,7 @@ const HeroSection9 = () => {
             </div>
             <div className="mr-9" style={{ width: "70vmin", height: "45vmin" }}>
               <Image
-                src={"/images/IMG20240404132026.jpg"}
+                src='/images/b07e0ebccccfcba7c2801f90a44e6158.jpg'
                 width={500}
                 height={500}
                 layout="responsive"
@@ -80,7 +82,7 @@ const HeroSection9 = () => {
             </div>
             <div className="mr-9" style={{ width: "70vmin", height: "45vmin" }}>
               <Image
-                src={"/images/IMG20240404132048.jpg"}
+                src='/images/b07e0ebccccfcba7c2801f90a44e6158.jpg'
                 width={500}
                 height={500}
                 layout="responsive"
@@ -94,15 +96,13 @@ const HeroSection9 = () => {
           onClick={handlePrevious}
           className="p-2 rounded-full text-white text-[1.5vw] font-bold bg-orange-500 mr-5 opacity-80 hover:opacity-100"
         >
-          {" "}
-          <FaArrowLeft />{" "}
+          <FaArrowLeft />
         </button>
         <button
           onClick={handleNext}
           className="p-2 rounded-full text-white text-[1.5vw] font-bold bg-orange-500 opacity-80 hover:opacity-100"
         >
-          {" "}
-          <FaArrowRight />{" "}
+          <FaArrowRight />
         </button>
       </div>
     </div>

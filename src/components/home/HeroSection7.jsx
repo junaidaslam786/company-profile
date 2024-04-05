@@ -1,13 +1,15 @@
 import React from "react";
 import AnimationCard from "@/components/constants/AnimationCard";
+import { IoRemoveOutline } from "react-icons/io5";
 
 const HeroSection7 = () => {
   return (
     <div className="w-full flex flex-col items-center bg-blue-950 pt-32 pb-10">
       <div className="flex flex-col w-full items-center mb-[12vh]">
         <div className="flex flex-col w-4/5">
-          <div className="flex flex-row text-orange-400 text-[1vw] font-semibold">
-            __<p className="tracking-widest">ADVANTAGES</p>
+          <div className="flex flex-row items-center text-orange-400 text-[1vw] font-semibold">
+            <IoRemoveOutline />
+            <p className="tracking-widest uppercase">Advantages</p>
           </div>
           <div className="flex flex-row justify-between items-center mt-16">
             <p className="text-white text-[3.5vw] font-bold">

@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-const ReviewCard = () => {
+const ReviewCard = ({src, main, content, date, time }) => {
   return (
     <div className="w-full h-[50vh] group cursor-pointer flex flex-col items-center">
       <div className="w-5/6 h-full flex flex-row justify-between items-center">
@@ -10,17 +10,14 @@ const ReviewCard = () => {
             COST ESTIMATION
           </button>
           <p className="text-[2vw] text-blue-950 font-medium tracking-tight">
-            What I provide is totally expensive and you can't afford it. You're
-            poor. You're broke
+            {main}
           </p>
           <p className="text-[1.2vw] text-gray-500 tracking-tight">
-            Ohh! I've been drinking more alchohol for the past five days. Did
-            you check on me? Did you look for me? Kaash tu aise aaye. Jaise koi
-            dua
+            {content}
           </p>
           <div className="w-full flex flex-row justify-between">
-            <p className="text-[0.9vw] text-blue-950">APRIL 04, 2024</p>
-            <p className="text-[0.9vw] text-blue-950">15 MINUTES READ</p>
+            <p className="text-[0.9vw] uppercase text-blue-950">{date}</p>
+            <p className="text-[0.9vw] uppercase text-blue-950">{time}</p>
           </div>
         </div>
         <div className="w-1/4 flex flex-col items-end justify-end">
@@ -28,7 +25,7 @@ const ReviewCard = () => {
             <Image
               width={500}
               height={500}
-              src={"/images/IMG_20240324_172624.jpg"}
+              src={src}
               className="w-1/4 h-1/4 opacity-0 group-hover:w-full group-hover:h-full group-hover:opacity-100 duration-500"
             />
           </div>

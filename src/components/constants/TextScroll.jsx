@@ -64,11 +64,11 @@ function ParallaxText({ children, baseVelocity = 100 }) {
 export default function TextScroll() {
   return (
     <section className="w-full overflow-hidden">
-      <div className="border-t border-b border-gray-600 py-5">
-        <ParallaxText baseVelocity={-4}>Doctor ZANGI</ParallaxText>
+      <div className="border-t border-b border-gray-600 py-[4vmin]">
+        <ParallaxText baseVelocity={-4}>Choose Labverse</ParallaxText>
       </div>
-      <div className="border-b border-gray-600 py-5">
-        <ParallaxText baseVelocity={4}>Saith Naeem Khagga</ParallaxText>
+      <div className="border-b border-gray-600 py-[4vmin]">
+        <ParallaxText baseVelocity={4}>Sign up today</ParallaxText>
       </div>
     </section>
   );

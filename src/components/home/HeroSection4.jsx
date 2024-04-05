@@ -2,6 +2,7 @@ import React from "react";
 import StoryCard from "@/components/constants/StoryCard";
 import Slider from "@/components/constants/Slider";
 import { LiaFlagUsaSolid } from "react-icons/lia";
+import { IoRemoveOutline } from "react-icons/io5";
 
 const HeroSection4 = () => {
   return (
@@ -9,10 +10,13 @@ const HeroSection4 = () => {
       <div className="w-1/2 flex flex-col items-center bg-blue-950">
         <div className="w-5/6">
           <div className="w-2/3 mt-32">
-            <p className="text-orange-400 font-semibold text-[1vw]">
-              __SUCCESS STORIES
-            </p>
-            <p className="text-white font-semibold text-[4vw] mt-24">
+            <div className="flex flex-row items-center text-orange-400 font-semibold text-[1vw]">
+              <IoRemoveOutline />
+              <p className="uppercase">
+                SUCCESS STORIES
+              </p>
+            </div>
+            <p className="text-white font-semibold leading-tight text-[4vw] mt-24">
               Custom business software development
             </p>
           </div>
