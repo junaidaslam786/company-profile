@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import ScrollCard from "@/components/constants/ScrollCard";
+import ScrollCard from "@/components/constants/home/ScrollCard";
 import { IoRemoveOutline } from "react-icons/io5";
 
 const Herosection2 = () => {

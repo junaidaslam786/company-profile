@@ -41,7 +41,7 @@ const Navbar = () => {
       <div className="relative flex items-center w-full h-[12vh] justify-between px-4 md:justify-around">
         <div className="flex justify-between w-full md:w-auto">
           <div className="flex-shrink-0">
-            <Link href="/dashboard" passHref>
+            <Link href="/" passHref>
               <span className="font-semibold text-[2.5vw] text-sky-500 hover:opacity-90 cursor-pointer">
                 Labverse
               </span>

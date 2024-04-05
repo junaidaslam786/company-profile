@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import RecommendationCard from "@/components/constants/RecommendationCard";
+import RecommendationCard from "@/components/constants/home/RecommendationCard";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 import { IoRemoveOutline } from "react-icons/io5";

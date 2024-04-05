@@ -1,5 +1,5 @@
 import React from "react";
-import AnimationCard from "@/components/constants/AnimationCard";
+import AnimationCard from "@/components/constants/home/AnimationCard";
 import { IoRemoveOutline } from "react-icons/io5";
 
 const HeroSection7 = () => {

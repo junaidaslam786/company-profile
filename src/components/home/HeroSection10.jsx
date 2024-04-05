@@ -1,5 +1,5 @@
 import React from "react";
-import ReviewCard from "../constants/ReviewCard";
+import ReviewCard from "@/components/constants/home/ReviewCard";
 import { IoRemoveOutline } from "react-icons/io5";
 
 const HeroSection10 = () => {

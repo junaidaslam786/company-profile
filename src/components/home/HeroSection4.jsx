@@ -1,6 +1,6 @@
 import React from "react";
-import StoryCard from "@/components/constants/StoryCard";
-import Slider from "@/components/constants/Slider";
+import StoryCard from "@/components/constants/home/StoryCard";
+import Slider from "@/components/constants/home/Slider";
 import { LiaFlagUsaSolid } from "react-icons/lia";
 import { IoRemoveOutline } from "react-icons/io5";
 

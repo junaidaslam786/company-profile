@@ -1,6 +1,6 @@
 import React from "react";
-import ExpertCard from "../constants/ExpertCard";
-import ServiceCard from "../constants/ServiceCard";
+import ExpertCard from "@/components/constants/home/ExpertCard";
+import ServiceCard from "@/components/constants/home/ServiceCard";
 import { IoRemoveOutline } from "react-icons/io5";
 
 const HeroSection3 = () => {

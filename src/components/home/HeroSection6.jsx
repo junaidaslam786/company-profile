@@ -1,5 +1,5 @@
 import React from 'react'
-import TextScroll from '@/components/constants/TextScroll'
+import TextScroll from '@/components/constants/home/TextScroll'
 
 const HeroSection6 = () => {
   return (
