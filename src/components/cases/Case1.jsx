@@ -25,7 +25,7 @@ const Case = () => {
 
   return (
     <div
-      className="hero-container h-[80vh] w-[90%] border-b bg-white"
+      className="hero-container h-[80vh] w-full bg-white"
       style={{
         margin: "0",
       }}
