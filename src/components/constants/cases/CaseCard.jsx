@@ -18,8 +18,8 @@ const CaseCard = ({
   featuredBackground,
 }) => {
   return (
-    <Link href={'/cases'} className="h-[70vh] w-full">
-      <div className="w-full h-[70vh] flex flex-row items-center">
+    <Link href={'/cases'} className="h-[33vw] w-full">
+      <div className="w-full h-[33vw] flex flex-row items-center justify-between">
         <div className="w-1/2 h-1/2">
           <div className="w-[95%] h-full flex flex-col items-start justify-between">
             <div className="flex flex-row uppercase items-baseline">
@@ -80,7 +80,7 @@ const CaseCard = ({
         </div>
         <div className="w-1/2">
           <div
-            className={`h-[70vmin] w-[100vmin] ${featuredBackground} bg-opacity-20 overflow-hidden flex flex-col items-center justify-center`}
+            className={`h-[32vw] w-[45.5vw] ${featuredBackground} bg-opacity-20 overflow-hidden flex flex-col items-center justify-center`}
           >
             <Image src={feacturedImage} width={300} height={300} />
           </div>
