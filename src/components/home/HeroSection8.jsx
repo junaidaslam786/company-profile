@@ -7,32 +7,43 @@ import { FaStar } from "react-icons/fa";
 import { IoRemoveOutline } from "react-icons/io5";
 
 const HeroSection8 = () => {
+  const [testimonials, setTestimonials] = useState([]);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const cardRef = useRef(null);
   const cardWidth = useRef(0);
   const containerRef = useRef(null);
 
   useEffect(() => {
-    if (containerRef.current && cardRef.current) {
-      cardWidth.current = cardRef.current.offsetWidth;
-      containerRef.current.style.width = `${cardWidth.current * 5}px`;
-    }
+    const fetchTestimonials = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:8000/api/testimonials/");
+        const data = await response.json();
+        setTestimonials(data);
+      } catch (error) {
+        console.error("Error fetching testimonials:", error);
+      }
+    };
+
+    fetchTestimonials();
   }, []);
 
+  useEffect(() => {
+    if (containerRef.current && cardRef.current) {
+      cardWidth.current = cardRef.current.offsetWidth;
+      containerRef.current.style.width = `${cardWidth.current * testimonials.length}px`;
+    }
+  }, [testimonials]);
+
   const handleNext = () => {
-    const nextIndex = (currentCardIndex + 1) % 5;
+    const nextIndex = (currentCardIndex + 1) % testimonials.length;
     setCurrentCardIndex(nextIndex);
-    containerRef.current.style.transform = `translateX(-${
-      cardWidth.current * nextIndex
-    }px)`;
+    containerRef.current.style.transform = `translateX(-${cardWidth.current * nextIndex}px)`;
   };
 
   const handlePrevious = () => {
-    const prevIndex = currentCardIndex === 0 ? 4 : currentCardIndex - 1;
+    const prevIndex = currentCardIndex === 0 ? testimonials.length - 1 : currentCardIndex - 1;
     setCurrentCardIndex(prevIndex);
-    containerRef.current.style.transform = `translateX(-${
-      cardWidth.current * prevIndex
-    }px)`;
+    containerRef.current.style.transform = `translateX(-${cardWidth.current * prevIndex}px)`;
   };
 
   return (
@@ -56,96 +67,24 @@ const HeroSection8 = () => {
             className="transition-transform duration-300 ease-in-out flex"
             ref={containerRef}
           >
-            <div className="mr-9" ref={cardRef}>
-              <RecommendationCard
-                rating={
-                  <>
-                    <FaStar />
-                    <FaStar />
-                    <FaStar />
-                    <FaStar />
-                    <FaStar />
-                  </>
-                }
-                content={
-                  "'Their dedication and responsible attitude to work have proven that our choice was right.'"
-                }
-                company={"VP R&D, Guidde Knowledge LTD"}
-                date={"01 / 03"}
-              />
-            </div>
-            <div className="mr-9" ref={cardRef}>
-              <RecommendationCard
-                rating={
-                  <>
-                    <FaStar />
-                    <FaStar />
-                    <FaStar />
-                    <FaStar />
-                    <FaStar />
-                  </>
-                }
-                content={
-                  "'The team has impressed us the most as they provided a solid foundation of expertise in our business domain.'"
-                }
-                company={"Co-Founder & CTO, Ladingo"}
-                date={"02 / 05"}
-              />
-            </div>
-            <div className="mr-9" ref={cardRef}>
-              <RecommendationCard
-                rating={
-                  <>
-                    <FaStar />
-                    <FaStar />
-                    <FaStar />
-                    <FaStar />
-                    <FaStar />
-                  </>
-                }
-                content={
-                  "'Labverse has been a fantastic partner so far an we will continue to use them on our development journey.'"
-                }
-                company={"Founder, Co-Working Space Startup"}
-                date={"03 / 05"}
-              />
-            </div>
-            <div className="mr-9" ref={cardRef}>
-              <RecommendationCard
-                rating={
-                  <>
-                    <FaStar />
-                    <FaStar />
-                    <FaStar />
-                    <FaStar />
-                    <FaStar />
-                  </>
-                }
-                content={
-                  "'At Labverse, we have met professional software developers who have done their work responsibly and competently.'"
-                }
-                company={"CTO, Shinez.io"}
-                date={"04 / 05"}
-              />
-            </div>
-            <div className="mr-9" ref={cardRef}>
-              <RecommendationCard
-                rating={
-                  <>
-                    <FaStar />
-                    <FaStar />
-                    <FaStar />
-                    <FaStar />
-                    <FaStar />
-                  </>
-                }
-                content={
-                  "'Labverse's team has impressed us with their level of involvement in the project.'"
-                }
-                company={"CEO, Xtra Point Group"}
-                date={"05 / 05"}
-              />
-            </div>
+            {testimonials.map((testimonial, index) => (
+              <div className="mr-[3vw]" key={testimonial.id} ref={cardRef}>
+                <RecommendationCard
+                  rating={
+                    <>
+                      <FaStar />
+                      <FaStar />
+                      <FaStar />
+                      <FaStar />
+                      <FaStar />
+                    </>
+                  }
+                  content={testimonial.content}
+                  company={testimonial.client_company}
+                  date={testimonial.date}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>
