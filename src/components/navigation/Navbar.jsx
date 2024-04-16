@@ -5,39 +5,48 @@ import Link from "next/link";
 import { FaChevronDown } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { FaBars } from "react-icons/fa";
-
 import MegaMenu from "@/components/navigation/MegaMenu";
 
 const Navbar = () => {
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
-  const megaMenuRef = useRef(null); // Ref for the MegaMenu
+  const [navbarBgColor, setNavbarBgColor] = useState("transparent");
+  const megaMenuRef = useRef(null);
 
-  // Function to toggle the MegaMenu
   const toggleMegaMenu = () => {
     setMegaMenuOpen((prev) => !prev);
   };
 
-  // Function to toggle the burger menus
   const toggleBurgerMenu = () => {
     setIsBurgerMenuOpen((prev) => !prev);
   };
 
-  // Click-away listener to close the MegaMenu if clicked outside
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (megaMenuRef.current && !megaMenuRef.current.contains(event.target)) {
-        setMegaMenuOpen(false);
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const navbarHeight = document.querySelector("nav").offsetHeight;
+      const navbarTransparentHeight = navbarHeight * 2;
+
+      if (scrollPosition < navbarTransparentHeight) {
+        const opacity = scrollPosition / navbarTransparentHeight;
+        setNavbarBgColor(`rgba(255, 255, 255, ${opacity})`);
+      } else {
+        setNavbarBgColor("#ffffff"); //
       }
     };
-    document.addEventListener("mousedown", handleClickOutside);
+
+    document.addEventListener("scroll", handleScroll);
+
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("scroll", handleScroll);
     };
-  }, [megaMenuRef]);
+  }, []);
 
   return (
-    <nav className="fixed bg-white border-b w-screen border-gray-200 z-50">
+    <nav
+      className="fixed top-0 left-0 w-screen z-50"
+      style={{ backgroundColor: navbarBgColor }}
+    >
       <div className="relative flex items-center w-full h-[12vh] justify-between px-4 md:justify-around">
         <div className="flex justify-between w-full md:w-auto">
           <div className="flex-shrink-0">
@@ -61,11 +70,16 @@ const Navbar = () => {
           } absolute top-full left-0 w-full bg-white shadow-md py-2`}
         >
           <div className="flex flex-col items-start px-4">
-            <Link href="/about-us" passHref>
-              <span className="text-blue-950 tracking-widest font-semibold text-[0.8vw] hover:text-sky-500 py-2 cursor-pointer">
+            <div className="py-2">
+              <button
+                onClick={toggleMegaMenu}
+                className="text-blue-950 tracking-widest font-semibold text-[0.8vw] hover:text-sky-500 text-lg flex items-center cursor-pointer"
+              >
                 About Us
-              </span>
-            </Link>
+                <FaChevronDown className="ml-1 text-1vw" />
+              </button>
+              {megaMenuOpen && <MegaMenu />}
+            </div>
             <div className="py-2">
               <button
                 onClick={toggleMegaMenu}
@@ -76,11 +90,16 @@ const Navbar = () => {
               </button>
               {megaMenuOpen && <MegaMenu />}
             </div>
-            <Link href="/pricing" passHref>
-              <span className="text-blue-950 tracking-widest font-semibold text-[0.8vw] hover:text-sky-500 py-2 cursor-pointer">
+            <div className="py-2">
+              <button
+                onClick={toggleMegaMenu}
+                className="text-blue-950 tracking-widest font-semibold text-[0.8vw] hover:text-sky-500 text-lg flex items-center cursor-pointer"
+              >
                 Pricing
-              </span>
-            </Link>
+                <FaChevronDown className="ml-1 text-1vw" />
+              </button>
+              {megaMenuOpen && <MegaMenu />}
+            </div>
             <Link href="/cases" passHref>
               <span className="text-blue-950 tracking-widest font-semibold text-[0.8vw] hover:text-sky-500 py-2 cursor-pointer">
                 Cases
@@ -118,11 +137,17 @@ const Navbar = () => {
             isBurgerMenuOpen ? "flex" : "hidden"
           } md:flex-row items-center justify-between`}
         >
-          <Link href="/about-us" passHref>
-            <span className="text-blue-950 tracking-widest font-semibold text-[0.8vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase cursor-pointer">
+          <div
+            ref={megaMenuRef}
+            onClick={toggleMegaMenu}
+            className="relative cursor-pointer"
+          >
+            <button className="text-blue-950 tracking-widest font-semibold text-[0.8vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase flex items-center">
               About Us
-            </span>
-          </Link>
+              <FaChevronDown className="ml-1 text-[0.9vw]" />
+            </button>
+            {megaMenuOpen && <MegaMenu />}
+          </div>
           <div
             ref={megaMenuRef}
             onClick={toggleMegaMenu}
@@ -130,15 +155,21 @@ const Navbar = () => {
           >
             <button className="text-blue-950 tracking-widest font-semibold text-[0.8vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase flex items-center">
               What We Do
-              <FaChevronDown className="ml-2 text-[1vw]" />
+              <FaChevronDown className="ml-1 text-[0.9vw]" />
             </button>
             {megaMenuOpen && <MegaMenu />}
           </div>
-          <Link href="/pricing" passHref>
-            <span className="text-blue-950 tracking-widest font-semibold text-[0.8vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase cursor-pointer">
+          <div
+            ref={megaMenuRef}
+            onClick={toggleMegaMenu}
+            className="relative cursor-pointer"
+          >
+            <button className="text-blue-950 tracking-widest font-semibold text-[0.8vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase flex items-center">
               Pricing
-            </span>
-          </Link>
+              <FaChevronDown className="ml-1 text-[0.9vw]" />
+            </button>
+            {megaMenuOpen && <MegaMenu />}
+          </div>
           <Link href="/cases" passHref>
             <span className="text-blue-950 tracking-widest font-semibold text-[0.8vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase cursor-pointer">
               Cases

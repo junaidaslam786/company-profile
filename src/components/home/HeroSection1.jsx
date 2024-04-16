@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const HeroSection = () => {
   // Animation variants for Framer Motion
@@ -28,6 +29,13 @@ const HeroSection = () => {
         margin: "0",
       }}
     >
+      <Image
+        src={"/images/pexels-gdtography-911738.jpg"}
+        layout="fill"
+        objectFit="cover"
+        alt="Background Image"
+        className="w-full h-screen absolute"
+      />
       <div
         className="text-container flex flex-col w-full"
         style={{
