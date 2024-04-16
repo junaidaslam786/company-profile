@@ -14,7 +14,7 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        headingsFont: ["var(--font-family)"],
+        sans: ["Montserrat", "sans-serif"],
       },
       textColor: {
         orangeColor: ["rgb(255 135 51)"],

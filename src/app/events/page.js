@@ -4,7 +4,7 @@ import Event3 from "@/components/events/Event3";
 
 export default function Events() {
   return (
-    <div className="flex min-h-screen w-full px-[4vw] flex-col items-center justify-between bg-white">
+    <div className="flex font-sans min-h-screen w-full px-[4vw] flex-col items-center justify-between bg-white">
       <Event />
       <Event2 />
       <Event3 />

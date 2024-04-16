@@ -49,7 +49,7 @@ const Case = () => {
             animate="visible"
             custom={{ delay: 0.2 }}
             variants={titleAnimation}
-            className="font-bold font-headingsFont text-[1.5vw] text-orangeColor-0 uppercase tracking-wider leading-none flex justify-start"
+            className="font-bold text-[1.5vw] text-orangeColor-0 uppercase tracking-wider leading-none flex justify-start"
           >
             <IoRemoveOutline /> Our Projects
           </motion.div>
@@ -59,7 +59,7 @@ const Case = () => {
               animate="visible"
               custom={{ delay: 0.2 }}
               variants={titleAnimation}
-              className="font-bold text-[5.5vw] text-blue-950 uppercase tracking-wider leading-none flex justify-start"
+              className="font-extrabold text-[6vw] text-blue-950 uppercase tracking-wider leading-none flex justify-start"
             >
               Case Studies
             </motion.div>

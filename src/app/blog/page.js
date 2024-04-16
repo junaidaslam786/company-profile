@@ -4,7 +4,7 @@ import Blog3 from "@/components/blog/Blog3";
 
 export default function Blog() {
   return (
-    <div className="flex min-h-screen w-full px-[4vw] flex-col items-center justify-between bg-white">
+    <div className="flex font-sans min-h-screen w-full px-[4vw] flex-col items-center justify-between bg-white">
       <Blog1 />
       <Blog2 />
       <Blog3 />

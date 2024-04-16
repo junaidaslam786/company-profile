@@ -13,7 +13,7 @@ import HeroSection12 from "@/components/home/HeroSection12";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between bg-white">
+    <main className="flex font-sans min-h-screen flex-col items-center justify-between bg-white">
       <HeroSection />
       <Herosection2 />
       <HeroSection3 />
