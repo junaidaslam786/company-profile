@@ -3,7 +3,7 @@ import TextScroll from '@/components/constants/home/TextScroll'
 
 const HeroSection6 = () => {
   return (
-    <div className='bg-blue-950 w-full'>
+    <div className='bg-blueColor-0 w-full'>
         <TextScroll />
     </div>
   )

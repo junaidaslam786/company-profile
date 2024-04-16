@@ -54,7 +54,7 @@ const Footer = () => {
             Labverse
           </h5>
           <p
-            className="text-gray-600 mt-16 leading-snug text-[1vw]"
+            className="text-gray-600 mt-16 leading-snug text-[0.9vw]"
           >
             We help our clients transform their <br /> business ideas into
             tangible results <br /> by developing unique software solutions.
@@ -62,7 +62,7 @@ const Footer = () => {
           <div className="mt-5">
             <Link
               href="/info"
-              className="text-slate-700 hover:text-orange-500 font-semibold text-[1.5vw]"
+              className="text-blueColor-0 hover:text-orangeColor-0 font-semibold text-[1.5vw]"
             >
               info@labverse.co
             </Link>
@@ -71,22 +71,22 @@ const Footer = () => {
         <div className="flex justify-between w-1/2 mr-12 mt-5">
           <Link href="https://www.facebook.com" target="_blank">
             <FaFacebookF
-              className="fill-slate-700 hover:fill-orange-500 text-[1vw]"
+              className="fill-blueColor-0 hover:fill-orangeColor-0 text-[0.9vw]"
             />
           </Link>
           <Link href="https://www.linkedin.com" target="_blank">
             <FaLinkedinIn
-              className="fill-slate-700 hover:fill-orange-500 text-[1vw]"
+              className="fill-blueColor-0 hover:fill-orangeColor-0 text-[0.9vw]"
             />
           </Link>
           <Link href="https://www.instagram.com" target="_blank">
             <RiInstagramFill
-              className="fill-slate-700 hover:fill-orange-500 text-[1vw]"
+              className="fill-blueColor-0 hover:fill-orangeColor-0 text-[0.9vw]"
             />
           </Link>
           <Link href="https://www.telegram.com">
             <BiLogoTelegram
-              className="fill-slate-700 hover:fill-orange-500 text-[1vw]"
+              className="fill-blueColor-0 hover:fill-orangeColor-0 text-[0.9vw]"
             />
           </Link>
         </div>
@@ -94,7 +94,7 @@ const Footer = () => {
       <div className="w-full md:flex md:flex-row md:justify-between grid grid-cols-2 mt-10 md:mt-0">
         <div className="w-full h-full sm:w-1/2 md:w-1/5 px-4">
           <h5
-            className="font-semibold mt-2 text-slate-800 font-sans text-[1.2vw]"
+            className="font-semibold mt-2 text-blueColor-0 font-sans text-[1.2vw]"
           >
             COMPANY
           </h5>
@@ -103,7 +103,7 @@ const Footer = () => {
               <li key={index} className="mt-5">
                 <Link
                   href={section.link}
-                  className="text-slate-700 hover:text-orange-500 text-[1vw]"
+                  className="text-blueColor-0 hover:text-orangeColor-0 text-[0.9vw]"
                 >
                   {section.title}
                 </Link>
@@ -113,7 +113,7 @@ const Footer = () => {
         </div>
         <div className="w-full sm:w-1/2 md:w-1/5 px-4">
           <h5
-            className="font-semibold mt-2 text-slate-800 font-sans text-[1.2vw]"
+            className="font-semibold mt-2 text-blueColor-0 font-sans text-[1.2vw]"
           >
             SERVICES
           </h5>
@@ -122,7 +122,7 @@ const Footer = () => {
               <li key={index} className="mt-5">
                 <Link
                   href={service.link}
-                  className="text-slate-700 hover:text-orange-500 text-[1vw]"
+                  className="text-blueColor-0 hover:text-orangeColor-0 text-[0.9vw]"
                 >
                   {service.title}
                 </Link>
@@ -132,7 +132,7 @@ const Footer = () => {
         </div>
         <div className="w-full sm:w-1/2 md:w-1/5 px-4">
           <h5
-            className="font-semibold mt-2 text-slate-800 font-sans text-[1.2vw]"
+            className="font-semibold mt-2 text-blueColor-0 font-sans text-[1.2vw]"
           >
             SERVICES
           </h5>
@@ -141,7 +141,7 @@ const Footer = () => {
               <li key={index} className="mt-5">
                 <Link
                   href={service.link}
-                  className="text-slate-700 hover:text-orange-500 text-[1vw]"
+                  className="text-blueColor-0 hover:text-orangeColor-0 text-[0.9vw]"
                 >
                   {service.title}
                 </Link>
@@ -151,7 +151,7 @@ const Footer = () => {
         </div>
         <div className="w-full sm:w-1/2 md:w-1/5 px-4">
           <h5
-            className="font-semibold mt-2 text-slate-800 font-sans text-[1.2vw]"
+            className="font-semibold mt-2 text-blueColor-0 font-sans text-[1.2vw]"
           >
             INDUSTRIES
           </h5>
@@ -160,7 +160,7 @@ const Footer = () => {
               <li key={index} className="mt-5">
                 <Link
                   href={service.link}
-                  className="text-slate-700 hover:text-orange-500 text-[1vw]"
+                  className="text-blueColor-0 hover:text-orangeColor-0 text-[0.9vw]"
                 >
                   {service.title}
                 </Link>

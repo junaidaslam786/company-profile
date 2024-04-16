@@ -18,6 +18,15 @@ module.exports = {
       },
       textColor: {
         orangeColor: ["rgb(255 135 51)"],
+        blueColor: ["rgb(20 27 77)"],
+      },
+      fill: {
+        orangeColor: ["rgb(255 135 51)"],
+        blueColor: ["rgb(20 27 77)"],
+      },
+      backgroundColor: {
+        orangeColor: ["rgb(255 135 51)"],
+        blueColor: ["rgb(20 27 77)"],
       },
     },
   },

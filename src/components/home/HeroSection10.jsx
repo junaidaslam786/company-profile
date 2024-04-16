@@ -24,12 +24,12 @@ const HeroSection10 = () => {
   return (
     <div className="w-full mt-32">
       <div className="flex flex-col w-full items-center">
-        <div className="w-[90%] flex flex-row items-center text-orange-500 text-[1.5vw] md:text-[1vw] font-semibold">
+        <div className="w-[90%] flex flex-row items-center text-orangeColor-0 text-[1.5vw] md:text-[1vw] font-semibold">
           <IoRemoveOutline />
           <p className="tracking-widest uppercase">blog</p>
         </div>
         <div className="w-[90%]">
-          <p className="text-blue-950 text-[4.5vw] md:text-[3.5vw] font-bold tracking-wide mt-10">
+          <p className="text-blueColor-0 text-[4.5vw] md:text-[3.5vw] font-bold tracking-wide mt-10">
             Tech insights collected for you
           </p>
         </div>

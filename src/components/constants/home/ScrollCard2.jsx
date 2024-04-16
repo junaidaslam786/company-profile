@@ -23,11 +23,11 @@ const ScrollCard2 = ({ title, content, bottoms, src }) => {
         <div className="absolute right-[2vw] -mt-[2.4vh] group-hover:opacity-100 transition-opacity">
           <FontAwesomeIcon
             icon={faArrowRight}
-            className="text-[1.5vw] transition-transform transform -rotate-45 text-white group-hover:rotate-0 group-hover:text-orange-500"
+            className="text-[1.5vw] transition-transform transform -rotate-45 text-white group-hover:rotate-0 group-hover:text-orangeColor-0"
           />
         </div>
         <div className="w-5/6">
-          <h3 className="group-hover:text-orange-500 font-semibold text-[2vw] text-white">
+          <h3 className="group-hover:text-orangeColor-0 font-semibold text-[2vw] text-white">
             {title}
           </h3>
           <p className="mt-[1vh] text-gray-400 text-[1vw]">{content}</p>

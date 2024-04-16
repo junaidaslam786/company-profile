@@ -16,14 +16,14 @@ const BasicCard = ({ src, dateTime, title, content, time }) => {
       />
       <div className="h-2/3 w-full flex flex-col justify-between">
         <div className="w-full flex flex-row items-center justify-between mt-[3vh] md:mt-0 lg:mt-[3vh]">
-          <p className="uppercase text-blue-950 text-[1.5vw] lg:text-[0.8vw]">
+          <p className="uppercase text-blueColor-0 text-[1.5vw] lg:text-[0.8vw]">
             {time}
           </p>
-          <p className="uppercase text-blue-950 text-[1.5vw] lg:text-[0.8vw]">
+          <p className="uppercase text-blueColor-0 text-[1.5vw] lg:text-[0.8vw]">
             {dateTime}
           </p>
         </div>
-        <p className="text-[3vw] md:text-[2.5vw] lg:text-[1.8vw] mt-[3vh] md:mt-0 lg:mt-[3vh] leading-tight text-blue-950 font-bold">
+        <p className="text-[3vw] md:text-[2.5vw] lg:text-[1.8vw] mt-[3vh] md:mt-0 lg:mt-[3vh] leading-tight text-blueColor-0 font-bold">
           {title}
         </p>
         <p className="text-[2vw] md:text-[1.5vw] lg:text-[1vw] mt-[3vh] text-gray-600">{content}</p>

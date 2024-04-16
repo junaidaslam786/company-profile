@@ -61,7 +61,7 @@ const HeroSection = () => {
             animate="visible"
             custom={{ delay: 0.2 }}
             variants={titleAnimation}
-            className="font-extrabold text-[7vw] text-blue-950 uppercase tracking-wider leading-none flex justify-start"
+            className="font-extrabold text-[7vw] text-blueColor-0 uppercase tracking-wider leading-none flex justify-start"
           >
             Development
           </motion.div>
@@ -76,7 +76,7 @@ const HeroSection = () => {
                 animate="visible"
                 custom={{ delay: 0.4 }}
                 variants={subtitleAnimation}
-                className="text-blue-950 text-[1.5vw]"
+                className="text-blueColor-0 text-[1.5vw]"
               >
                 Custom software
               </motion.div>
@@ -85,7 +85,7 @@ const HeroSection = () => {
                 animate="visible"
                 custom={{ delay: 0.4 }}
                 variants={subtitleAnimation}
-                className="text-blue-950 text-[1.5vw]"
+                className="text-blueColor-0 text-[1.5vw]"
               >
                 engineering service
               </motion.div>
@@ -97,7 +97,7 @@ const HeroSection = () => {
               animate="visible"
               custom={{ delay: 0.6 }}
               variants={titleAnimation}
-              className="font-extrabold text-[7vw] text-blue-950 uppercase tracking-wider"
+              className="font-extrabold text-[7vw] text-blueColor-0 uppercase tracking-wider"
             >
               Company
             </motion.div>

@@ -25,7 +25,7 @@ const Case = () => {
   };
 
   return (
-    <div className="hero-container h-[80vh] flex flex-col items-center w-full bg-white">
+    <div className="hero-container h-screen flex flex-col items-center w-full bg-white">
       <Image
         src={"/images/pexels-gdtography-911738.jpg"}
         layout="fill"

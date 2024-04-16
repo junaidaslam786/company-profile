@@ -7,10 +7,10 @@ import { IoRemoveOutline } from "react-icons/io5";
 const HeroSection4 = () => {
   return (
     <div className="flex flex-row w-full mt-32">
-      <div className="w-1/2 flex flex-col items-center bg-blue-950">
+      <div className="w-1/2 flex flex-col items-center bg-blueColor-0">
         <div className="w-5/6">
           <div className="w-2/3 mt-32">
-            <div className="flex flex-row items-center text-orange-400 font-semibold text-[1vw]">
+            <div className="flex flex-row items-center text-orangeColor-0 font-semibold text-[1vw]">
               <IoRemoveOutline />
               <p className="uppercase">
                 SUCCESS STORIES

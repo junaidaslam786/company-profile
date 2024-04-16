@@ -41,7 +41,7 @@ const Event = () => {
             animate="visible"
             custom={{ delay: 0.2 }}
             variants={titleAnimation}
-            className="font-bold text-[1.5vw] text-orange-500 uppercase tracking-wider leading-none flex justify-start"
+            className="font-bold text-[1.5vw] text-orangeColor-0 uppercase tracking-wider leading-none flex justify-start"
           >
             <IoRemoveOutline /> Community Activities
           </motion.div>
@@ -51,7 +51,7 @@ const Event = () => {
               animate="visible"
               custom={{ delay: 0.2 }}
               variants={titleAnimation}
-              className="font-bold text-[5.5vw] text-blue-950 uppercase tracking-wider leading-none flex justify-start"
+              className="font-bold text-[5.5vw] text-blueColor-0 uppercase tracking-wider leading-none flex justify-start"
             >
               Events
             </motion.div>
@@ -60,7 +60,7 @@ const Event = () => {
               animate="visible"
               custom={{ delay: 0.4 }}
               variants={subtitleAnimation}
-              className="text-blue-950 text-[1.3vw] w-2/5"
+              className="text-blueColor-0 text-[1.3vw] w-2/5"
             >
               We love to organize events to share our knowledge and experience
               in software development and everything related. Would be great to

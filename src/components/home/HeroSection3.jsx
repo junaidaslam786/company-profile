@@ -8,7 +8,7 @@ const HeroSection3 = () => {
     <div className="flex flex-col mt-16">
       <div className="flex flex-col w-full items-center">
         <div className="flex flex-col w-[90%]">
-          <div className="flex flex-row items-center text-orange-500 text-[1vw] font-semibold">
+          <div className="flex flex-row items-center text-orangeColor-0 text-[1vw] font-semibold">
             <IoRemoveOutline />
             <p className="tracking-widest uppercase">UPDATES</p>
           </div>

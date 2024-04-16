@@ -73,59 +73,59 @@ const Navbar = () => {
             <div className="py-2">
               <button
                 onClick={toggleMegaMenu}
-                className="text-blue-950 tracking-widest font-semibold text-[0.8vw] hover:text-sky-500 text-lg flex items-center cursor-pointer"
+                className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 text-lg flex items-center cursor-pointer"
               >
                 About Us
-                <FaChevronDown className="ml-1 text-1vw" />
+                <FaChevronDown className="ml-1 text-[1vw]" />
               </button>
               {megaMenuOpen && <MegaMenu />}
             </div>
             <div className="py-2">
               <button
                 onClick={toggleMegaMenu}
-                className="text-blue-950 tracking-widest font-semibold text-[0.8vw] hover:text-sky-500 text-lg flex items-center cursor-pointer"
+                className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 text-lg flex items-center cursor-pointer"
               >
                 What We Do
-                <FaChevronDown className="ml-1 text-1vw" />
+                <FaChevronDown className="ml-1 text-[1vw]" />
               </button>
               {megaMenuOpen && <MegaMenu />}
             </div>
             <div className="py-2">
               <button
                 onClick={toggleMegaMenu}
-                className="text-blue-950 tracking-widest font-semibold text-[0.8vw] hover:text-sky-500 text-lg flex items-center cursor-pointer"
+                className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 text-lg flex items-center cursor-pointer"
               >
                 Pricing
-                <FaChevronDown className="ml-1 text-1vw" />
+                <FaChevronDown className="ml-1 text-[1vw]" />
               </button>
               {megaMenuOpen && <MegaMenu />}
             </div>
             <Link href="/cases" passHref>
-              <span className="text-blue-950 tracking-widest font-semibold text-[0.8vw] hover:text-sky-500 py-2 cursor-pointer">
+              <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 py-2 cursor-pointer">
                 Cases
               </span>
             </Link>
             <Link href="/events" passHref>
-              <span className="text-blue-950 tracking-widest font-semibold text-[0.8vw] hover:text-sky-500 py-2 cursor-pointer">
+              <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 py-2 cursor-pointer">
                 Events
               </span>
             </Link>
             <Link href="/blog" passHref>
-              <span className="text-blue-950 tracking-widest font-semibold text-[0.8vw] hover:text-sky-500 py-2 cursor-pointer">
+              <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 py-2 cursor-pointer">
                 Blog
               </span>
             </Link>
             <Link href="/careers" passHref>
-              <span className="text-blue-950 tracking-widest font-semibold text-[0.8vw] hover:text-sky-500 py-2 cursor-pointer">
+              <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 py-2 cursor-pointer">
                 Careers
               </span>
             </Link>
             <Link href="/contact" passHref>
               <span className="flex group items-center border border-transparent cursor-pointer">
-                <p className="text-orange-500 mr-[1vw] font-semibold text-[0.8vw]">
+                <p className="text-orangeColor-0 mr-[1vw] font-semibold text-[0.9vw]">
                   LET'S CHAT!
                 </p>
-                <IoIosMail className="text-[3vw] text-white bg-orange-500 hover:bg-orange-600 rounded-full p-[0.4vw] group-hover:scale-110 duration-200" />
+                <IoIosMail className="text-[3vw] text-white bg-orangeColor-0 hover:bg-opacity-90 rounded-full p-[0.4vw] group-hover:scale-110 duration-200" />
               </span>
             </Link>
           </div>
@@ -142,9 +142,9 @@ const Navbar = () => {
             onClick={toggleMegaMenu}
             className="relative cursor-pointer"
           >
-            <button className="text-blue-950 tracking-widest font-semibold text-[0.8vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase flex items-center">
+            <button className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase flex items-center">
               About Us
-              <FaChevronDown className="ml-1 text-[0.9vw]" />
+              <FaChevronDown className="ml-1 text-[0.8vw]" />
             </button>
             {megaMenuOpen && <MegaMenu />}
           </div>
@@ -153,9 +153,9 @@ const Navbar = () => {
             onClick={toggleMegaMenu}
             className="relative cursor-pointer"
           >
-            <button className="text-blue-950 tracking-widest font-semibold text-[0.8vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase flex items-center">
+            <button className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase flex items-center">
               What We Do
-              <FaChevronDown className="ml-1 text-[0.9vw]" />
+              <FaChevronDown className="ml-1 text-[0.8vw]" />
             </button>
             {megaMenuOpen && <MegaMenu />}
           </div>
@@ -164,29 +164,29 @@ const Navbar = () => {
             onClick={toggleMegaMenu}
             className="relative cursor-pointer"
           >
-            <button className="text-blue-950 tracking-widest font-semibold text-[0.8vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase flex items-center">
+            <button className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase flex items-center">
               Pricing
-              <FaChevronDown className="ml-1 text-[0.9vw]" />
+              <FaChevronDown className="ml-1 text-[0.8vw]" />
             </button>
             {megaMenuOpen && <MegaMenu />}
           </div>
           <Link href="/cases" passHref>
-            <span className="text-blue-950 tracking-widest font-semibold text-[0.8vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase cursor-pointer">
+            <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase cursor-pointer">
               Cases
             </span>
           </Link>
           <Link href="/events" passHref>
-            <span className="text-blue-950 tracking-widest font-semibold text-[0.8vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase cursor-pointer">
+            <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase cursor-pointer">
               Events
             </span>
           </Link>
           <Link href="/blog" passHref>
-            <span className="text-blue-950 tracking-widest font-semibold text-[0.8vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase cursor-pointer">
+            <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase cursor-pointer">
               Blog
             </span>
           </Link>
           <Link href="/careers" passHref>
-            <span className="text-blue-950 tracking-widest font-semibold text-[0.8vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase cursor-pointer">
+            <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase cursor-pointer">
               Careers
             </span>
           </Link>
@@ -196,10 +196,10 @@ const Navbar = () => {
         >
           <Link href="/contact" passHref>
             <span className="flex group items-center border border-transparent cursor-pointer">
-              <p className="text-orange-500 mr-[1vw] font-semibold text-[0.8vw]">
+              <p className="text-orangeColor-0 mr-[1vw] font-semibold text-[0.9vw]">
                 LET'S CHAT!
               </p>
-              <IoIosMail className="text-[3vw] text-white bg-orange-500 hover:bg-orange-600 rounded-full p-[0.4vw] group-hover:scale-110 duration-200" />
+              <IoIosMail className="text-[3vw] text-white bg-orangeColor-0 hover:bg-opacity-90 rounded-full p-[0.4vw] group-hover:scale-110 duration-200" />
             </span>
           </Link>
         </div>

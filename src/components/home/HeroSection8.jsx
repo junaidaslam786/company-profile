@@ -50,12 +50,12 @@ const HeroSection8 = () => {
     <div className="w-full py-24 relative">
       <div className="flex flex-col w-full items-center">
         <div className="flex flex-col items-center w-[90%]">
-          <div className="w-full flex flex-row items-center text-orange-500 text-[1vw] font-semibold">
+          <div className="w-full flex flex-row items-center text-orangeColor-0 text-[1vw] font-semibold">
             <IoRemoveOutline />
             <p className="tracking-widest uppercase">Trusted by clients</p>
           </div>
           <div className="w-5/6">
-            <p className="text-blue-950 text-[3.5vw] font-bold tracking-wide mt-10">
+            <p className="text-blueColor-0 text-[3.5vw] font-bold tracking-wide mt-10">
               Our clients recommend us
             </p>
           </div>
@@ -91,13 +91,13 @@ const HeroSection8 = () => {
       <div className="absolute right-40 bottom-5 transform -translate-y-1/2 flex items-center">
         <button
           onClick={handlePrevious}
-          className="p-2 rounded-full text-white text-[1.5vw] font-bold bg-orange-500 mr-5 opacity-80 hover:opacity-100"
+          className="p-2 rounded-full text-white text-[1.5vw] font-bold bg-orangeColor-0 mr-5 opacity-80 hover:opacity-100"
         >
           <FaArrowLeft />
         </button>
         <button
           onClick={handleNext}
-          className="p-2 rounded-full text-white text-[1.5vw] font-bold bg-orange-500 opacity-80 hover:opacity-100"
+          className="p-2 rounded-full text-white text-[1.5vw] font-bold bg-orangeColor-0 opacity-80 hover:opacity-100"
         >
           <FaArrowRight />
         </button>

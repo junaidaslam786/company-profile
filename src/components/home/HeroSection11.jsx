@@ -43,7 +43,7 @@ const HeroSection11 = () => {
               animate="visible"
               custom={{ delay: 0.2 }}
               variants={titleAnimation}
-              className="font-extrabold text-[7vw] text-blue-950 mr-5 uppercase tracking-wider leading-none flex justify-center"
+              className="font-extrabold text-[7vw] text-blueColor-0 mr-5 uppercase tracking-wider leading-none flex justify-center"
             >
               Let's work
             </motion.div>
@@ -52,7 +52,7 @@ const HeroSection11 = () => {
               animate="visible"
               custom={{ delay: 0.2 }}
               variants={titleAnimation}
-              className="text-orange-500 text-[7vw] flex justify-center"
+              className="text-orangeColor-0 text-[7vw] flex justify-center"
             >
               <BsArrowRightCircleFill className="transition-transform transform -rotate-45" />
             </motion.div>
@@ -68,7 +68,7 @@ const HeroSection11 = () => {
                 animate="visible"
                 custom={{ delay: 0.4 }}
                 variants={subtitleAnimation}
-                className="text-blue-950 text-[1.5vw]"
+                className="text-blueColor-0 text-[1.5vw]"
               >
                 Have an idea?
               </motion.div>
@@ -77,7 +77,7 @@ const HeroSection11 = () => {
                 animate="visible"
                 custom={{ delay: 0.4 }}
                 variants={subtitleAnimation}
-                className="text-blue-950 text-[1.5vw]"
+                className="text-blueColor-0 text-[1.5vw]"
               >
                 Let's build it!
               </motion.div>
@@ -89,7 +89,7 @@ const HeroSection11 = () => {
               animate="visible"
               custom={{ delay: 0.6 }}
               variants={titleAnimation}
-              className="font-extrabold text-[7vw] text-blue-950 uppercase tracking-wider"
+              className="font-extrabold text-[7vw] text-blueColor-0 uppercase tracking-wider"
             >
               Together
             </motion.div>

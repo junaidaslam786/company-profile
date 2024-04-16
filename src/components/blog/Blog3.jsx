@@ -14,37 +14,37 @@ const Blog3 = () => {
         <div className="flex flex-wrap gap-[1vw] justify-start items-center max-w-full mb-[1vw]">
           <Link
             href={"/blog"}
-            className="uppercase text-blue-950 hover:text-white text-[1.5vw] lg:text-[0.8vw] bg-blue-100 hover:bg-blue-950 duration-500 px-[2vw] py-[1vw] rounded-full"
+            className="uppercase text-blueColor-0 hover:text-white text-[1.5vw] lg:text-[0.8vw] bg-blue-100 hover:bg-blueColor-0 duration-500 px-[2vw] py-[1vw] rounded-full"
           >
             Ecstatic
           </Link>
           <Link
             href={"/blog"}
-            className="uppercase text-blue-950 hover:text-white text-[1.5vw] lg:text-[0.8vw] bg-blue-100 hover:bg-blue-950 duration-500 px-[2vw] py-[1vw] rounded-full"
+            className="uppercase text-blueColor-0 hover:text-white text-[1.5vw] lg:text-[0.8vw] bg-blue-100 hover:bg-blueColor-0 duration-500 px-[2vw] py-[1vw] rounded-full"
           >
             insurance
           </Link>
           <Link
             href={"/blog"}
-            className="uppercase text-blue-950 hover:text-white text-[1.5vw] lg:text-[0.8vw] bg-blue-100 hover:bg-blue-950 duration-500 px-[2vw] py-[1vw] rounded-full"
+            className="uppercase text-blueColor-0 hover:text-white text-[1.5vw] lg:text-[0.8vw] bg-blue-100 hover:bg-blueColor-0 duration-500 px-[2vw] py-[1vw] rounded-full"
           >
             real estate
           </Link>
           <Link
             href={"/blog"}
-            className="uppercase text-blue-950 hover:text-white text-[1.5vw] lg:text-[0.8vw] bg-blue-100 hover:bg-blue-950 duration-500 px-[2vw] py-[1vw] rounded-full"
+            className="uppercase text-blueColor-0 hover:text-white text-[1.5vw] lg:text-[0.8vw] bg-blue-100 hover:bg-blueColor-0 duration-500 px-[2vw] py-[1vw] rounded-full"
           >
             education
           </Link>
           <Link
             href={"/blog"}
-            className="uppercase text-blue-950 hover:text-white text-[1.5vw] lg:text-[0.8vw] bg-blue-100 hover:bg-blue-950 duration-500 px-[2vw] py-[1vw] rounded-full"
+            className="uppercase text-blueColor-0 hover:text-white text-[1.5vw] lg:text-[0.8vw] bg-blue-100 hover:bg-blueColor-0 duration-500 px-[2vw] py-[1vw] rounded-full"
           >
             ad tech
           </Link>
           <Link
             href={"/blog"}
-            className="uppercase text-blue-950 hover:text-white text-[1.5vw] lg:text-[0.8vw] bg-blue-100 hover:bg-blue-950 duration-500 px-[2vw] py-[1vw] rounded-full"
+            className="uppercase text-blueColor-0 hover:text-white text-[1.5vw] lg:text-[0.8vw] bg-blue-100 hover:bg-blueColor-0 duration-500 px-[2vw] py-[1vw] rounded-full"
           >
             finance
           </Link>

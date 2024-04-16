@@ -22,10 +22,10 @@ const Herosection5 = () => {
   }, []);
 
   return (
-    <div className="flex w-full bg-blue-950 relative py-32">
+    <div className="flex w-full bg-blueColor-0 relative py-32">
       <div className="flex flex-col items-center w-1/3 pl-6 sticky top-[8vh] h-[80vh] ">
         <div className="w-5/6">
-          <div className="flex flex-row items-center text-orange-400 text-[1vw] font-semibold">
+          <div className="flex flex-row items-center text-orangeColor-0 text-[1vw] font-semibold">
             <IoRemoveOutline />
             <p className="tracking-widest uppercase">Companies we serve</p>
           </div>

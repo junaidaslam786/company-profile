@@ -23,14 +23,14 @@ const CaseCard = ({
         <div className="w-1/2 h-1/2">
           <div className="w-[95%] h-full flex flex-col items-start justify-between">
             <div className="flex flex-row uppercase items-baseline">
-              <p className="text-[2vw] font-extrabold text-blue-950">
+              <p className="text-[2vw] font-extrabold text-blueColor-0">
                 {industry}
               </p>
-              <p className="text-[0.8vw] text-blue-950 font-medium mx-[2vw]">
+              <p className="text-[0.8vw] text-blueColor-0 font-medium mx-[2vw]">
                 /
               </p>
               <div className="flex flex-row">
-                <p className="text-[0.8vw] text-blue-950 font-medium">
+                <p className="text-[0.8vw] text-blueColor-0 font-medium">
                   {businessType}
                 </p>
                 <Image
@@ -46,32 +46,32 @@ const CaseCard = ({
             </div>
             <div className="flex flex-row uppercase items-center">
               <div className="flex flex-row items-center">
-                <p className="text-[0.8vw] text-blue-950 font-medium">{type}</p>
-                <p className="text-[0.8vw] text-blue-950 font-medium mx-[1vw]">
+                <p className="text-[0.8vw] text-blueColor-0 font-medium">{type}</p>
+                <p className="text-[0.8vw] text-blueColor-0 font-medium mx-[1vw]">
                   /
                 </p>
               </div>
               <div className="flex flex-row items-center">
                 <BiLogoFlutter className="text-[2vw] mr-[1vw]" />
-                <p className="text-[0.8vw] text-blue-950 font-medium">
+                <p className="text-[0.8vw] text-blueColor-0 font-medium">
                   {tech1}
                 </p>
-                <p className="text-[0.8vw] text-blue-950 font-medium mx-[1vw]">
+                <p className="text-[0.8vw] text-blueColor-0 font-medium mx-[1vw]">
                   /
                 </p>
               </div>
               <div className="flex flex-row items-center">
                 <SiKotlin className="text-[1.5vw] mr-[1vw]" />
-                <p className="text-[0.8vw] text-blue-950 font-medium">
+                <p className="text-[0.8vw] text-blueColor-0 font-medium">
                   {tech2}
                 </p>
-                <p className="text-[0.8vw] text-blue-950 font-medium mx-[1vw]">
+                <p className="text-[0.8vw] text-blueColor-0 font-medium mx-[1vw]">
                   /
                 </p>
               </div>
               <div className="flex flex-row items-center">
                 <FaPython className="text-[2vw] mr-[1vw]" />
-                <p className="text-[0.8vw] text-blue-950 font-medium">
+                <p className="text-[0.8vw] text-blueColor-0 font-medium">
                   {tech3}
                 </p>
               </div>
