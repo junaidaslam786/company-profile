@@ -1,11 +1,10 @@
-import ContactUs from "@/components/contactUs/ContactUs";
+import Career1 from "@/components/careers/career1";
 
-const ContactPage = () => {
+const Careers = () => {
   return (
     <div className="flex font-sans min-h-screen w-full px-[4vw] flex-col items-center justify-between bg-white">
-      <ContactUs />
+      <Career1 />
     </div>
   );
 };
-
-export default ContactPage;
+export default Careers;

@@ -11,7 +11,7 @@ import HeroSection10 from "@/components/home/HeroSection10";
 import HeroSection11 from "@/components/home/HeroSection11";
 import HeroSection12 from "@/components/home/HeroSection12";
 
-export default function Home() {
+const Home = () => {
   return (
     <main className="flex font-sans min-h-screen flex-col items-center justify-between bg-white">
       <HeroSection />
@@ -28,4 +28,5 @@ export default function Home() {
       <HeroSection12 />
     </main>
   );
-}
+};
+export default Home;
