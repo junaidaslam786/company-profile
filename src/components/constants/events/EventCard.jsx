@@ -7,6 +7,7 @@ const EventCard = ({ src, dateTime, title, content }) => {
     <Link href={"/events"} className="w-full h-full flex flex-col items-start">
       <Image
         src={src}
+        alt="Image Failed to Load"
         width={500}
         height={500}
         className="w-screen h-[50vw] md:h-[25vw] xl:h-[17vw] 2xl:h-[12.5vw]"
@@ -15,7 +16,7 @@ const EventCard = ({ src, dateTime, title, content }) => {
         <button className="uppercase text-blueColor-0 text-[1.3vw] md:text-[0.7vw] bg-blue-100 py-[0.7vw] px-[1.5vw] rounded-full">
           Webinar
         </button>
-        <p className="uppercase text-blueColor-0 text-[1.5vw] md:-[0.8vw]">{dateTime}</p>
+        <p className="uppercase text-blueColor-0 text-[1vw] md:-[0.8vw]">{dateTime}</p>
       </div>
       <p className="text-[3vw] md:text-[2vw] mt-[3vh] leading-tight text-blueColor-0 font-bold">
         {title}

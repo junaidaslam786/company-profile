@@ -1,9 +1,39 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import BlogsLayout from "@/components/constants/blog/blogsLayout";
 import ScrollSectionLeft from "../constants/blog/ScrollSectionLeft";
 import ScrollSectionRight from "../constants/blog/ScrollSectionRight";
+import Loader from "@/components/constants/loader/Loader";
 
 const Blog1 = () => {
+  const [blogPosts, setBlogPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:8000/api/blogposts/");
+        const data = await response.json();
+        setBlogPosts(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <Loader />
+      </div>
+    );
+  }
+
   return (
     <div className="w-full mt-[5vw]">
       <BlogsLayout
@@ -21,58 +51,16 @@ const Blog1 = () => {
             />
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-[3vw]">
-            <div className="lg:mb-[6vw] flex flex-col gap-[3vw]">
-              <ScrollSectionRight
-                src={"/images/b07e0ebccccfcba7c2801f90a44e6158.jpg"}
-                time={"15 minutes read"}
-                dateTime={"Apr 24, 2024"}
-                title={"How to protect intellectual property of your clients"}
-              />
-              <ScrollSectionRight
-                src={"/images/b07e0ebccccfcba7c2801f90a44e6158.jpg"}
-                time={"15 minutes read"}
-                dateTime={"Apr 24, 2024"}
-                title={"How to protect intellectual property of your clients"}
-              />
-              <ScrollSectionRight
-                src={"/images/b07e0ebccccfcba7c2801f90a44e6158.jpg"}
-                time={"15 minutes read"}
-                dateTime={"Apr 24, 2024"}
-                title={"How to protect intellectual property of your clients"}
-              />
-              <ScrollSectionRight
-                src={"/images/b07e0ebccccfcba7c2801f90a44e6158.jpg"}
-                time={"15 minutes read"}
-                dateTime={"Apr 24, 2024"}
-                title={"How to protect intellectual property of your clients"}
-              />
-            </div>
-            <div className="lg:mt-[6vw] flex flex-col gap-[3vw]">
-              <ScrollSectionRight
-                src={"/images/b07e0ebccccfcba7c2801f90a44e6158.jpg"}
-                time={"15 minutes read"}
-                dateTime={"Apr 24, 2024"}
-                title={"How to protect intellectual property of your clients"}
-              />
-              <ScrollSectionRight
-                src={"/images/b07e0ebccccfcba7c2801f90a44e6158.jpg"}
-                time={"15 minutes read"}
-                dateTime={"Apr 24, 2024"}
-                title={"How to protect intellectual property of your clients"}
-              />
-              <ScrollSectionRight
-                src={"/images/b07e0ebccccfcba7c2801f90a44e6158.jpg"}
-                time={"15 minutes read"}
-                dateTime={"Apr 24, 2024"}
-                title={"How to protect intellectual property of your clients"}
-              />
-              <ScrollSectionRight
-                src={"/images/b07e0ebccccfcba7c2801f90a44e6158.jpg"}
-                time={"15 minutes read"}
-                dateTime={"Apr 24, 2024"}
-                title={"How to protect intellectual property of your clients"}
-              />
-            </div>
+            {blogPosts.map((post) => (
+              <div className="lg:mb-[6vw]" key={post.id}>
+                <ScrollSectionRight
+                  src={post.image}
+                  time={"15 minutes read"}
+                  dateTime={new Date(post.published_date).toLocaleString()}
+                  title={post.title}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </BlogsLayout>

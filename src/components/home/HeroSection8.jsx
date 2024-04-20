@@ -5,9 +5,11 @@ import RecommendationCard from "@/components/constants/home/RecommendationCard";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 import { IoRemoveOutline } from "react-icons/io5";
+import Loader from "@/components/constants/loader/Loader";
 
 const HeroSection8 = () => {
   const [testimonials, setTestimonials] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const cardRef = useRef(null);
   const cardWidth = useRef(0);
@@ -21,6 +23,8 @@ const HeroSection8 = () => {
         setTestimonials(data);
       } catch (error) {
         console.error("Error fetching testimonials:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -45,6 +49,22 @@ const HeroSection8 = () => {
     setCurrentCardIndex(prevIndex);
     containerRef.current.style.transform = `translateX(-${cardWidth.current * prevIndex}px)`;
   };
+
+  if (loading) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <Loader />
+      </div>
+    );
+  }
+
+  if (testimonials.length === 0) {
+    return (
+      <div className="flex justify-center items-center w-full h-full">
+        <p>No testimonials available</p>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full py-24 relative">

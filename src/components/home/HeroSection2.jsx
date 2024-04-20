@@ -3,9 +3,12 @@
 import React, { useState, useEffect } from "react";
 import ScrollCard from "@/components/constants/home/ScrollCard";
 import { IoRemoveOutline } from "react-icons/io5";
+import Loader from "@/components/constants/loader/Loader";
 
 const Herosection2 = () => {
   const [scrollCards, setScrollCards] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [fetchingData, setFetchingData] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,11 +18,30 @@ const Herosection2 = () => {
         setScrollCards(data);
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setFetchingData(false);
+        setLoading(false);
       }
     };
 
     fetchData();
   }, []);
+
+  if (loading || fetchingData) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <Loader />;
+      </div>
+    );
+  }
+
+  if (scrollCards.length === 0) {
+    return (
+      <div className="flex justify-center items-center w-full h-full">
+        <p>No data available</p>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col md:flex-row w-full bg-white relative">
@@ -48,7 +70,7 @@ const Herosection2 = () => {
                     key={card.id}
                     title={card.name}
                     content={card.description}
-                    bottoms={index === scrollCards.length - 1 ? '' : 'border-b'}
+                    bottoms={index === scrollCards.length - 1 ? "" : "border-b"}
                   />
                 );
               }
@@ -62,7 +84,7 @@ const Herosection2 = () => {
                     key={card.id}
                     title={card.name}
                     content={card.description}
-                    bottoms={index === scrollCards.length - 2 ? '' : 'border-b'}
+                    bottoms={index === scrollCards.length - 2 ? "" : "border-b"}
                   />
                 );
               }
