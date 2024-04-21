@@ -1,4 +1,4 @@
-import Career1 from "@/components/careers/career1";
+import Career1 from "@/components/careers/Career1";
 
 const Careers = () => {
   return (

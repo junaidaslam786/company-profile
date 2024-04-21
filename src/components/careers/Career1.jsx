@@ -1,12 +1,9 @@
-"use client";
+import React from 'react'
 
 const Career1 = () => {
   return (
-    <div className='w-full h-[80vh] flex flex-row'>
-        <div className='w-3/5 h-full bg-orangeColor-0'></div>
-        <div className='w-2/5 h-full'></div>
-    </div>
+    <div>career10</div>
   )
 }
 
-export default Career1;
+export default Career1

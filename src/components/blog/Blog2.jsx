@@ -71,7 +71,7 @@ const Blog2 = () => {
                 <div className="w-full h-screen flex justify-center items-center">
                   <Loader />
                 </div>
-              ) : categoryPosts.length === 0 ? (
+              ) : categoryPosts?.length === 0 ? (
                 <p>No posts available</p>
               ) : (
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-[3vw]">

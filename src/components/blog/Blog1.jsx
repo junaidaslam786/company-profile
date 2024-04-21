@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import BlogsLayout from "@/components/constants/blog/blogsLayout";
-import ScrollSectionLeft from "../constants/blog/ScrollSectionLeft";
-import ScrollSectionRight from "../constants/blog/ScrollSectionRight";
+import ScrollSectionLeft from "@/components/constants/blog/ScrollSectionLeft";
+import ScrollSectionRight from "@/components/constants/blog/ScrollSectionRight";
 import Loader from "@/components/constants/loader/Loader";
 
 const Blog1 = () => {
