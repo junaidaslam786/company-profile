@@ -1,6 +1,6 @@
 import React from "react";
 import BlogsLayout from "@/components/constants/blog/BlogsLayout";
-import IndustrialArticle from "../constants/blog/IndustrialArticle";
+import IndustrialArticle from "@/components/constants/blog/IndustrialArticle";
 import Link from "next/link";
 
 const Blog3 = () => {

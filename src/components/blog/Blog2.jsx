@@ -77,7 +77,7 @@ const Blog2 = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-[3vw]">
                   {categoryPosts.map((post) => (
                     <BasicCard
-                      href={`/blog/${post.title}`}
+                      href={`/blog/${post.id}`}
                       key={post.id}
                       src={post.image}
                       time={"15 minutes read"}

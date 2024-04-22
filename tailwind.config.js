@@ -15,18 +15,30 @@ module.exports = {
       },
       fontFamily: {
         sans: ["Montserrat", "sans-serif"],
+        lato: ["Lato", "sans-serif"]
       },
       textColor: {
         orangeColor: ["rgb(255 135 51)"],
         blueColor: ["rgb(20 27 77)"],
+        skyColor: ["rgb(33, 150, 243)"],
       },
       fill: {
         orangeColor: ["rgb(255 135 51)"],
         blueColor: ["rgb(20 27 77)"],
+        skyColor: ["rgb(33, 150, 243)"],
       },
       backgroundColor: {
         orangeColor: ["rgb(255 135 51)"],
         blueColor: ["rgb(20 27 77)"],
+        skyColor: ["rgb(33, 150, 243)"],
+      },
+      borderColor: {
+        blueColor: ["rgb(20 27 77)"],
+        skyColor: ["rgb(33, 150, 243)"],
+      },
+      placeholderColor: {
+        blueColor: ["rgb(20 27 77)"],
+        skyColor: ["rgb(33, 150, 243)"],
       },
     },
   },

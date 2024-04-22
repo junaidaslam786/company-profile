@@ -44,6 +44,7 @@ const Blog1 = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[3vw] w-full h-full">
           <div className="h-full lg:h-[70vh] lg:sticky lg:top-[15vh]">
             <ScrollSectionLeft
+              href={`/blog`}
               src={"/images/b07e0ebccccfcba7c2801f90a44e6158.jpg"}
               time={"15 minutes read"}
               dateTime={"Apr 24, 2024"}
@@ -52,8 +53,9 @@ const Blog1 = () => {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-[3vw]">
             {blogPosts.map((post) => (
-              <div className="lg:mb-[6vw]" key={post.id}>
+              <div className="lg:mb-[3vw]" key={post.id}>
                 <ScrollSectionRight
+                  href={`/blog/${post.id}`}
                   src={post.image}
                   time={"15 minutes read"}
                   dateTime={new Date(post.published_date).toLocaleString()}

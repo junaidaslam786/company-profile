@@ -2,9 +2,9 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-const ScrollSectionLeft = ({ src, dateTime, title, time }) => {
+const ScrollSectionLeft = ({ src, dateTime, title, time, href }) => {
   return (
-    <Link href={"/blog"} className="w-full h-full lg:h-[70vh] mb-[10vh] lg:mb-0 flex flex-col">
+    <Link href={href} className="w-full h-full lg:h-[70vh] mb-[10vh] lg:mb-0 flex flex-col">
       <div className="w-full h-full">
         <Image
           src={src}
