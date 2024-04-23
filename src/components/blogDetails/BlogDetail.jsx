@@ -4,49 +4,24 @@ import React, { useState, useEffect } from "react";
 import Loader from "@/components/constants/loader/Loader";
 import Highlights from "@/components/constants/blogDetails/Highlights";
 import BlogDetailsLayout from "@/components/constants/blogDetails/BlogDetailsLayout";
-import Image from "next/image";
 import BlogForm from "../constants/blogDetails/BlogForm";
 
 const BlogDetail = ({ id }) => {
-  const blogContent = {
-    headings: [
-      { id: "intro", text: "Introduction" },
-      { id: "middle", text: "Middle Section" },
-      { id: "conclusion", text: "Conclusion" },
-    ],
-    details: [
-      {
-        id: "intro",
-        title: "Introduction",
-        text: "The hidden benefit in the partnership means doing more than was agreed upon and contributing to the well-being of both your and your partner's company. It lies in the approach to our work.For the last 9 years, we at Axon have learned to understand clients' business needs better and foresee them. We are confident that in today's fast-paced world, a 'lone fighter' approach is not the best possible strategy for growth. Companies should invent new ways to jointly drive innovations that meet the needs of their customers today and in the future. One of the essential keys to success in partnership is communication. Clear communication and openness to discussion are as much critical as technical expertise. It's essential for software engineers to not only know how to write the code but to have enough skills to communicate with clients efficiently. From our background in software engineering and communication with dozens of clients, the constant exchange of ideas helps to reduce the risk of assumptions and to focus on the common vision. Open and effective communication channels ensure that the expectations of the parties do not diverge.",
-      },
-      {
-        id: "middle",
-        title: "Middle Section",
-        text: "The hidden benefit in the partnership means doing more than was agreed upon and contributing to the well-being of both your and your partner's company. It lies in the approach to our work.For the last 9 years, we at Axon have learned to understand clients' business needs better and foresee them. We are confident that in today's fast-paced world, a 'lone fighter' approach is not the best possible strategy for growth. Companies should invent new ways to jointly drive innovations that meet the needs of their customers today and in the future. One of the essential keys to success in partnership is communication. Clear communication and openness to discussion are as much critical as technical expertise. It's essential for software engineers to not only know how to write the code but to have enough skills to communicate with clients efficiently. From our background in software engineering and communication with dozens of clients, the constant exchange of ideas helps to reduce the risk of assumptions and to focus on the common vision. Open and effective communication channels ensure that the expectations of the parties do not diverge.",
-      },
-      {
-        id: "conclusion",
-        title: "Conclusion",
-        text: "The hidden benefit in the partnership means doing more than was agreed upon and contributing to the well-being of both your and your partner's company. It lies in the approach to our work.For the last 9 years, we at Axon have learned to understand clients' business needs better and foresee them. We are confident that in today's fast-paced world, a 'lone fighter' approach is not the best possible strategy for growth. Companies should invent new ways to jointly drive innovations that meet the needs of their customers today and in the future. One of the essential keys to success in partnership is communication. Clear communication and openness to discussion are as much critical as technical expertise. It's essential for software engineers to not only know how to write the code but to have enough skills to communicate with clients efficiently. From our background in software engineering and communication with dozens of clients, the constant exchange of ideas helps to reduce the risk of assumptions and to focus on the common vision. Open and effective communication channels ensure that the expectations of the parties do not diverge.",
-      },
-    ],
-  };
   const [blogPost, setBlogPost] = useState({});
   const [author, setAuthor] = useState({});
   const [loading, setLoading] = useState(true);
+  const [parsedContent, setParsedContent] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true); // Ensure loading is true when fetching new data
       try {
-        const response = await fetch(
-          `http://127.0.0.1:8000/api/blogposts/${id}`
-        );
+        const response = await fetch(`http://127.0.0.1:8000/api/blogposts/${id}`);
         const data = await response.json();
         setBlogPost(data);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
-      } finally {
         setLoading(false);
       }
     };
@@ -55,25 +30,65 @@ const BlogDetail = ({ id }) => {
   }, [id]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const authorId = blogPost.user;
-        const response = await fetch(
-          `http://127.0.0.1:8000/api/authors/${authorId}`
-        );
-        const data = await response.json();
-        setAuthor(data);
-      } catch (error) {
-        console.error("Error fetching Authors:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     if (blogPost.user) {
-      fetchData();
+      const fetchAuthor = async () => {
+        try {
+          const response = await fetch(`http://127.0.0.1:8000/api/authors/${blogPost.user}`);
+          const data = await response.json();
+          setAuthor(data);
+        } catch (error) {
+          console.error("Error fetching Authors:", error);
+        }
+      };
+      
+      fetchAuthor();
     }
-  }, [blogPost]);
+  }, [blogPost.user]);
+
+  useEffect(() => {
+    if (blogPost.content) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(blogPost.content, "text/html");
+  
+      const sections = Array.from(doc.querySelectorAll("h2")).map(h2 => {
+        const id = h2.id;
+        const title = h2.textContent.trim();
+        let details = [];
+        let subheadings = [];  // Initialize subheadings for each section
+        let currentNode = h2.nextElementSibling;
+  
+        while (currentNode && currentNode.tagName !== "H2") {
+          if (currentNode.tagName === "P") {
+            details.push({ id: currentNode.id, text: currentNode.textContent.trim() });
+          }
+  
+          if (currentNode.tagName === "H3") {
+            const subId = currentNode.id;
+            const subTitle = currentNode.textContent.trim();
+            let subDetails = [];
+            currentNode = currentNode.nextElementSibling;
+  
+            while (currentNode && currentNode.tagName !== "H3" && currentNode.tagName !== "H2") {
+              if (currentNode.tagName === "P") {
+                subDetails.push({ id: currentNode.id, text: currentNode.textContent.trim() });
+              }
+              currentNode = currentNode.nextElementSibling;
+            }
+  
+            subheadings.push({ id: subId, text: subTitle, details: subDetails });
+            continue;  // Continue to check if there's another H3 or content until H2
+          }
+  
+          // Move to the next element if it's not under current H3
+          if (currentNode) currentNode = currentNode.nextElementSibling;
+        }
+  
+        return { id, title, details, subheadings };
+      });
+  
+      setParsedContent(sections);
+    }
+  }, [blogPost.content]);
 
   if (loading) {
     return (
@@ -82,24 +97,23 @@ const BlogDetail = ({ id }) => {
       </div>
     );
   }
+
   return (
     <div className="w-full mt-[15vh]">
-      <div className="">
-        <Highlights
-          title={blogPost.title}
-          blogType={blogPost.category.name}
-          authorImage={"/images/b07e0ebccccfcba7c2801f90a44e6158.jpg"}
-          author={author.username}
-          role={author.roles}
-          date={new Date(blogPost.published_date).toLocaleString()}
-          timeToRead={"6 minutes read"}
-          featuredImage={blogPost.image}
-        />
+      <Highlights
+        title={blogPost.title}
+        blogType={blogPost.category.name}
+        authorImage={author.Author_image}
+        author={author.username}
+        role={author.roles}
+        date={new Date(blogPost.published_date).toLocaleString()}
+        timeToRead={"6 minutes read"}
+        featuredImage={blogPost.image}
+      />
+      <div className="mt-[5vw]">
+        <BlogDetailsLayout content={parsedContent} />
       </div>
       <div className="mt-[5vw]">
-        <BlogDetailsLayout content={blogContent} />
-      </div>
-      <div>
         <BlogForm />
       </div>
     </div>

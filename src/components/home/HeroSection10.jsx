@@ -3,9 +3,12 @@
 import React, { useState, useEffect } from "react";
 import ReviewCard from "@/components/constants/home/ReviewCard";
 import { IoRemoveOutline } from "react-icons/io5";
+import Loader from "@/components/constants/loader/Loader";
 
 const HeroSection10 = () => {
   const [blogPosts, setBlogPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [fetchingData, setFetchingData] = useState(true);
 
   useEffect(() => {
     const fetchBlogPosts = async () => {
@@ -15,11 +18,29 @@ const HeroSection10 = () => {
         setBlogPosts(data);
       } catch (error) {
         console.error("Error fetching blog posts:", error);
+      } finally {
+        setFetchingData(false);
+        setLoading(false);
       }
     };
 
     fetchBlogPosts();
   }, []);
+  if (loading || fetchingData) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <Loader />;
+      </div>
+    );
+  }
+
+  if (blogPosts.length === 0) {
+    return (
+      <div className="flex justify-center items-center w-full h-full">
+        <p>No data available</p>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full mt-32">
@@ -38,9 +59,9 @@ const HeroSection10 = () => {
         {blogPosts.map((post) => (
           <ReviewCard
             key={post.id}
-            src="/images/b07e0ebccccfcba7c2801f90a44e6158.jpg"
+            src={post.image}
             main={post.title}
-            content={post.content}
+            content={post.heading}
             date={new Date(post.published_date).toLocaleDateString()} 
             time="15 minutes read" 
           />

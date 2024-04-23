@@ -1,9 +1,49 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { IoRemoveOutline } from "react-icons/io5";
+import Loader from "@/components/constants/loader/Loader";
 import ExpertCard from "@/components/constants/home/ExpertCard";
 import ServiceCard from "@/components/constants/home/ServiceCard";
-import { IoRemoveOutline } from "react-icons/io5";
 
 const HeroSection3 = () => {
+  const [updates, setUpdates] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [fetchingData, setFetchingData] = useState(true);
+
+  useEffect(() => {
+    const fetchBlogPosts = async () => {
+      try {
+        const response = await fetch(`http://127.0.0.1:8000/api/updates/`);
+        const data = await response.json();
+        setUpdates(data);
+      } catch (error) {
+        console.error("Error fetching blog posts:", error);
+      } finally {
+        setFetchingData(false);
+        setLoading(false);
+      }
+    };
+
+    fetchBlogPosts();
+  }, []);
+
+  if (loading || fetchingData) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <Loader />
+      </div>
+    );
+  }
+
+  if (updates.length === 0) {
+    return (
+      <div className="flex justify-center items-center w-full h-full">
+        <p>No data available</p>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col mt-16">
       <div className="flex flex-col w-full items-center">
@@ -24,36 +64,22 @@ const HeroSection3 = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 m-8">
-        <ExpertCard
-          src="/images/65425876546fc7b49bafdd28_aws-mockup.png"
-          heading={
-            " Free DPF: AWS Cost Optimization: Tools,Best Practices, And Case Studies"
-          }
-          detail={
-            "Explore how LabVerse software engineers navigate AWS cost optimization.We'll explain the stratagies LabVerse use to achieve significant cost saving,improved agility,streamlined resources. "
-          }
-        />
-        <ExpertCard
-          src="/images/65425876546fc7b49bafdd28_aws-mockup.png"
-          heading={
-            " Free DPF: AWS Cost Optimization: Tools,Best Practices, And Case Studies"
-          }
-          detail={
-            "Explore how LabVerse software engineers navigate AWS cost optimization.We'll explain the stratagies LabVerse use to achieve significant cost saving,improved agility,streamlined resources. "
-          }
-        />
-        <ServiceCard
-          src="/images/644a9965b4060da6a3dbc180_libraria-logo.svg"
-          detail={
-            "It's a detailed component to see what has naeem done in his whole career. It's a detailed component to see what has naeem done in his whole career"
-          }
-        />
-        <ServiceCard
-          src="/images/644a9965b4060da6a3dbc180_libraria-logo.svg"
-          detail={
-            "It's a detailed component to see what has naeem done in his whole career. It's a detailed component to see what has naeem done in his whole career"
-          }
-        />
+        {updates.map((update) =>
+          update.type === "Expert Material" ? (
+            <ExpertCard
+              type={update.category}
+              src={update.image}
+              heading={update.title}
+              detail={update.content}
+            />
+          ) : (
+            <ServiceCard
+              type={update.category}
+              src={update.image}
+              detail={update.content}
+            />
+          )
+        )}
       </div>
     </div>
   );

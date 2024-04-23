@@ -83,7 +83,7 @@ const Blog2 = () => {
                       time={"15 minutes read"}
                       dateTime={new Date(post.published_date).toLocaleString()}
                       title={post.title}
-                      content={post.content}
+                      content={post.heading}
                     />
                   ))}
                 </div>

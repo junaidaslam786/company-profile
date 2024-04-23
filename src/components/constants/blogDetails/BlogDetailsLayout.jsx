@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 function BlogDetailsLayout({ content }) {
   const [activeId, setActiveId] = useState("");
@@ -62,44 +62,37 @@ function BlogDetailsLayout({ content }) {
   return (
     <div className="relative flex flex-row justify-between">
       <div className="w-[30%] sticky top-[20vh] h-[70vh] border-r flex flex-col items-center">
+        {/* Table of Contents */}
         <div className="w-2/3">
-          <p className="text-[1.2vw] uppercase text-blueColor-0 font-semibold border-b py-[1vw]">
-            Table of Content
-          </p>
+          <p className="text-[1.2vw] uppercase text-blueColor-0 font-semibold border-b py-[1vw]">Table of Content</p>
           <ul className="mt-[2vw]">
-            {content.headings.map((heading) => (
-              <li
-                key={heading.id}
-                className={`text-[1vw] font-medium ${
-                  activeId === heading.id ? "text-blue-500" : "text-gray-400"
-                }`}
-              >
-                <a
-                  href={`#${heading.id}`}
-                  onClick={(e) => handleClick(e, heading.id)}
-                >
-                  {heading.text}
-                </a>
-              </li>
+            {content.map((section) => (
+              <React.Fragment key={section.id}>
+                <li className={`text-[1vw] my-[1vw] font-medium ${activeId === section.id ? "text-blue-500" : "text-gray-400"}`}>
+                  <a href={`#${section.id}`} onClick={(e) => handleClick(e, section.id)}>{section.title}</a>
+                </li>
+              </React.Fragment>
             ))}
           </ul>
         </div>
       </div>
       <div className="w-[70%] flex flex-col items-center">
+        {/* Details rendering */}
         <div className="w-2/3">
-          {content.details.map((detail) => (
-            <div
-              key={detail.id}
-              id={detail.id}
-              ref={(el) => (headingRefs.current[detail.id] = el)}
-              className="my-[2vw]"
-            >
-              <p className="text-[3vw] uppercase font-extrabold text-blueColor-0">
-                {detail.title}
-              </p>
-              <p className="text-[1vw] font-medium text-blueColor-0">
-                {detail.text}
-              </p>
+          {content.map((section) => (
+            <div key={section.id} id={section.id} ref={(el) => (headingRefs.current[section.id] = el)} className="my-[2vw]">
+              <p className="text-[3vw] uppercase font-extrabold text-blueColor-0">{section.title}</p>
+              {section.details.map(detail => (
+                <p key={detail.id} className="text-[1vw] font-medium text-blueColor-0">{detail.text}</p>
+              ))}
+              {section.subheadings.map(sub => (
+                <div key={sub.id} id={sub.id} ref={(el) => (headingRefs.current[sub.id] = el)} className="mt-2">
+                  <p className="text-[2vw] text-blueColor-0 font-bold">{sub.text}</p>
+                  {sub.details.map(detail => (
+                    <p key={detail.id} className="text-[1vw]">{detail.text}</p>
+                  ))}
+                </div>
+              ))}
             </div>
           ))}
         </div>
