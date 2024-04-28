@@ -8,13 +8,20 @@ import { FaBars } from "react-icons/fa";
 import MegaMenu from "@/components/navigation/MegaMenu";
 
 const Navbar = () => {
-  const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+  const [megaMenuOpen, setMegaMenuOpen] = useState({
+    aboutUs: false,
+    whatWeDo: false,
+    pricing: false,
+  });
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
   const [navbarBgColor, setNavbarBgColor] = useState("transparent");
   const megaMenuRef = useRef(null);
 
-  const toggleMegaMenu = () => {
-    setMegaMenuOpen((prev) => !prev);
+  const toggleMegaMenu = (menu) => {
+    setMegaMenuOpen((prev) => ({
+      ...prev,
+      [menu]: !prev[menu],
+    }));
   };
 
   const toggleBurgerMenu = () => {
@@ -31,7 +38,7 @@ const Navbar = () => {
         const opacity = scrollPosition / navbarTransparentHeight;
         setNavbarBgColor(`rgba(255, 255, 255, ${opacity})`);
       } else {
-        setNavbarBgColor("#ffffff"); //
+        setNavbarBgColor("#ffffff");
       }
     };
 
@@ -70,35 +77,50 @@ const Navbar = () => {
           } absolute right-[1vw] top-[8vh] w-1/3 bg-white shadow-md py-2`}
         >
           <div className="flex flex-col items-start px-4">
-            <div className="py-[2vw]">
+            <div className="pb-[1vw] mt-[2vw]">
               <button
-                onClick={toggleMegaMenu}
+                onClick={() => toggleMegaMenu("aboutUs")}
                 className="text-blueColor-0 tracking-widest font-semibold font-sans text-[1.5vw] hover:text-sky-500 flex items-center cursor-pointer"
               >
                 About Us
-                <FaChevronDown className="ml-[0.6vw] text-[1vw]" style={{ transform: megaMenuOpen ? 'rotate(180deg)' : 'none' }} />
+                <FaChevronDown
+                  className="ml-[0.6vw] text-[1vw]"
+                  style={{
+                    transform: megaMenuOpen.aboutUs ? "rotate(180deg)" : "none",
+                  }}
+                />
               </button>
-              {megaMenuOpen && <MegaMenu />}
+              {megaMenuOpen.aboutUs && <MegaMenu />}
             </div>
-            <div className="py-[2vw]">
+            <div className="pb-[1vw]">
               <button
-                onClick={toggleMegaMenu}
+                onClick={() => toggleMegaMenu("whatWeDo")}
                 className="text-blueColor-0 tracking-widest font-semibold font-sans text-[1.5vw] hover:text-sky-500 flex items-center cursor-pointer"
               >
                 What We Do
-                <FaChevronDown className="ml-[0.6vw] text-[1vw]" style={{ transform: megaMenuOpen ? 'rotate(180deg)' : 'none' }} />
+                <FaChevronDown
+                  className="ml-[0.6vw] text-[1vw]"
+                  style={{
+                    transform: megaMenuOpen.whatWeDo ? "rotate(180deg)" : "none",
+                  }}
+                />
               </button>
-              {megaMenuOpen && <MegaMenu />}
+              {megaMenuOpen.whatWeDo && <MegaMenu />}
             </div>
-            <div className="pt-[2vw] pb-[0.5vw]">
+            <div className="pb-[0.5vw]">
               <button
-                onClick={toggleMegaMenu}
+                onClick={() => toggleMegaMenu("pricing")}
                 className="text-blueColor-0 tracking-widest font-semibold font-sans text-[1.5vw] hover:text-sky-500 flex items-center cursor-pointer"
               >
                 Pricing
-                <FaChevronDown className="ml-[0.6vw] text-[1vw]" style={{ transform: megaMenuOpen ? 'rotate(180deg)' : 'none' }} />
+                <FaChevronDown
+                  className="ml-[0.6vw] text-[1vw]"
+                  style={{
+                    transform: megaMenuOpen.pricing ? "rotate(180deg)" : "none",
+                  }}
+                />
               </button>
-              {megaMenuOpen && <MegaMenu />}
+              {megaMenuOpen.pricing && <MegaMenu />}
             </div>
             <Link href="/cases" passHref>
               <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[1.5vw] hover:text-sky-500 cursor-pointer">
@@ -115,9 +137,9 @@ const Navbar = () => {
                 Blog
               </span>
             </Link>
-            <Link href="/careers" passHref>
+            <Link href="/contactus" passHref>
               <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[1.5vw] hover:text-sky-500 cursor-pointer">
-                Careers
+                Contact Us
               </span>
             </Link>
             <Link href="/contact" passHref>
@@ -138,37 +160,49 @@ const Navbar = () => {
           } md:flex-row items-center justify-between`}
         >
           <div
-            ref={megaMenuRef}
-            onClick={toggleMegaMenu}
+            onClick={() => toggleMegaMenu("aboutUs")}
             className="relative cursor-pointer"
           >
             <button className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase flex items-center">
               About Us
-              <FaChevronDown className="ml-1 text-[1vw]" style={{ transform: megaMenuOpen ? 'rotate(180deg)' : 'none' }} />
+              <FaChevronDown
+                className="ml-1 text-[1vw]"
+                style={{
+                  transform: megaMenuOpen.aboutUs ? "rotate(180deg)" : "none",
+                }}
+              />
             </button>
-            {megaMenuOpen && <MegaMenu />}
+            {megaMenuOpen.aboutUs && <MegaMenu />}
           </div>
           <div
-            ref={megaMenuRef}
-            onClick={toggleMegaMenu}
+            onClick={() => toggleMegaMenu("whatWeDo")}
             className="relative cursor-pointer"
           >
             <button className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase flex items-center">
               What We Do
-              <FaChevronDown className="ml-1 text-[1vw]" style={{ transform: megaMenuOpen ? 'rotate(180deg)' : 'none' }} />
+              <FaChevronDown
+                className="ml-1 text-[1vw]"
+                style={{
+                  transform: megaMenuOpen.whatWeDo ? "rotate(180deg)" : "none",
+                }}
+              />
             </button>
-            {megaMenuOpen && <MegaMenu />}
+            {megaMenuOpen.whatWeDo && <MegaMenu />}
           </div>
           <div
-            ref={megaMenuRef}
-            onClick={toggleMegaMenu}
+            onClick={() => toggleMegaMenu("pricing")}
             className="relative cursor-pointer"
           >
             <button className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase flex items-center">
               Pricing
-              <FaChevronDown className="ml-1 text-[1vw]" style={{ transform: megaMenuOpen ? 'rotate(180deg)' : 'none' }} />
+              <FaChevronDown
+                className="ml-1 text-[1vw]"
+                style={{
+                  transform: megaMenuOpen.pricing ? "rotate(180deg)" : "none",
+                }}
+              />
             </button>
-            {megaMenuOpen && <MegaMenu />}
+            {megaMenuOpen.pricing && <MegaMenu />}
           </div>
           <Link href="/cases" passHref>
             <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase cursor-pointer">
@@ -185,9 +219,9 @@ const Navbar = () => {
               Blog
             </span>
           </Link>
-          <Link href="/careers" passHref>
+          <Link href="/contactus" passHref>
             <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase cursor-pointer">
-              Careers
+              Contact Us
             </span>
           </Link>
         </div>

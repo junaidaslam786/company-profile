@@ -11,11 +11,13 @@ const HeroSection10 = () => {
   const [fetchingData, setFetchingData] = useState(true);
 
   useEffect(() => {
+    const apiUrl = process.env.NEXT_PUBLIC_BACKEND_API_URL;
     const fetchBlogPosts = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/api/blogposts/`);
+        const response = await fetch(`${apiUrl}/api/blogposts/`);
         const data = await response.json();
-        setBlogPosts(data);
+        // Slice the data to only include up to 3 posts
+        setBlogPosts(data.slice(0, 3));
       } catch (error) {
         console.error("Error fetching blog posts:", error);
       } finally {
@@ -26,10 +28,11 @@ const HeroSection10 = () => {
 
     fetchBlogPosts();
   }, []);
+
   if (loading || fetchingData) {
     return (
       <div className="w-full h-screen flex justify-center items-center">
-        <Loader />;
+        <Loader />
       </div>
     );
   }
@@ -60,10 +63,10 @@ const HeroSection10 = () => {
           <ReviewCard
             key={post.id}
             src={post.image}
-            main={post.title}
+            title={post.title}
             content={post.heading}
-            date={new Date(post.published_date).toLocaleDateString()} 
-            time="15 minutes read" 
+            date={new Date(post.published_date).toLocaleDateString()}
+            time="15 minutes read"
           />
         ))}
       </div>

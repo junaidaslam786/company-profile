@@ -12,20 +12,22 @@ const HeroSection3 = () => {
   const [fetchingData, setFetchingData] = useState(true);
 
   useEffect(() => {
-    const fetchBlogPosts = async () => {
+    const apiUrl = process.env.NEXT_PUBLIC_BACKEND_API_URL;
+    const fetchUpdates = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/api/updates/`);
+        // Use the environment variable here
+        const response = await fetch(`${apiUrl}/api/updates/`);
         const data = await response.json();
         setUpdates(data);
       } catch (error) {
-        console.error("Error fetching blog posts:", error);
+        console.error("Error fetching Updates:", error);
       } finally {
         setFetchingData(false);
         setLoading(false);
       }
     };
 
-    fetchBlogPosts();
+    fetchUpdates();
   }, []);
 
   if (loading || fetchingData) {
@@ -65,7 +67,7 @@ const HeroSection3 = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 m-8">
         {updates.map((update) =>
-          update.type === "Expert Material" ? (
+          update.category ==="expert" ? (
             <ExpertCard
               type={update.category}
               src={update.image}

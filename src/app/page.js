@@ -1,3 +1,7 @@
+"use client";
+
+import { useState, useEffect } from "react";
+
 import HeroSection from "@/components/home/HeroSection1";
 import Herosection2 from "@/components/home/HeroSection2";
 import HeroSection3 from "@/components/home/HeroSection3";
@@ -12,8 +16,39 @@ import HeroSection11 from "@/components/home/HeroSection11";
 import HeroSection12 from "@/components/home/HeroSection12";
 
 const Home = () => {
+  const [bgColor, setBgColor] = useState("#ffffff"); // use HEX colors for inline styling
+
+  const handleScroll = () => {
+    const totalHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPosition = window.scrollY;
+    const scrollPercentage = scrollPosition / totalHeight;
+
+    if (scrollPercentage <= 0.20 || scrollPercentage >= 0.72) {
+      setBgColor("#ffffff"); // White color
+    } else {
+      setBgColor("#141b4d"); // Blue color, equivalent to Tailwind's blue-500
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const style = {
+    transition: "background-color 1s ease", // Smooth transition for background color
+    backgroundColor: bgColor, // Dynamic background color
+  };
+
   return (
-    <main className="flex font-sans min-h-screen flex-col items-center justify-between bg-white">
+    <main
+      style={style}
+      className="flex font-sans min-h-screen flex-col items-center justify-between"
+    >
       <HeroSection />
       <Herosection2 />
       <HeroSection3 />
@@ -29,4 +64,5 @@ const Home = () => {
     </main>
   );
 };
+
 export default Home;

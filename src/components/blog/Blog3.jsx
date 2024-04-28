@@ -10,6 +10,7 @@ const Blog3 = () => {
         title={"Expert material"}
         id={"1"}
         button={"Browse all ecstatic articles"}
+        href={'Ecstatic'}
       >
         <div className="flex flex-wrap gap-[1vw] justify-start items-center max-w-full mb-[1vw]">
           <Link

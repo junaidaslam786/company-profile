@@ -2,9 +2,9 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-const EventCard = ({ src, dateTime, title, content }) => {
+const EventCard = ({ src, dateTime, title, content, type, href }) => {
   return (
-    <Link href={"/events"} className="w-full h-full flex flex-col items-start">
+    <Link href={href} className="w-full h-full flex flex-col items-start overflow-hidden">
       <Image
         src={src}
         alt="Image Failed to Load"
@@ -14,7 +14,7 @@ const EventCard = ({ src, dateTime, title, content }) => {
       />
       <div className="w-full flex flex-row items-center justify-between mt-[3vh]">
         <button className="uppercase text-blueColor-0 text-[1.3vw] md:text-[0.7vw] bg-blue-100 py-[0.7vw] px-[1.5vw] rounded-full">
-          Webinar
+          {type}
         </button>
         <p className="uppercase text-blueColor-0 text-[1vw] md:-[0.8vw]">{dateTime}</p>
       </div>

@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import BlogsLayout from "@/components/constants/blog/blogsLayout";
 import BasicCard from "@/components/constants/blog/BasicCard";
 import Loader from "@/components/constants/loader/Loader";
+import BlogsLayout from "@/components/constants/blog/BlogsLayout";
 
 const Blog2 = () => {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -12,11 +12,12 @@ const Blog2 = () => {
   const [loadingPosts, setLoadingPosts] = useState(true);
 
   useEffect(() => {
+    const apiUrl = process.env.NEXT_PUBLIC_BACKEND_API_URL;
     const fetchCategoriesAndPosts = async () => {
       try {
         const [postsResponse, categoriesResponse] = await Promise.all([
-          fetch("http://127.0.0.1:8000/api/blogposts/"),
-          fetch("http://127.0.0.1:8000/api/categories/"),
+          fetch(`${apiUrl}/api/blogposts/`),
+          fetch(`${apiUrl}/api/categories/`),
         ]);
 
         const [postsData, categoriesData] = await Promise.all([
@@ -56,9 +57,9 @@ const Blog2 = () => {
   return (
     <div className="w-full">
       {categories.map((category) => {
-        const categoryPosts = blogPosts.filter(
-          (post) => post.category.id === category.id
-        );
+        const categoryPosts = blogPosts
+          .filter((post) => post.category.id === category.id)
+          .slice(0, 3); // Only take up to 3 posts per category
 
         return (
           <div key={category.id}>
@@ -66,12 +67,13 @@ const Blog2 = () => {
               title={`${category.name} Articles`}
               id={category.id}
               button={`Browse all ${category.name} Articles`}
+              href={category.id} // Updated to pass category ID
             >
               {loadingPosts ? (
                 <div className="w-full h-screen flex justify-center items-center">
                   <Loader />
                 </div>
-              ) : categoryPosts?.length === 0 ? (
+              ) : categoryPosts.length === 0 ? (
                 <p>No posts available</p>
               ) : (
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-[3vw]">

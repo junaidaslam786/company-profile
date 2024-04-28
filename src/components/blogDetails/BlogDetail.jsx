@@ -13,10 +13,11 @@ const BlogDetail = ({ id }) => {
   const [parsedContent, setParsedContent] = useState([]);
 
   useEffect(() => {
+    const apiUrl = process.env.NEXT_PUBLIC_BACKEND_API_URL;
     const fetchData = async () => {
       setLoading(true); // Ensure loading is true when fetching new data
       try {
-        const response = await fetch(`http://127.0.0.1:8000/api/blogposts/${id}`);
+        const response = await fetch(`${apiUrl}/api/blogposts/${id}`);
         const data = await response.json();
         setBlogPost(data);
         setLoading(false);
@@ -30,10 +31,11 @@ const BlogDetail = ({ id }) => {
   }, [id]);
 
   useEffect(() => {
+    const apiUrl = process.env.NEXT_PUBLIC_BACKEND_API_URL;
     if (blogPost.user) {
       const fetchAuthor = async () => {
         try {
-          const response = await fetch(`http://127.0.0.1:8000/api/authors/${blogPost.user}`);
+          const response = await fetch(`${apiUrl}/api/authors/${blogPost.user}`);
           const data = await response.json();
           setAuthor(data);
         } catch (error) {

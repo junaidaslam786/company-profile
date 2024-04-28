@@ -9,9 +9,10 @@ const Case3 = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const apiUrl = process.env.NEXT_PUBLIC_BACKEND_API_URL;
     const fetchCaseData = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/cases/");
+        const response = await fetch(`${apiUrl}/api/cases/`);
         const data = await response.json();
         setCaseData(data);
         setLoading(false);
@@ -50,11 +51,11 @@ const Case3 = () => {
             businessType={"Social"}
             countrySource={"/images/644a9965b4060da6a3dbc180_libraria-logo.svg"}
             detail={caseItem.description}
-            type={caseItem.resolution}
+            type={`${caseItem.service_type} App`}
             tech1={"Flutter"}
             tech2={"Kotlin"}
             tech3={"Python"}
-            feacturedImage={"/images/b07e0ebccccfcba7c2801f90a44e6158.jpg"}
+            feacturedImage={caseItem.image}
             featuredBackground={"bg-sky-400"}
           />
         ))}

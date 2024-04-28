@@ -4,25 +4,73 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { IoRemoveOutline } from "react-icons/io5";
+import Loader from "@/components/constants/loader/Loader";
 
 const HeroSection9 = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const imageWidth = useRef(0);
+  const [teams, setTeams] = useState([]);
+  const [loading, setLoading] = useState(true);
   const containerRef = useRef(null);
 
   useEffect(() => {
-    if (containerRef.current) {
-      imageWidth.current = containerRef.current.offsetWidth / 5;
-    }
+    const apiUrl = process.env.NEXT_PUBLIC_BACKEND_API_URL;
+    const fetchTeamData = async () => {
+      try {
+        const response = await fetch(`${apiUrl}/api/teammembers/`);
+        const data = await response.json();
+        setTeams(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching Team data:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchTeamData();
   }, []);
 
+  useEffect(() => {
+    // Dynamically calculate the container width and apply transform based on the current index
+    if (containerRef.current) {
+      const updateWidthAndTransform = () => {
+        const totalWidth = containerRef.current.clientWidth * teams.length;
+        containerRef.current.style.width = `${totalWidth}px`;
+        containerRef.current.style.transform = `translateX(-${
+          containerRef.current.clientWidth * currentImageIndex / 3
+        }px)`;
+      };
+      updateWidthAndTransform();
+      window.addEventListener("resize", updateWidthAndTransform);
+      return () =>
+        window.removeEventListener("resize", updateWidthAndTransform);
+    }
+  }, [teams, currentImageIndex]);
+
   const handleNext = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % 5);
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % teams.length);
   };
 
   const handlePrevious = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? 4 : prevIndex - 1));
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? teams.length - 1 : prevIndex - 1
+    );
   };
+
+  if (loading) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <Loader />
+      </div>
+    );
+  }
+
+  if (teams.length === 0) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <p>No team members available</p>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full py-24 relative">
@@ -37,57 +85,27 @@ const HeroSection9 = () => {
           </p>
         </div>
       </div>
-      <div className="w-full flex flex-col items-center mt-12">
+      <div className="relative w-full flex flex-col items-center mt-12">
         <div className="w-[90%] overflow-hidden flex flex-row">
           <div
             className="transition-transform duration-300 ease-in-out flex"
             ref={containerRef}
-            style={{
-              transform: `translateX(-${
-                imageWidth.current * currentImageIndex
-              }px)`,
-            }}
           >
-            <div className="mr-9" style={{ width: "70vmin", height: "45vmin" }}>
-              <Image
-                src='/images/b07e0ebccccfcba7c2801f90a44e6158.jpg'
-                width={500}
-                height={500}
-                layout="responsive"
-              />
-            </div>
-            <div className="mr-9" style={{ width: "70vmin", height: "45vmin" }}>
-              <Image
-                src='/images/b07e0ebccccfcba7c2801f90a44e6158.jpg'
-                width={500}
-                height={500}
-                layout="responsive"
-              />
-            </div>
-            <div className="mr-9" style={{ width: "70vmin", height: "45vmin" }}>
-              <Image
-                src='/images/b07e0ebccccfcba7c2801f90a44e6158.jpg'
-                width={500}
-                height={500}
-                layout="responsive"
-              />
-            </div>
-            <div className="mr-9" style={{ width: "70vmin", height: "45vmin" }}>
-              <Image
-                src='/images/b07e0ebccccfcba7c2801f90a44e6158.jpg'
-                width={500}
-                height={500}
-                layout="responsive"
-              />
-            </div>
-            <div className="mr-9" style={{ width: "70vmin", height: "45vmin" }}>
-              <Image
-                src='/images/b07e0ebccccfcba7c2801f90a44e6158.jpg'
-                width={500}
-                height={500}
-                layout="responsive"
-              />
-            </div>
+            {teams.map((team) => (
+              <div
+                key={team.id}
+                className="mr-9 flex-shrink-0" // Ensure that divs do not shrink and are properly aligned
+                style={{ width: "30.3%", flex: "0 0 auto" }}
+              >
+                <Image
+                  src={team.image}
+                  width={500}
+                  height={500}
+                  layout="responsive"
+                  alt={`Image of ${team.name}`}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>

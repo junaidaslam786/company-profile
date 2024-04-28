@@ -1,16 +1,16 @@
 import React from "react";
 import Image from "next/image";
 
-const ReviewCard = ({src, main, content, date, time }) => {
+const ReviewCard = ({src, title, content, date, time }) => {
   return (
-    <div className="w-full h-[50vh] group cursor-pointer border-b md:border-none flex flex-col items-center">
+    <div className="w-full h-[50vh] group cursor-pointer pb-[2vw] md:pb-0 border-b md:border-none flex flex-col items-center">
       <div className="w-5/6 h-full flex flex-col md:flex-row md:justify-between items-center">
         <div className="w-full md:w-2/3 h-[30vw] md:h-full flex flex-col md:border-b py-[2vw] items-start justify-between">
           <button className="text-blueColor-0 bg-sky-200 text-[2vw] md:text-[0.9vw] font-medium px-[2vw] py-[1.5vw] md:px-[1.5vw] md:py-[1vw] rounded-full">
             COST ESTIMATION
           </button>
           <p className="text-[3.5vw] md:text-[2vw] text-blueColor-0 font-semibold md:font-medium tracking-tight">
-            {main}
+            {title}
           </p>
           <p className="text-[2vw] md:text-[1.2vw] line-clamp-2 text-gray-500 tracking-tight">
             {content}

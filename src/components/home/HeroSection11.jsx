@@ -24,7 +24,7 @@ const HeroSection11 = () => {
 
   return (
     <div
-      className="hero-container relative h-[80vh] w-full bg-white"
+      className="hero-container relative h-[80vh] w-full"
     >
       <div
         className="text-container flex flex-col w-full"

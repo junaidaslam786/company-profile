@@ -11,11 +11,14 @@ const Herosection2 = () => {
   const [fetchingData, setFetchingData] = useState(true);
 
   useEffect(() => {
+    const apiUrl = process.env.NEXT_PUBLIC_BACKEND_API_URL;
     const fetchData = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/services/");
+        const response = await fetch(`${apiUrl}/api/services/`);
         const data = await response.json();
-        setScrollCards(data);
+        // Modify the data to include up to 8 items and ensure the number is even
+        const evenCount = Math.min(data.length, 8);
+        setScrollCards(data.slice(0, evenCount % 2 === 0 ? evenCount : evenCount - 1));
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -44,8 +47,8 @@ const Herosection2 = () => {
   }
 
   return (
-    <div className="flex flex-col md:flex-row w-full bg-white relative">
-      <div className="flex flex-col items-center w-full md:w-1/3 pl-6 md:sticky md:top-[8vh] h-[40vh] md:h-[80vh] ">
+    <div className="flex flex-col md:flex-row w-full relative">
+      <div className="flex flex-col items-center w-full md:w-1/3 pl-6 md:sticky md:top-[8vh] h-[40vh] md:h-[80vh]">
         <div className="w-5/6">
           <div className="flex flex-row items-center text-orangeColor-0 text-[1vw] font-semibold">
             <IoRemoveOutline />
@@ -70,7 +73,7 @@ const Herosection2 = () => {
                     key={card.id}
                     title={card.name}
                     content={card.description}
-                    bottoms={index === scrollCards.length - 1 ? "" : "border-b"}
+                    bottoms={index === scrollCards.length - 2 ? "" : "border-b"}
                   />
                 );
               }
@@ -84,7 +87,7 @@ const Herosection2 = () => {
                     key={card.id}
                     title={card.name}
                     content={card.description}
-                    bottoms={index === scrollCards.length - 2 ? "" : "border-b"}
+                    bottoms={index === scrollCards.length - 1 ? "" : "border-b"}
                   />
                 );
               }

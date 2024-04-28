@@ -5,7 +5,7 @@ const ExpertCard = ({ src, heading, detail, type }) => {
   return (
     <Link
       href="/"
-      className="flex flex-col p-[5vmin] pb-[10vh] w-full bg-gray-50 border"
+      className="flex flex-col p-[5vmin] pb-[10vh] w-full border"
     >
       <div className="flex justify-between">
         <Image
@@ -13,9 +13,9 @@ const ExpertCard = ({ src, heading, detail, type }) => {
           height={100}
           src={src}
           className="pt-[7vh] w-[20vmin]"
-          alt="A picture"
+          alt="Image failed to load"
         />
-        <button className="h-[5vmin] w-[20vmin] bg-blueColor-0 text-white rounded-full text-[1.4vmin]">
+        <button className="h-[5vmin] uppercase w-[20vmin] bg-blueColor-0 text-white rounded-full text-[1.4vmin]">
           {type}
         </button>
       </div>

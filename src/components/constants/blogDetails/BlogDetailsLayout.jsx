@@ -61,7 +61,7 @@ function BlogDetailsLayout({ content }) {
 
   return (
     <div className="relative flex flex-row justify-between">
-      <div className="w-[30%] sticky top-[20vh] h-[70vh] border-r flex flex-col items-center">
+      <div className="w-[30%] sticky top-[20vh] h-full border-r flex flex-col items-center">
         {/* Table of Contents */}
         <div className="w-2/3">
           <p className="text-[1.2vw] uppercase text-blueColor-0 font-semibold border-b py-[1vw]">Table of Content</p>

@@ -4,7 +4,7 @@ import { IoRemoveOutline } from "react-icons/io5";
 
 const HeroSection7 = () => {
   return (
-    <div className="w-full flex flex-col items-center bg-blueColor-0 pt-32 pb-10">
+    <div className="w-full flex flex-col items-center pt-32 pb-10">
       <div className="flex flex-col w-full items-center mb-[12vh]">
         <div className="flex flex-col w-4/5">
           <div className="flex flex-row items-center text-orangeColor-0 text-[1vw] font-semibold">
@@ -24,7 +24,7 @@ const HeroSection7 = () => {
         </div>
       </div>
       <div className="w-3/4 flex flex-col">
-        <div className="flex flex-col items-start z-[1]">
+        <div className="w-full flex flex-col items-start z-[1]">
           <div>
             <AnimationCard
               id={"01"}

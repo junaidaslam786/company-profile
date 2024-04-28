@@ -2,8 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import RecommendationCard from "@/components/constants/home/RecommendationCard";
-import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
-import { FaStar } from "react-icons/fa";
+import { FaArrowRight, FaArrowLeft, FaStar } from "react-icons/fa";
 import { IoRemoveOutline } from "react-icons/io5";
 import Loader from "@/components/constants/loader/Loader";
 
@@ -16,9 +15,10 @@ const HeroSection8 = () => {
   const containerRef = useRef(null);
 
   useEffect(() => {
+    const apiUrl = process.env.NEXT_PUBLIC_BACKEND_API_URL;
     const fetchTestimonials = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/testimonials/");
+        const response = await fetch(`${apiUrl}/api/testimonials/`);
         const data = await response.json();
         setTestimonials(data);
       } catch (error) {
@@ -34,20 +34,31 @@ const HeroSection8 = () => {
   useEffect(() => {
     if (containerRef.current && cardRef.current) {
       cardWidth.current = cardRef.current.offsetWidth;
-      containerRef.current.style.width = `${cardWidth.current * testimonials.length}px`;
+      containerRef.current.style.width = `${
+        cardWidth.current * testimonials.length
+      }px`;
     }
   }, [testimonials]);
 
   const handleNext = () => {
     const nextIndex = (currentCardIndex + 1) % testimonials.length;
     setCurrentCardIndex(nextIndex);
-    containerRef.current.style.transform = `translateX(-${cardWidth.current * nextIndex}px)`;
+    containerRef.current.style.transform = `translateX(-${
+      cardWidth.current * nextIndex * 1.077
+    }px)`;
   };
 
   const handlePrevious = () => {
-    const prevIndex = currentCardIndex === 0 ? testimonials.length - 1 : currentCardIndex - 1;
+    const prevIndex =
+      currentCardIndex === 0 ? testimonials.length - 1 : currentCardIndex - 1;
     setCurrentCardIndex(prevIndex);
-    containerRef.current.style.transform = `translateX(-${cardWidth.current * prevIndex}px)`;
+    containerRef.current.style.transform = `translateX(-${
+      cardWidth.current * prevIndex
+    }px)`;
+  };
+
+  const renderStars = (rating) => {
+    return Array.from({ length: rating }, (_, i) => <FaStar key={i} />);
   };
 
   if (loading) {
@@ -87,18 +98,10 @@ const HeroSection8 = () => {
             className="transition-transform duration-300 ease-in-out flex"
             ref={containerRef}
           >
-            {testimonials.map((testimonial, index) => (
+            {testimonials.map((testimonial) => (
               <div className="mr-[3vw]" key={testimonial.id} ref={cardRef}>
                 <RecommendationCard
-                  rating={
-                    <>
-                      <FaStar />
-                      <FaStar />
-                      <FaStar />
-                      <FaStar />
-                      <FaStar />
-                    </>
-                  }
+                  rating={renderStars(testimonial.rating)}
                   content={testimonial.content}
                   company={testimonial.client_company}
                   date={testimonial.date}
@@ -108,7 +111,7 @@ const HeroSection8 = () => {
           </div>
         </div>
       </div>
-      <div className="absolute right-40 bottom-5 transform -translate-y-1/2 flex items-center">
+      <div className="absolute right-[10%] bottom-0 transform -translate-y-1/2 flex items-center">
         <button
           onClick={handlePrevious}
           className="p-2 rounded-full text-white text-[1.5vw] font-bold bg-orangeColor-0 mr-5 opacity-80 hover:opacity-100"

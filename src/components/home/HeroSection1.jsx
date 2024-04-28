@@ -24,7 +24,7 @@ const HeroSection = () => {
 
   return (
     <div
-      className="hero-container h-screen w-full bg-white"
+      className="hero-container h-screen w-full"
       style={{
         margin: "0",
       }}
