@@ -5,19 +5,56 @@ import CaseCard from "@/components/constants/cases/CaseCard";
 import Loader from "@/components/constants/loader/Loader";
 
 const Case3 = () => {
-  const [caseData, setCaseData] = useState(null);
+  const [caseData, setCaseData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [backgroundColors, setBackgroundColors] = useState({});
 
   useEffect(() => {
     const apiUrl = process.env.NEXT_PUBLIC_BACKEND_API_URL;
     const fetchCaseData = async () => {
+      setLoading(true);
       try {
         const response = await fetch(`${apiUrl}/api/cases/`);
         const data = await response.json();
-        setCaseData(data);
-        setLoading(false);
+
+        const casesWithDetails = await Promise.all(
+          data.map(async (caseItem) => {
+            const technologies = await Promise.all(
+              caseItem.technologies.map(async (techId) => {
+                const techResponse = await fetch(
+                  `${apiUrl}/api/technologies/${techId}`
+                );
+                return await techResponse.json();
+              })
+            );
+
+            let industry = null;
+            if (caseItem.industries) {
+              const industryResponse = await fetch(
+                `${apiUrl}/api/industries/${caseItem.industries}`
+              );
+              industry = await industryResponse.json();
+            }
+
+            return {
+              ...caseItem,
+              technologies,
+              industry,
+            };
+          })
+        );
+
+        
+        const newBackgroundColors = {};
+        casesWithDetails.forEach((caseItem) => {
+          newBackgroundColors[caseItem.id] = generateRandomLightBackground();
+        });
+
+        setBackgroundColors(newBackgroundColors);
+        setCaseData(casesWithDetails);
       } catch (error) {
         console.error("Error fetching case data:", error);
+      } finally {
         setLoading(false);
       }
     };
@@ -25,41 +62,45 @@ const Case3 = () => {
     fetchCaseData();
   }, []);
 
-  if (loading || caseData === null) {
-    return (
-      <div className="w-full h-screen flex justify-center items-center">
-        <Loader />
-      </div>
-    );
+  const generateRandomLightBackground = () => {
+    const lightColors = [
+      "bg-red-400",
+      "bg-orange-400",
+      "bg-yellow-400",
+      "bg-green-400",
+      "bg-teal-400",
+      "bg-blue-400",
+      "bg-indigo-400",
+      "bg-purple-400",
+      "bg-pink-400",
+      "bg-sky-400",
+    ];
+    return lightColors[Math.floor(Math.random() * lightColors.length)];
+  };
+
+  if (loading) {
+    return <Loader />;
   }
 
   if (caseData.length === 0) {
-    return (
-      <div className="flex justify-center items-center w-full h-full">
-        <p>No data available</p>
-      </div>
-    );
+    return <div>No data available</div>;
   }
 
   return (
-    <div className="w-full">
-      <div className="py-[3vw] border-t">
-        {caseData.map((caseItem) => (
-          <CaseCard
-            key={caseItem.id}
-            industry={caseItem.title}
-            businessType={"Social"}
-            countrySource={"/images/644a9965b4060da6a3dbc180_libraria-logo.svg"}
-            detail={caseItem.description}
-            type={`${caseItem.service_type} App`}
-            tech1={"Flutter"}
-            tech2={"Kotlin"}
-            tech3={"Python"}
-            feacturedImage={caseItem.image}
-            featuredBackground={"bg-sky-400"}
-          />
-        ))}
-      </div>
+    <div>
+      {caseData.map((caseItem) => (
+        <CaseCard
+          key={caseItem.id}
+          title={caseItem.title}
+          industry={caseItem.industry ? caseItem.industry.name : "N/A"}
+          countrySource={caseItem.country_image}
+          detail={caseItem.description}
+          type={`${caseItem.service_type} App`}
+          technologies={caseItem.technologies}
+          featuredImage={caseItem.featured_image}
+          featuredBackground={backgroundColors[caseItem.id]}
+        />
+      ))}
     </div>
   );
 };

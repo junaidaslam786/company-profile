@@ -24,7 +24,7 @@ const Home = () => {
     const scrollPosition = window.scrollY;
     const scrollPercentage = scrollPosition / totalHeight;
 
-    if (scrollPercentage <= 0.20 || scrollPercentage >= 0.72) {
+    if (scrollPercentage <= 0.20 || scrollPercentage >= 0.73) {
       setBgColor("#ffffff"); // White color
     } else {
       setBgColor("#141b4d"); // Blue color, equivalent to Tailwind's blue-500
