@@ -30,7 +30,7 @@ const HeroSection = () => {
       }}
     >
       <Image
-        src={"/images/pexels-gdtography-911738.jpg"}
+        src={"/images/634e812eaf4208d64d22f870_try_wormhole.svg"}
         layout="fill"
         objectFit="cover"
         alt="Background Image"

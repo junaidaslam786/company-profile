@@ -1,6 +1,6 @@
 import MegaMenuLayout from "@/components/navigation/MegaMenuLayout";
 
-const MegaMenu = () => {
+const AboutMegaMenu = () => {
   return (
     <MegaMenuLayout>
       <div className="flex h-full">
@@ -56,4 +56,4 @@ const MegaMenu = () => {
   );
 };
 
-export default MegaMenu;
+export default AboutMegaMenu;

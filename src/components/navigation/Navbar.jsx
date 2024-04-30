@@ -5,12 +5,13 @@ import Link from "next/link";
 import { FaChevronDown } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { FaBars } from "react-icons/fa";
-import MegaMenu from "@/components/navigation/MegaMenu";
+import MegaMenu from "@/components/navigation/AboutMegaMenu";
 
 const Navbar = () => {
   const [megaMenuOpen, setMegaMenuOpen] = useState({
     aboutUs: false,
     whatWeDo: false,
+    solutions: false,
     pricing: false,
   });
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
@@ -19,10 +20,14 @@ const Navbar = () => {
 
   const toggleMegaMenu = (menu) => {
     setMegaMenuOpen((prev) => ({
-      ...prev,
+      aboutUs: false,
+      whatWeDo: false,
+      solutions: false,
+      pricing: false,
       [menu]: !prev[menu],
     }));
   };
+  
 
   const toggleBurgerMenu = () => {
     setIsBurgerMenuOpen((prev) => !prev);
@@ -107,6 +112,21 @@ const Navbar = () => {
               </button>
               {megaMenuOpen.whatWeDo && <MegaMenu />}
             </div>
+            <div className="pb-[1vw]">
+              <button
+                onClick={() => toggleMegaMenu("solutions")}
+                className="text-blueColor-0 tracking-widest font-semibold font-sans text-[1.5vw] hover:text-sky-500 flex items-center cursor-pointer"
+              >
+                Solutions
+                <FaChevronDown
+                  className="ml-[0.6vw] text-[1vw]"
+                  style={{
+                    transform: megaMenuOpen.solutions ? "rotate(180deg)" : "none",
+                  }}
+                />
+              </button>
+              {megaMenuOpen.solutions && <MegaMenu />}
+            </div>
             <div className="pb-[0.5vw]">
               <button
                 onClick={() => toggleMegaMenu("pricing")}
@@ -142,14 +162,14 @@ const Navbar = () => {
                 Contact Us
               </span>
             </Link>
-            <Link href="/contact" passHref>
+            <a href="https://wa.me/923137844595" passHref>
               <span className="flex flex-row group items-center border py-[2vw] border-transparent cursor-pointer">
                 <p className="text-orangeColor-0 mr-[1vw] font-semibold text-[1.5vw]">
                   LET'S CHAT!
                 </p>
                 <IoIosMail className="text-[3vw] w-[3.5vw] h-[3.5vw] text-white bg-orangeColor-0 hover:bg-opacity-90 rounded-full p-[0.5vw] group-hover:scale-110 duration-200" />
               </span>
-            </Link>
+            </a>
           </div>
         </div>
 
@@ -190,6 +210,21 @@ const Navbar = () => {
             {megaMenuOpen.whatWeDo && <MegaMenu />}
           </div>
           <div
+            onClick={() => toggleMegaMenu("solutions")}
+            className="relative cursor-pointer"
+          >
+            <button className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase flex items-center">
+              Solutions
+              <FaChevronDown
+                className="ml-1 text-[1vw]"
+                style={{
+                  transform: megaMenuOpen.solutions ? "rotate(180deg)" : "none",
+                }}
+              />
+            </button>
+            {megaMenuOpen.solutions && <MegaMenu />}
+          </div>
+          <div
             onClick={() => toggleMegaMenu("pricing")}
             className="relative cursor-pointer"
           >
@@ -228,14 +263,14 @@ const Navbar = () => {
         <div
           className={`hidden md:flex ${isBurgerMenuOpen ? "flex" : "hidden"}`}
         >
-          <Link href="/contact" passHref>
+          <a href="https://wa.me/923137844595" passHref>
             <span className="flex group items-center border border-transparent cursor-pointer">
               <p className="text-orangeColor-0 mr-[1vw] font-semibold text-[0.9vw]">
                 LET'S CHAT!
               </p>
               <IoIosMail className="text-[3vw] text-white bg-orangeColor-0 hover:bg-opacity-90 rounded-full p-[0.4vw] group-hover:scale-110 duration-200" />
             </span>
-          </Link>
+          </a>
         </div>
       </div>
     </nav>

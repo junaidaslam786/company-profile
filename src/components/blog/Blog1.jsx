@@ -7,7 +7,7 @@ import Loader from "@/components/constants/loader/Loader";
 import BlogsLayout from "@/components/constants/blog/BlogsLayout";
 
 const Blog1 = () => {
-  const [blogPosts, setBlogPosts] = useState([]);
+  const [category1Posts, setCategory1Posts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -16,9 +16,16 @@ const Blog1 = () => {
       try {
         const response = await fetch(`${apiUrl}/api/blogposts/`);
         const data = await response.json();
-        // Adjust the posts to be even and no more than 6
-        const maxPosts = data.length > 6 ? 6 : data.length;
-        setBlogPosts(data.slice(0, maxPosts % 2 === 0 ? maxPosts : maxPosts - 1));
+        const filteredPosts = data.filter(
+          (post) => post.category && post.category.name === "Category 1"
+        );
+        const postsWithReadingTime = filteredPosts.map((post) => ({
+          ...post,
+          readingTime: calculateReadingTime(post.content),
+        }));
+        const maxPosts =
+          postsWithReadingTime.length > 6 ? 6 : postsWithReadingTime.length;
+        setCategory1Posts(postsWithReadingTime.slice(0, maxPosts));
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -29,6 +36,14 @@ const Blog1 = () => {
     fetchData();
   }, []);
 
+  const calculateReadingTime = (content) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(content, "text/html");
+    const words = doc.body.textContent.split(" ").length;
+    const minutes = Math.ceil(words / 225);
+    return `${minutes} minutes read`;
+  };
+
   if (loading) {
     return (
       <div className="w-full h-screen flex justify-center items-center">
@@ -37,31 +52,43 @@ const Blog1 = () => {
     );
   }
 
+  if (category1Posts.length === 0) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <Loader />
+      </div>
+    );
+  }
+
+  const category = category1Posts[0].category; // Assuming all posts have the same category
+
   return (
     <div className="w-full mt-[5vw]">
       <BlogsLayout
-        title={"Featured"}
-        id={"1"}
-        button={"Browse all featured articles"}
-        href={'featured'}
+        title={category.name}
+        id={category.id}
+        button={`Browse all ${category.name} articles`}
+        href={`${category.id}`}
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[3vw] w-full h-full">
           <div className="h-full lg:h-[70vh] lg:sticky lg:top-[15vh]">
             <ScrollSectionLeft
-              href={`/blog`}
-              src={"/images/b07e0ebccccfcba7c2801f90a44e6158.jpg"}
-              time={"15 minutes read"}
-              dateTime={"Apr 24, 2024"}
-              title={"How to protect intellectual property of your clients"}
+              href={`/blog/${category1Posts[0].id}`}
+              src={category1Posts[0].image}
+              time={category1Posts[0].readingTime}
+              dateTime={new Date(
+                category1Posts[0].published_date
+              ).toLocaleString()}
+              title={category1Posts[0].title}
             />
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-[3vw]">
-            {blogPosts.map((post) => (
+            {category1Posts.slice(1).map((post) => (
               <div className="lg:mb-[3vw]" key={post.id}>
                 <ScrollSectionRight
                   href={`/blog/${post.id}`}
                   src={post.image}
-                  time={"15 minutes read"}
+                  time={post.readingTime}
                   dateTime={new Date(post.published_date).toLocaleString()}
                   title={post.title}
                 />

@@ -61,7 +61,7 @@ function BlogDetailsLayout({ content }) {
 
   return (
     <div className="relative flex flex-row justify-between">
-      <div className="w-[30%] sticky top-[20vh] h-full border-r flex flex-col items-center">
+      <div className="hidden w-[30%] sticky top-[20vh] h-full border-r md:flex flex-col items-center">
         {/* Table of Contents */}
         <div className="w-2/3">
           <p className="text-[1.2vw] uppercase text-blueColor-0 font-semibold border-b py-[1vw]">Table of Content</p>
@@ -76,7 +76,7 @@ function BlogDetailsLayout({ content }) {
           </ul>
         </div>
       </div>
-      <div className="w-[70%] flex flex-col items-center">
+      <div className="w-full md:w-[70%] flex flex-col items-center">
         {/* Details rendering */}
         <div className="w-2/3">
           {content.map((section) => (

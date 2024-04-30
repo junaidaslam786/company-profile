@@ -25,8 +25,16 @@ const Blog2 = () => {
           categoriesResponse.json(),
         ]);
 
-        setBlogPosts(postsData);
-        setCategories(categoriesData);
+        const postsWithReadingTime = postsData.map((post) => ({
+          ...post,
+          readingTime: calculateReadingTime(post.content),
+        }));
+
+        setBlogPosts(postsWithReadingTime);
+        // Filter out "Category 1" from the categories array
+        setCategories(
+          categoriesData.filter((category) => category.name !== "Category 1")
+        );
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -37,6 +45,14 @@ const Blog2 = () => {
 
     fetchCategoriesAndPosts();
   }, []);
+
+  const calculateReadingTime = (content) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(content, "text/html");
+    const words = doc.body.textContent.split(" ").length;
+    const minutes = Math.ceil(words / 225);
+    return `${minutes} minutes read`;
+  };
 
   if (loadingCategories) {
     return (
@@ -82,7 +98,7 @@ const Blog2 = () => {
                       href={`/blog/${post.id}`}
                       key={post.id}
                       src={post.image}
-                      time={"15 minutes read"}
+                      time={post.readingTime}
                       dateTime={new Date(post.published_date).toLocaleString()}
                       title={post.title}
                       content={post.heading}

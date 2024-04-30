@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
+import Image from "next/image";
 
 const Slider = () => {
   const containerRef = useRef(null);
@@ -43,10 +44,10 @@ const Slider = () => {
   useEffect(() => {
     if (isVisible) {
       window.addEventListener("wheel", handleGlobalScroll);
-      console.log('screen is visible');
+      console.log("screen is visible");
     } else {
       window.removeEventListener("wheel", handleGlobalScroll);
-      console.log('screen is not visible');
+      console.log("screen is not visible");
     }
     // Clean up the event listener when component unmounts or isVisible changes
     return () => {
@@ -66,7 +67,7 @@ const Slider = () => {
         top: "12vh",
       }}
     >
-      <div className="h-screen w-full bg-blue-500">Media To be Added</div>
+      <div className="h-screen w-full bg-blue-500">Media to be Added</div>
     </div>
   );
 };
