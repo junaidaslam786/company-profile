@@ -75,7 +75,7 @@ const Blog2 = () => {
       {categories.map((category) => {
         const categoryPosts = blogPosts
           .filter((post) => post.category.id === category.id)
-          .slice(0, 3); // Only take up to 3 posts per category
+          .slice(0, 3);
 
         return (
           <div key={category.id}>

@@ -15,7 +15,7 @@ const HeroSection3 = () => {
     const apiUrl = process.env.NEXT_PUBLIC_BACKEND_API_URL;
     const fetchUpdates = async () => {
       try {
-        // Use the environment variable here
+        
         const response = await fetch(`${apiUrl}/api/updates/`);
         const data = await response.json();
         setUpdates(data);
@@ -47,14 +47,14 @@ const HeroSection3 = () => {
   }
 
   return (
-    <div className="flex flex-col mt-16">
+    <div className="flex flex-col mt-[4vw]">
       <div className="flex flex-col w-full items-center">
         <div className="flex flex-col w-[90%]">
           <div className="flex flex-row items-center text-orangeColor-0 text-[1vw] font-semibold">
             <IoRemoveOutline />
             <p className="tracking-widest uppercase">UPDATES</p>
           </div>
-          <div className="flex flex-row justify-between items-center mt-16">
+          <div className="flex flex-row justify-between items-center mt-[4vw]">
             <p className="text-blue-950 text-[3.5vw] font-bold tracking-wide">
               What's new?
             </p>
@@ -65,7 +65,7 @@ const HeroSection3 = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 m-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-[2vw] m-[2vw]">
         {updates.map((update) =>
           update.category ==="expert" ? (
             <ExpertCard

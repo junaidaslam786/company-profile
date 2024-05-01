@@ -1,33 +1,34 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { FaChevronDown } from "react-icons/fa";
-import { IoIosMail } from "react-icons/io";
+import PriceMegaMenu from "@/components/navigation/PriceMegaMenu";
+import AboutMegaMenu from "@/components/navigation/AboutMegaMenu";
+import WhatWeDoMegaMenu from "@/components/navigation/WhatWeDoMegaMenu";
+import SolutionsMegaMenu from "@/components/navigation/SolutionsMegaMenu";
 import { FaBars } from "react-icons/fa";
-import MegaMenu from "@/components/navigation/AboutMegaMenu";
+import { IoIosMail } from "react-icons/io";
+import { FaChevronDown } from "react-icons/fa6";
 
 const Navbar = () => {
   const [megaMenuOpen, setMegaMenuOpen] = useState({
-    aboutUs: false,
-    whatWeDo: false,
-    solutions: false,
-    pricing: false,
+    AboutUs: false,
+    WhatWeDo: false,
+    Solutions: false,
+    Pricing: false,
   });
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
   const [navbarBgColor, setNavbarBgColor] = useState("transparent");
-  const megaMenuRef = useRef(null);
 
   const toggleMegaMenu = (menu) => {
     setMegaMenuOpen((prev) => ({
-      aboutUs: false,
-      whatWeDo: false,
-      solutions: false,
-      pricing: false,
+      AboutUs: false,
+      WhatWeDo: false,
+      Solutions: false,
+      Pricing: false,
       [menu]: !prev[menu],
     }));
   };
-  
 
   const toggleBurgerMenu = () => {
     setIsBurgerMenuOpen((prev) => !prev);
@@ -54,16 +55,29 @@ const Navbar = () => {
     };
   }, []);
 
+  const renderMegaMenu = () => {
+    if (megaMenuOpen.AboutUs) {
+      return <AboutMegaMenu />;
+    } else if (megaMenuOpen.WhatWeDo) {
+      return <WhatWeDoMegaMenu />;
+    } else if (megaMenuOpen.Solutions) {
+      return <SolutionsMegaMenu />;
+    } else if (megaMenuOpen.Pricing) {
+      return <PriceMegaMenu />;
+    }
+    return null; // No mega menu open
+  };
+
   return (
     <nav
-      className="fixed top-0 left-0 w-screen z-50"
+      className="absolute md:fixed top-0 left-0 w-screen z-50"
       style={{ backgroundColor: navbarBgColor }}
     >
-      <div className="relative flex items-center w-full h-[12vh] justify-between px-4 md:justify-around">
-        <div className="flex justify-between w-full md:w-auto">
+      <div className="relative flex items-center w-full h-[12vh] justify-between px-[1vw] md:justify-around">
+        <div className="flex justify-between px-[5vw] md:px-0 w-full md:w-auto">
           <div className="flex-shrink-0">
-            <Link href="/" passHref>
-              <span className="font-semibold text-[2.5vw] text-sky-500 hover:opacity-90 cursor-pointer">
+            <Link href="/">
+              <span className="font-semibold text-[4vw] md:text-[2.5vw] text-sky-500 hover:opacity-90 cursor-pointer">
                 Labverse
               </span>
             </Link>
@@ -79,95 +93,52 @@ const Navbar = () => {
         <div
           className={`md:hidden ${
             isBurgerMenuOpen ? "block" : "hidden"
-          } absolute right-[1vw] top-[8vh] w-1/3 bg-white shadow-md py-2`}
+          } absolute right-[1vw] top-[12vh] w-full bg-white shadow-md px-[4vw] py-[0.5vw]`}
         >
-          <div className="flex flex-col items-start px-4">
-            <div className="pb-[1vw] mt-[2vw]">
-              <button
-                onClick={() => toggleMegaMenu("aboutUs")}
-                className="text-blueColor-0 tracking-widest font-semibold font-sans text-[1.5vw] hover:text-sky-500 flex items-center cursor-pointer"
-              >
-                About Us
-                <FaChevronDown
-                  className="ml-[0.6vw] text-[1vw]"
-                  style={{
-                    transform: megaMenuOpen.aboutUs ? "rotate(180deg)" : "none",
-                  }}
-                />
-              </button>
-              {megaMenuOpen.aboutUs && <MegaMenu />}
-            </div>
-            <div className="pb-[1vw]">
-              <button
-                onClick={() => toggleMegaMenu("whatWeDo")}
-                className="text-blueColor-0 tracking-widest font-semibold font-sans text-[1.5vw] hover:text-sky-500 flex items-center cursor-pointer"
-              >
-                What We Do
-                <FaChevronDown
-                  className="ml-[0.6vw] text-[1vw]"
-                  style={{
-                    transform: megaMenuOpen.whatWeDo ? "rotate(180deg)" : "none",
-                  }}
-                />
-              </button>
-              {megaMenuOpen.whatWeDo && <MegaMenu />}
-            </div>
-            <div className="pb-[1vw]">
-              <button
-                onClick={() => toggleMegaMenu("solutions")}
-                className="text-blueColor-0 tracking-widest font-semibold font-sans text-[1.5vw] hover:text-sky-500 flex items-center cursor-pointer"
-              >
-                Solutions
-                <FaChevronDown
-                  className="ml-[0.6vw] text-[1vw]"
-                  style={{
-                    transform: megaMenuOpen.solutions ? "rotate(180deg)" : "none",
-                  }}
-                />
-              </button>
-              {megaMenuOpen.solutions && <MegaMenu />}
-            </div>
-            <div className="pb-[0.5vw]">
-              <button
-                onClick={() => toggleMegaMenu("pricing")}
-                className="text-blueColor-0 tracking-widest font-semibold font-sans text-[1.5vw] hover:text-sky-500 flex items-center cursor-pointer"
-              >
-                Pricing
-                <FaChevronDown
-                  className="ml-[0.6vw] text-[1vw]"
-                  style={{
-                    transform: megaMenuOpen.pricing ? "rotate(180deg)" : "none",
-                  }}
-                />
-              </button>
-              {megaMenuOpen.pricing && <MegaMenu />}
-            </div>
-            <Link href="/cases" passHref>
-              <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[1.5vw] hover:text-sky-500 cursor-pointer">
+          <div className="flex flex-col items-start px-[1vw]">
+            {["AboutUs", "WhatWeDo", "Solutions", "Pricing"].map((menu) => (
+              <div key={menu} className="pb-[1vw]">
+                <button
+                  onClick={() => toggleMegaMenu(menu)}
+                  className="text-blueColor-0 tracking-widest my-[2.3vw] font-semibold font-sans text-[3vw] hover:text-sky-500 flex items-center cursor-pointer"
+                >
+                  {menu.replace(/([A-Z])/g, " $1").trim()}
+                  <FaChevronDown
+                    className="ml-[0.6vw] text-[2vw]"
+                    style={{
+                      transform: megaMenuOpen[menu] ? "rotate(180deg)" : "none",
+                    }}
+                  />
+                </button>
+                {megaMenuOpen[menu] && renderMegaMenu()}
+              </div>
+            ))}
+            <Link href="/cases" className="mb-[2vw]">
+              <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[3vw] hover:text-sky-500 cursor-pointer">
                 Cases
               </span>
             </Link>
-            <Link href="/events" passHref>
-              <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[1.5vw] hover:text-sky-500 cursor-pointer">
+            <Link href="/events" className="mb-[2vw]">
+              <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[3vw] hover:text-sky-500 cursor-pointer">
                 Events
               </span>
             </Link>
-            <Link href="/blog" passHref>
-              <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[1.5vw] hover:text-sky-500 cursor-pointer">
+            <Link href="/blog" className="mb-[2vw]">
+              <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[3vw] hover:text-sky-500 cursor-pointer">
                 Blog
               </span>
             </Link>
-            <Link href="/contactus" passHref>
-              <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[1.5vw] hover:text-sky-500 cursor-pointer">
+            <Link href="/contactus" className="mb-[2vw]">
+              <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[3vw] hover:text-sky-500 cursor-pointer">
                 Contact Us
               </span>
             </Link>
-            <a href="https://wa.me/923137844595" passHref>
+            <a href="https://wa.me/923137844595" className="mb-[2vw]">
               <span className="flex flex-row group items-center border py-[2vw] border-transparent cursor-pointer">
-                <p className="text-orangeColor-0 mr-[1vw] font-semibold text-[1.5vw]">
+                <p className="text-orangeColor-0 mr-[1vw] font-semibold text-[2.8vw]">
                   LET'S CHAT!
                 </p>
-                <IoIosMail className="text-[3vw] w-[3.5vw] h-[3.5vw] text-white bg-orangeColor-0 hover:bg-opacity-90 rounded-full p-[0.5vw] group-hover:scale-110 duration-200" />
+                <IoIosMail className="text-[4vw] w-[5vw] h-[5vw] text-white bg-orangeColor-0 hover:bg-opacity-90 rounded-full p-[1vw] group-hover:scale-110 duration-200" />
               </span>
             </a>
           </div>
@@ -179,83 +150,41 @@ const Navbar = () => {
             isBurgerMenuOpen ? "flex" : "hidden"
           } md:flex-row items-center justify-between`}
         >
-          <div
-            onClick={() => toggleMegaMenu("aboutUs")}
-            className="relative cursor-pointer"
-          >
-            <button className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase flex items-center">
-              About Us
-              <FaChevronDown
-                className="ml-1 text-[1vw]"
-                style={{
-                  transform: megaMenuOpen.aboutUs ? "rotate(180deg)" : "none",
-                }}
-              />
-            </button>
-            {megaMenuOpen.aboutUs && <MegaMenu />}
-          </div>
-          <div
-            onClick={() => toggleMegaMenu("whatWeDo")}
-            className="relative cursor-pointer"
-          >
-            <button className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase flex items-center">
-              What We Do
-              <FaChevronDown
-                className="ml-1 text-[1vw]"
-                style={{
-                  transform: megaMenuOpen.whatWeDo ? "rotate(180deg)" : "none",
-                }}
-              />
-            </button>
-            {megaMenuOpen.whatWeDo && <MegaMenu />}
-          </div>
-          <div
-            onClick={() => toggleMegaMenu("solutions")}
-            className="relative cursor-pointer"
-          >
-            <button className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase flex items-center">
-              Solutions
-              <FaChevronDown
-                className="ml-1 text-[1vw]"
-                style={{
-                  transform: megaMenuOpen.solutions ? "rotate(180deg)" : "none",
-                }}
-              />
-            </button>
-            {megaMenuOpen.solutions && <MegaMenu />}
-          </div>
-          <div
-            onClick={() => toggleMegaMenu("pricing")}
-            className="relative cursor-pointer"
-          >
-            <button className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase flex items-center">
-              Pricing
-              <FaChevronDown
-                className="ml-1 text-[1vw]"
-                style={{
-                  transform: megaMenuOpen.pricing ? "rotate(180deg)" : "none",
-                }}
-              />
-            </button>
-            {megaMenuOpen.pricing && <MegaMenu />}
-          </div>
-          <Link href="/cases" passHref>
-            <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase cursor-pointer">
+          {["AboutUs", "WhatWeDo", "Solutions", "Pricing"].map((menu) => (
+            <div
+              key={menu}
+              onClick={() => toggleMegaMenu(menu)}
+              className="relative cursor-pointer"
+            >
+              <button className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.8vw] hover:text-sky-500 px-[0.75vw] rounded-md uppercase flex items-center">
+                {menu.replace(/([A-Z])/g, " $1").trim()}
+                <FaChevronDown
+                  className="ml-1 text-[0.9vw]"
+                  style={{
+                    transform: megaMenuOpen[menu] ? "rotate(180deg)" : "none",
+                  }}
+                />
+              </button>
+              {megaMenuOpen[menu] && renderMegaMenu()}
+            </div>
+          ))}
+          <Link href="/cases">
+            <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.8vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase cursor-pointer">
               Cases
             </span>
           </Link>
-          <Link href="/events" passHref>
-            <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase cursor-pointer">
+          <Link href="/events">
+            <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.8vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase cursor-pointer">
               Events
             </span>
           </Link>
-          <Link href="/blog" passHref>
-            <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase cursor-pointer">
+          <Link href="/blog">
+            <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.8vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase cursor-pointer">
               Blog
             </span>
           </Link>
-          <Link href="/contactus" passHref>
-            <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.9vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase cursor-pointer">
+          <Link href="/contactus">
+            <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.8vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase cursor-pointer">
               Contact Us
             </span>
           </Link>
@@ -263,12 +192,12 @@ const Navbar = () => {
         <div
           className={`hidden md:flex ${isBurgerMenuOpen ? "flex" : "hidden"}`}
         >
-          <a href="https://wa.me/923137844595" passHref>
+          <a href="https://wa.me/923137844595">
             <span className="flex group items-center border border-transparent cursor-pointer">
               <p className="text-orangeColor-0 mr-[1vw] font-semibold text-[0.9vw]">
                 LET'S CHAT!
               </p>
-              <IoIosMail className="text-[3vw] text-white bg-orangeColor-0 hover:bg-opacity-90 rounded-full p-[0.4vw] group-hover:scale-110 duration-200" />
+              <IoIosMail className="text-[3vw] text-white bg-orangeColor-0 hover:bg-opacity-90 rounded-full p-[0.7vw] group-hover:scale-110 duration-200" />
             </span>
           </a>
         </div>

@@ -37,7 +37,7 @@ const HeroSection = () => {
         className="w-full h-screen absolute"
       />
       <div
-        className="text-container flex flex-col w-full"
+        className="text-container flex flex-col w-[90%]"
         style={{
           position: "absolute",
           top: "50%",
@@ -52,7 +52,7 @@ const HeroSection = () => {
             animate="visible"
             custom={{ delay: 0.2 }}
             variants={titleAnimation}
-            className="font-extrabold text-[7vw] text-sky-500 uppercase tracking-wider leading-none flex justify-center"
+            className="font-extrabold text-[7.2vw] text-skyColor-0 uppercase tracking-wider leading-none flex justify-center"
           >
             Custom Software
           </motion.div>
@@ -61,7 +61,7 @@ const HeroSection = () => {
             animate="visible"
             custom={{ delay: 0.2 }}
             variants={titleAnimation}
-            className="font-extrabold text-[7vw] text-blueColor-0 uppercase tracking-wider leading-none flex justify-start"
+            className="font-extrabold text-[7.2vw] text-blueColor-0 uppercase tracking-wider leading-none flex justify-start"
           >
             Development
           </motion.div>
@@ -70,7 +70,7 @@ const HeroSection = () => {
         {/* Subtitle */}
         <div className="flex flex-col items-center leading-none">
           <div className="flex flex-row items-center">
-            <div className="flex flex-col items-start mr-3">
+            <div className="flex flex-col font-medium tracking-tight font-lato items-start mr-3">
               <motion.div
                 initial="hidden"
                 animate="visible"
@@ -97,7 +97,7 @@ const HeroSection = () => {
               animate="visible"
               custom={{ delay: 0.6 }}
               variants={titleAnimation}
-              className="font-extrabold text-[7vw] text-blueColor-0 uppercase tracking-wider"
+              className="font-extrabold text-[7.2vw] text-blueColor-0 uppercase tracking-wider"
             >
               Company
             </motion.div>

@@ -16,7 +16,7 @@ const Herosection2 = () => {
       try {
         const response = await fetch(`${apiUrl}/api/services/`);
         const data = await response.json();
-        // Modify the data to include up to 8 items and ensure the number is even
+        
         const evenCount = Math.min(data.length, 8);
         setScrollCards(data.slice(0, evenCount % 2 === 0 ? evenCount : evenCount - 1));
       } catch (error) {
@@ -54,10 +54,10 @@ const Herosection2 = () => {
             <IoRemoveOutline />
             <p className="tracking-widest uppercase">WE PROVIDE</p>
           </div>
-          <h5 className="text-[3.5vw] w-full font-bold leading-tight text-blueColor-0 mt-7">
+          <h5 className="text-[3.5vw] w-full font-bold leading-tight text-blueColor-0 mt-[1.8vw]">
             Custom software development services
           </h5>
-          <p className="text-[1.3vw] mt-6 text-blueColor-0">
+          <p className="text-[1.3vw] mt-[1.5vw] text-blueColor-0">
             Full-cycle custom software services to develop unique software
             solutions.
           </p>
@@ -79,7 +79,7 @@ const Herosection2 = () => {
               }
             })}
           </div>
-          <div className="w-full md:w-1/2 mt-0 md:mt-[8vw]">
+          <div className="w-full md:w-1/2 mt-0 md:mt-[6vw]">
             {scrollCards.map((card, index) => {
               if (index % 2 !== 0) {
                 return (

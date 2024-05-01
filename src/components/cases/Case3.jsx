@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import CaseCard from "@/components/constants/cases/CaseCard";
 import Loader from "@/components/constants/loader/Loader";
+import { getCode } from "country-list"; // Import getCode to convert names to codes
 
 const Case3 = () => {
   const [caseData, setCaseData] = useState([]);
@@ -15,43 +16,23 @@ const Case3 = () => {
       setLoading(true);
       try {
         const response = await fetch(`${apiUrl}/api/cases/`);
-        const data = await response.json();
-
-        const casesWithDetails = await Promise.all(
-          data.map(async (caseItem) => {
-            const technologies = await Promise.all(
-              caseItem.technologies.map(async (techId) => {
-                const techResponse = await fetch(
-                  `${apiUrl}/api/technologies/${techId}`
-                );
-                return await techResponse.json();
-              })
-            );
-
-            let industry = null;
-            if (caseItem.industries) {
-              const industryResponse = await fetch(
-                `${apiUrl}/api/industries/${caseItem.industries}`
-              );
-              industry = await industryResponse.json();
-            }
-
-            return {
-              ...caseItem,
-              technologies,
-              industry,
-            };
-          })
-        );
-
-        
-        const newBackgroundColors = {};
-        casesWithDetails.forEach((caseItem) => {
-          newBackgroundColors[caseItem.id] = generateRandomLightBackground();
+        let data = await response.json();
+        // Enhance data with flag URLs
+        data = data.map((item) => {
+          const countryCode = getCode(item.country);
+          if (countryCode) {
+            const flagUrl = `https://flagcdn.com/w320/${countryCode.toLowerCase()}.png`;
+            return { ...item, countryImage: flagUrl };
+          }
+          return item;
         });
-
-        setBackgroundColors(newBackgroundColors);
-        setCaseData(casesWithDetails);
+        setCaseData(data);
+        const updatedBackgroundColors = {};
+        data.forEach((caseItem) => {
+          updatedBackgroundColors[caseItem.id] =
+            generateRandomLightBackground();
+        });
+        setBackgroundColors(updatedBackgroundColors);
       } catch (error) {
         console.error("Error fetching case data:", error);
       } finally {
@@ -79,7 +60,11 @@ const Case3 = () => {
   };
 
   if (loading) {
-    return <Loader />;
+    return (
+      <div className="w-full h-full flex flex-col items-center justify-center">
+        <Loader />
+      </div>
+    );
   }
 
   if (caseData.length === 0) {
@@ -87,15 +72,15 @@ const Case3 = () => {
   }
 
   return (
-    <div>
+    <div className="w-full">
       {caseData.map((caseItem) => (
         <CaseCard
           key={caseItem.id}
           title={caseItem.title}
-          industry={caseItem.industry ? caseItem.industry.name : "N/A"}
-          countrySource={caseItem.country_image}
+          industry={caseItem.industries.name}
+          countrySource={caseItem.countryImage}
           detail={caseItem.description}
-          type={`${caseItem.service_type} App`}
+          serviceTypes={caseItem.service_type}
           technologies={caseItem.technologies}
           featuredImage={caseItem.featured_image}
           featuredBackground={backgroundColors[caseItem.id]}

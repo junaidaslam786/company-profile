@@ -1,59 +1,50 @@
 import MegaMenuLayout from "@/components/navigation/MegaMenuLayout";
+import Link from "next/link";
 
 const AboutMegaMenu = () => {
   return (
-    <MegaMenuLayout>
-      <div className="flex h-full">
-        <div className="w-1/2 pr-[1vw]">
-          <h3 className="font-semibold text-[0.9vw] font-sans underline mb-[1vw]">
-            SOLUTIONS
-          </h3>
-          <div className="mb-4">
-            <div className="bg-orange-100 border-l-4 border-orange-500 p-4 mb-2">
-              <h4 className="font-semibold text-orange-600">
-                Identity & Access Management{" "}
-                <span className="bg-green-200 text-green-600 px-2 py-1 text-xs rounded-full ml-2">
-                  NEW
-                </span>
-              </h4>
-              <p>Empower your app with IAM features</p>
-            </div>
-            <div className="bg-purple-100 border-l-4 border-purple-500 p-4 mb-2">
-              <h4 className="font-semibold text-purple-600">Libraria</h4>
-              <p>Smart localization platform</p>
-            </div>
-            <div className="bg-blue-100 border-l-4 border-blue-500 p-4">
-              <h4 className="font-semibold text-blue-600">Axactly</h4>
-              <p>A product discovery workshop</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="w-1/2 pl-4">
-          <h3 className="font-semibold text-[0.9vw] font-sans underline mb-[1vw]">
-            READY-TO-APPLY
-          </h3>
-          <div className="mb-4">
-            <div className="bg-teal-100 border-l-4 border-teal-500 p-4 mb-2">
-              <h4 className="font-semibold text-teal-600">
-                Elements for Data Presentation{" "}
-                <span className="bg-green-200 text-green-600 px-2 py-1 text-xs rounded-full ml-2">
-                  NEW
-                </span>
-              </h4>
-              <p>Clickable Prototype</p>
-            </div>
-            <div className="bg-green-100 border-l-4 border-green-500 p-4">
-              <h4 className="font-semibold text-green-600">
-                Elements for ATS, CRM, ERP
-              </h4>
-              <p>Clickable Prototype</p>
-            </div>
-          </div>
-        </div>
+    <>
+      <div className="hidden md:block">
+        <MegaMenuLayout>{Content()}</MegaMenuLayout>
       </div>
-    </MegaMenuLayout>
+      <div className="md:hidden">{Content()}</div>
+    </>
   );
 };
+
+const Content = () => (
+  <div className="bg-white text-blueColor-0 md:mt-0 mt-[4vw] w-full">
+    <h1 className="text-[1.9vw] md:text-[0.95vw] font-semibold mb-[2vw] md:mb-[1vw] font-sans underline">
+      About Us
+    </h1>
+    <div className="w-full md:w-1/2">
+      <Link href={'/'}>
+        <div className="p-[2vw] md:p-[1vw] hover:bg-sky-100 hover:text-skyColor-0 md:rounded-lg rounded-md md:mt-[0.7vw] mt-[1.4vw]">
+          <div>
+            <p className="text-[2.4vw] md:text-[1.2vw] font-semibold">Labverse Story</p>
+          </div>
+          <p className="text-[1.9vw] md:text-[0.95vw]">
+            Learn more about leadership team and company culture.
+          </p>
+        </div>
+      </Link>
+      <Link href={'/'}>
+        <div className="p-[2vw] md:p-[1vw] border border-blue-300 bg-sky-50 hover:bg-sky-100 rounded-md md:rounded-lg">
+          <div>
+            <p className="text-[2.4vw] md:text-[1.2vw] font-semibold">
+              Client Voices
+              <span className="text-[1.5vw] md:text-[0.75vw] ml-[0.8vw] md:ml-[0.4vw] text-white bg-green-500 p-[0.4vw] md:p-[0.2vw] rounded-sm md:rounded-md">
+                NEW
+              </span>
+            </p>
+          </div>
+          <p className="text-[1.9vw] md:text-[0.95vw]">
+            Find authentic reviews that showcase our strengths.
+          </p>
+        </div>
+      </Link>
+    </div>
+  </div>
+);
 
 export default AboutMegaMenu;

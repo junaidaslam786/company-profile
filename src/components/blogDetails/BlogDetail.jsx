@@ -16,7 +16,7 @@ const BlogDetail = ({ id }) => {
   useEffect(() => {
     const apiUrl = process.env.NEXT_PUBLIC_BACKEND_API_URL;
     const fetchData = async () => {
-      setLoading(true); // Ensure loading is true when fetching new data
+      setLoading(true);
       try {
         const response = await fetch(`${apiUrl}/api/blogposts/${id}`);
         const data = await response.json();
