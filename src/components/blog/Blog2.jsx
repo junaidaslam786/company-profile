@@ -33,7 +33,7 @@ const Blog2 = () => {
         setBlogPosts(postsWithReadingTime);
         // Filter out "Category 1" from the categories array
         setCategories(
-          categoriesData.filter((category) => category.name !== "Category 1")
+          categoriesData.filter((category) => category.name !== ("Featured" || "featured" || "FEATURED"))
         );
       } catch (error) {
         console.error("Error fetching data:", error);

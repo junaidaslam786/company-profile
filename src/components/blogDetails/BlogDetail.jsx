@@ -10,7 +10,6 @@ const BlogDetail = ({ id }) => {
   const [blogPost, setBlogPost] = useState({});
   const [author, setAuthor] = useState({});
   const [loading, setLoading] = useState(true);
-  const [parsedContent, setParsedContent] = useState([]);
   const [readingTime, setReadingTime] = useState("");
 
   useEffect(() => {
@@ -21,6 +20,7 @@ const BlogDetail = ({ id }) => {
         const response = await fetch(`${apiUrl}/api/blogposts/${id}`);
         const data = await response.json();
         setBlogPost(data);
+        setReadingTime(calculateReadingTime(data.content));
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -33,11 +33,11 @@ const BlogDetail = ({ id }) => {
 
   useEffect(() => {
     const apiUrl = process.env.NEXT_PUBLIC_BACKEND_API_URL;
-    if (blogPost.user) {
+    if (blogPost.author) {
       const fetchAuthor = async () => {
         try {
           const response = await fetch(
-            `${apiUrl}/api/authors/${blogPost.user}`
+            `${apiUrl}/api/authors/${blogPost.author}`
           );
           const data = await response.json();
           setAuthor(data);
@@ -48,82 +48,14 @@ const BlogDetail = ({ id }) => {
 
       fetchAuthor();
     }
-  }, [blogPost.user]);
+  }, [blogPost.author]);
 
-  useEffect(() => {
-    if (blogPost.content) {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(blogPost.content, "text/html");
-      const sections = Array.from(doc.querySelectorAll("h2")).map((h2) => {
-        const id = h2.id;
-        const title = h2.textContent.trim();
-        let details = [];
-        let subheadings = [];
-        let currentNode = h2.nextElementSibling;
-
-        while (currentNode && currentNode.tagName !== "H2") {
-          if (currentNode.tagName === "P") {
-            details.push({
-              id: currentNode.id,
-              text: currentNode.textContent.trim(),
-            });
-          }
-
-          if (currentNode.tagName === "H3") {
-            const subId = currentNode.id;
-            const subTitle = currentNode.textContent.trim();
-            let subDetails = [];
-            currentNode = currentNode.nextElementSibling;
-
-            while (
-              currentNode &&
-              currentNode.tagName !== "H3" &&
-              currentNode.tagName !== "H2"
-            ) {
-              if (currentNode.tagName === "P") {
-                subDetails.push({
-                  id: currentNode.id,
-                  text: currentNode.textContent.trim(),
-                });
-              }
-              currentNode = currentNode.nextElementSibling;
-            }
-
-            subheadings.push({
-              id: subId,
-              text: subTitle,
-              details: subDetails,
-            });
-            continue;
-          }
-
-          if (currentNode) currentNode = currentNode.nextElementSibling;
-        }
-
-        return { id, title, details, subheadings };
-      });
-
-      setParsedContent(sections);
-
-      // Calculate reading time
-      const totalWords = sections.reduce((total, section) => {
-        let sectionWords = section.details.reduce((secTotal, detail) => {
-          return secTotal + detail.text.split(" ").length;
-        }, 0);
-
-        section.subheadings.forEach((subheading) => {
-          subheading.details.forEach((detail) => {
-            sectionWords += detail.text.split(" ").length;
-          });
-        });
-
-        return total + sectionWords;
-      }, 0);
-
-      const calculatedReadingTime = Math.ceil(totalWords / 225);
-      setReadingTime(`${calculatedReadingTime} minutes read`);
-    }
-  }, [blogPost.content]);
+  const calculateReadingTime = (text) => {
+    const wordsPerMinute = 225;
+    const words = text ? text.match(/\w+/g).length : 0;
+    const time = Math.ceil(words / wordsPerMinute);
+    return `${time} minute read`;
+  };
 
   if (loading) {
     return (
@@ -141,12 +73,12 @@ const BlogDetail = ({ id }) => {
         authorImage={author.Author_image}
         author={author.username}
         role={author.roles}
+        timeToRead={readingTime} // Use the calculated reading time here
         date={new Date(blogPost.published_date).toLocaleString()}
-        timeToRead={readingTime}
         featuredImage={blogPost.image}
       />
       <div className="mt-[5vw]">
-        <BlogDetailsLayout content={parsedContent} />
+        <BlogDetailsLayout content={blogPost.content} />
       </div>
       <div className="mt-[5vw]">
         <BlogForm />

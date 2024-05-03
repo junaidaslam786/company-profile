@@ -17,7 +17,7 @@ const Blog1 = () => {
         const response = await fetch(`${apiUrl}/api/blogposts/`);
         const data = await response.json();
         const filteredPosts = data.filter(
-          (post) => post.category && post.category.name === "Category 1"
+          (post) => post.category && post.category.name === "Featured" || "featured" || "FEATURED"
         );
         const postsWithReadingTime = filteredPosts.map((post) => ({
           ...post,
