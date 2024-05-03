@@ -136,7 +136,7 @@ const Navbar = () => {
             <a href="https://wa.me/923137844595" className="mb-[2vw]">
               <span className="flex flex-row group items-center border py-[2vw] border-transparent cursor-pointer">
                 <p className="text-orangeColor-0 mr-[1vw] font-semibold text-[2.8vw]">
-                  LET'S CHAT!
+                  LET&apos;S CHAT!
                 </p>
                 <IoIosMail className="text-[4vw] w-[5vw] h-[5vw] text-white bg-orangeColor-0 hover:bg-opacity-90 rounded-full p-[1vw] group-hover:scale-110 duration-200" />
               </span>
@@ -195,7 +195,7 @@ const Navbar = () => {
           <a href="https://wa.me/923137844595">
             <span className="flex group items-center border border-transparent cursor-pointer">
               <p className="text-orangeColor-0 mr-[1vw] font-semibold text-[0.9vw]">
-                LET'S CHAT!
+                LET&apos;S CHAT!
               </p>
               <IoIosMail className="text-[3vw] text-white bg-orangeColor-0 hover:bg-opacity-90 rounded-full p-[0.7vw] group-hover:scale-110 duration-200" />
             </span>

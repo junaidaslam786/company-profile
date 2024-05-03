@@ -43,7 +43,7 @@ const Event3 = () => {
               variants={titleAnimation}
               className="font-extrabold text-[7vw] text-blueColor-0 mr-5 uppercase tracking-wider leading-none flex justify-center"
             >
-              Let's work
+              Let&apos;s work
             </motion.div>
             <motion.div
               initial="hidden"
@@ -77,7 +77,7 @@ const Event3 = () => {
                 variants={subtitleAnimation}
                 className="text-blueColor-0 text-[1.5vw]"
               >
-                Let's build it!
+                Let&apos;s build it!
               </motion.div>
             </div>
 

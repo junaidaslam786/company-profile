@@ -10,6 +10,7 @@ const ScrollSectionLeft = ({ src, dateTime, title, time, href }) => {
           src={src}
           width={500}
           height={500}
+          alt={"Image Failed to Load"}
           className="w-screen h-[50vw] lg:h-[25vw]"
         />
       </div>

@@ -10,7 +10,7 @@ const MegaMenuLayout = ({ children }) => {
               CHOOSE YOUR PAGE
             </h2>
             <p className="mt-[1vw] text-[1.1vw] text-gray-700">
-              Here's how we helped 130+ companies build brilliant software
+              Here&apos;s how we helped 130+ companies build brilliant software
             </p>
           </div>
         </div>

@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from "react";
-import Image from "next/image";
+import React, { useRef, useEffect, useState, useCallback } from "react";
 
 const Slider = () => {
   const containerRef = useRef(null);
@@ -19,41 +18,33 @@ const Slider = () => {
 
     observer.observe(container);
 
-    // Clean up the observer when component unmounts
     return () => {
       observer.unobserve(container);
     };
   }, []);
 
-  const handleGlobalScroll = (event) => {
+  const handleGlobalScroll = useCallback((event) => {
     if (!isVisible) return;
 
     const container = containerRef.current;
     if (!container) return;
 
-    // Determine the direction of scroll
     const direction = event.deltaY > 0 ? 1 : -1;
-
-    // Scroll the container
-    container.scrollLeft += direction * 100; // Adjust scroll speed as needed
-
-    // Prevent the default behavior of scrolling the entire page
+    container.scrollLeft += direction * 100;
     event.preventDefault();
-  };
+  }, [isVisible]); // Depend on isVisible because the function behavior depends on it
 
   useEffect(() => {
     if (isVisible) {
-      window.addEventListener("wheel", handleGlobalScroll);
-      console.log("screen is visible");
+      window.addEventListener("wheel", handleGlobalScroll, { passive: false });
     } else {
       window.removeEventListener("wheel", handleGlobalScroll);
-      console.log("screen is not visible");
     }
-    // Clean up the event listener when component unmounts or isVisible changes
+
     return () => {
       window.removeEventListener("wheel", handleGlobalScroll);
     };
-  }, [isVisible]);
+  }, [isVisible, handleGlobalScroll]); // Now handleGlobalScroll is stable and can be a dependency
 
   return (
     <div
