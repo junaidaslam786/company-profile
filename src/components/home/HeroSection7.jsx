@@ -28,9 +28,9 @@ const HeroSection7 = () => {
           <div>
             <AnimationCard
               id={"01"}
-              title={"RESULT-ORIENTED PROCESS"}
+              title={"RESULT-ORIENTED PROCESSES"}
               content={
-                "Our structured development processes ensure on-time solutions delivery"
+                "Our structured development processes ensure on-time solutions delivery."
               }
               hoveredColor={"hover:bg-orange-400"}
             />
@@ -39,9 +39,9 @@ const HeroSection7 = () => {
         <div className="flex flex-col items-end -mt-[15%] z-[2]">
           <AnimationCard
             id={"02"}
-            title={"RESULT-ORIENTED PROCESS"}
+            title={"INDUSTRIES EXPERTS"}
             content={
-              "Our structured development processes ensure on-time solutions delivery"
+              "We deliver industry-specific solutions that meet your business needs."
             }
             hoveredColor={"hover:bg-sky-500"}
           />
@@ -49,9 +49,9 @@ const HeroSection7 = () => {
         <div className="flex flex-col items-start -mt-[15%] z-[3]">
           <AnimationCard
             id={"03"}
-            title={"RESULT-ORIENTED PROCESS"}
+            title={"RECOMMENDED BY CLIENTS"}
             content={
-              "Our structured development processes ensure on-time solutions delivery"
+              "We are recommended technology partners among our clients."
             }
             hoveredColor={"hover:bg-red-400"}
           />
@@ -59,9 +59,9 @@ const HeroSection7 = () => {
         <div className="flex flex-col items-end -mt-[15%] z-[4]">
           <AnimationCard
             id={"04"}
-            title={"RESULT-ORIENTED PROCESS"}
+            title={"TRANSPARENT AND PREDICTABLE"}
             content={
-              "Our structured development processes ensure on-time solutions delivery"
+              "Our clients have full access to their projects and know what to expect from the team."
             }
             hoveredColor={"hover:bg-purple-500"}
           />
@@ -69,9 +69,9 @@ const HeroSection7 = () => {
         <div className="flex flex-col items-start -mt-[15%] z-[5]">
           <AnimationCard
             id={"05"}
-            title={"RESULT-ORIENTED PROCESS"}
+            title={"FLEXIBLE AND SCALABLE"}
             content={
-              "Our structured development processes ensure on-time solutions delivery"
+              "We scale the team and adapt the development process according to the business requirements."
             }
             hoveredColor={"hover:bg-green-500"}
           />
