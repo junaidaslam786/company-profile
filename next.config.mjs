@@ -21,6 +21,6 @@ const nextConfig = {
 const sharpPath = require.resolve('sharp');
 process.env.NEXT_SHARP_PATH = sharpPath;
 
-module.exports = nextConfig;
+export default nextConfig;
 
 
