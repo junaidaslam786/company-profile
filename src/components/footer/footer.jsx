@@ -46,15 +46,15 @@ const Footer = () => {
     <div
       className="flex flex-col md:flex-row w-full border-t border-gray-100 overflow-x-hidden bg-white p-5 pt-20 h-[85vh]"
     >
-      <div className="w-2/5 flex flex-col items-center justify-start">
+      <div className="md:w-2/5 w-4/5 ml-[10%] md:ml-0 flex flex-col items-start justify-start">
         <div>
           <h5
-            className="font-semibold text-sky-500 hover:opacity-90 cursor-pointer text-[2.5vw]"
+            className="font-semibold text-sky-500 hover:opacity-90 cursor-pointer text-[5vws] md:text-[2.5vw]"
           >
             Labverse
           </h5>
           <p
-            className="text-gray-600 mt-16 leading-snug text-[0.9vw]"
+            className="text-gray-600 md:mt-[4vw] mt-[8vw] leading-snug md:text-[0.9vw] text-[3vw]"
           >
             We help our clients transform their <br /> business ideas into
             tangible results <br /> by developing unique software solutions.
@@ -62,48 +62,48 @@ const Footer = () => {
           <div className="mt-5">
             <Link
               href="/info"
-              className="text-blueColor-0 hover:text-orangeColor-0 font-semibold text-[1.5vw]"
+              className="text-blueColor-0 hover:text-orangeColor-0 font-semibold md:text-[1.5vw] text-[4vw]"
             >
               info@labverse.co
             </Link>
           </div>
         </div>
-        <div className="flex justify-between w-1/2 mr-12 mt-5">
+        <div className="flex justify-between md:w-1/2 w-2/4 mr-12 mt-4">
           <Link href="https://www.facebook.com" target="_blank">
             <FaFacebookF
-              className="fill-blueColor-0 hover:fill-orangeColor-0 text-[0.9vw]"
+              className="fill-blueColor-0 hover:fill-orangeColor-0 md:text-[0.9vw] text-[4vw]"
             />
           </Link>
           <Link href="https://www.linkedin.com" target="_blank">
             <FaLinkedinIn
-              className="fill-blueColor-0 hover:fill-orangeColor-0 text-[0.9vw]"
+              className="fill-blueColor-0 hover:fill-orangeColor-0 md:text-[0.9vw] text-[4vw]"
             />
           </Link>
           <Link href="https://www.instagram.com" target="_blank">
             <RiInstagramFill
-              className="fill-blueColor-0 hover:fill-orangeColor-0 text-[0.9vw]"
+              className="fill-blueColor-0 hover:fill-orangeColor-0 md:text-[0.9vw] text-[4vw]"
             />
           </Link>
           <Link href="https://www.telegram.com">
             <BiLogoTelegram
-              className="fill-blueColor-0 hover:fill-orangeColor-0 text-[0.9vw]"
+              className="fill-blueColor-0 hover:fill-orangeColor-0 md:text-[0.9vw] text-[4vw]"
             />
           </Link>
         </div>
       </div>
-      <div className="w-full md:flex md:flex-row md:justify-between grid grid-cols-2 mt-10 md:mt-0">
+      <div className="w-full md:flex md:flex-row md:justify-between grid md-cols-2 col-1 mt-10 md:mt-0">
         <div className="w-full h-full sm:w-1/2 md:w-1/5 px-4">
           <h5
-            className="font-semibold mt-2 text-blueColor-0 font-sans text-[1.2vw]"
+            className="font-semibold mt-2 text-blueColor-0 font-sans md:text-[1.2vw] text-[3.5vw]"
           >
             COMPANY
           </h5>
-          <ul className="ml-2 mt-2 h-3/5">
+          <ul className="md:ml-2 md:mt-2  h-3/5">
             {sections.map((section, index) => (
-              <li key={index} className="mt-5">
+              <li key={index} className="md:mt-5 mt-3">
                 <Link
                   href={section.link}
-                  className="text-blueColor-0 hover:text-orangeColor-0 text-[0.9vw]"
+                  className="text-blueColor-0 hover:text-orangeColor-0 md:text-[0.9vw] text-[3vw]"
                 >
                   {section.title}
                 </Link>
@@ -111,18 +111,18 @@ const Footer = () => {
             ))}
           </ul>
         </div>
-        <div className="w-full sm:w-1/2 md:w-1/5 px-4">
+        <div className="w-full sm:w-1/2 md:mt-0 mt-6 md:w-1/5 px-4">
           <h5
-            className="font-semibold mt-2 text-blueColor-0 font-sans text-[1.2vw]"
+            className="font-semibold md:mt-2 mt-4 text-blueColor-0 font-sans md:text-[1.2vw] text-[3.5vw]"
           >
             SERVICES
           </h5>
-          <ul className="ml-2 mt-2 h-3/5">
+          <ul className="md:mt-2 h-3/5">
             {services.map((service, index) => (
               <li key={index} className="mt-5">
                 <Link
                   href={service.link}
-                  className="text-blueColor-0 hover:text-orangeColor-0 text-[0.9vw]"
+                  className="text-blueColor-0 hover:text-orangeColor-0 md:text-[0.9vw] text-[3vw]"
                 >
                   {service.title}
                 </Link>
@@ -130,18 +130,18 @@ const Footer = () => {
             ))}
           </ul>
         </div>
-        <div className="w-full sm:w-1/2 md:w-1/5 px-4">
+        <div className="w-full sm:w-1/2 md:mt-0 mt-6 md:w-1/5 px-4">
           <h5
-            className="font-semibold mt-2 text-blueColor-0 font-sans text-[1.2vw]"
+            className="font-semibold md:mt-2 mt-6 text-blueColor-0 font-sans md:text-[1.2vw] text-[3.5vw]"
           >
             SERVICES
           </h5>
-          <ul className="ml-2 mt-2 h-3/5">
+          <ul className="mt-2 h-3/5">
             {services1.map((service, index) => (
               <li key={index} className="mt-5">
                 <Link
                   href={service.link}
-                  className="text-blueColor-0 hover:text-orangeColor-0 text-[0.9vw]"
+                  className="text-blueColor-0 hover:text-orangeColor-0 md:text-[0.9vw] text-[3vw]"
                 >
                   {service.title}
                 </Link>
@@ -149,18 +149,18 @@ const Footer = () => {
             ))}
           </ul>
         </div>
-        <div className="w-full sm:w-1/2 md:w-1/5 px-4">
+        <div className="w-full sm:w-1/2 md:w-1/5 md:mt-0 mt-6 px-4">
           <h5
-            className="font-semibold mt-2 text-blueColor-0 font-sans text-[1.2vw]"
+            className="font-semibold mt-2 text-blueColor-0 font-sans md:text-[1.2vw] text-[3.5vw]"
           >
             INDUSTRIES
           </h5>
-          <ul className="ml-2 mt-2 h-3/5">
+          <ul className="md:ml-2 mt-2 h-3/5">
             {industries.map((service, index) => (
               <li key={index} className="mt-5">
                 <Link
                   href={service.link}
-                  className="text-blueColor-0 hover:text-orangeColor-0 text-[0.9vw]"
+                  className="text-blueColor-0 hover:text-orangeColor-0 md:text-[0.9vw] text-[3vw]"
                 >
                   {service.title}
                 </Link>
