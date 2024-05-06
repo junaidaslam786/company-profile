@@ -70,7 +70,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className="absolute md:fixed top-0 left-0 w-screen z-50"
+      className="fixed top-0 left-0 w-screen z-50"
       style={{ backgroundColor: navbarBgColor }}
     >
       <div className="relative flex items-center w-full h-[12vh] justify-between px-[1vw] md:justify-around">

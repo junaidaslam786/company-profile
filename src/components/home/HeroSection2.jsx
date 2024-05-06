@@ -40,8 +40,8 @@ const Herosection2 = () => {
 
   if (scrollCards.length === 0) {
     return (
-      <div className="flex justify-center items-center w-full h-full">
-        <p>No data available</p>
+      <div className="flex justify-center items-center w-full h-screen">
+        <p>No service available</p>
       </div>
     );
   }

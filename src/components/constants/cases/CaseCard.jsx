@@ -75,13 +75,13 @@ const CaseCard = ({
         </div>
         <div className="w-1/2">
           <div
-            className={`h-[32vw] w-[45.5vw] ${featuredBackground} bg-opacity-20 overflow-hidden flex flex-col items-center justify-center`}
+            className={`h-[32vw] w-[45.5vw] p-[4vw] ${featuredBackground} bg-opacity-20 overflow-hidden flex flex-col items-center justify-center`}
           >
             <Image
               src={featuredImage}
-              width={300}
-              height={300}
-              alt="Featured"
+              width={500}
+              height={500}
+              alt="Featured max-w-full max-h-full"
             />
           </div>
         </div>

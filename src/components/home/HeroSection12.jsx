@@ -38,8 +38,8 @@ const HeroSection12 = () => {
 
   if (questions.length === 0) {
     return (
-      <div className="flex justify-center items-center w-full h-full">
-        <p>No data available</p>
+      <div className="flex justify-center items-center w-full h-screen">
+        <p>No faq available</p>
       </div>
     );
   }

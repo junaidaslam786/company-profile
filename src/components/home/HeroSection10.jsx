@@ -47,7 +47,7 @@ const HeroSection10 = () => {
   if (blogPosts.length === 0) {
     return (
       <div className="flex justify-center items-center w-full h-full">
-        <p>No data available</p>
+        <p>No blog available</p>
       </div>
     );
   }

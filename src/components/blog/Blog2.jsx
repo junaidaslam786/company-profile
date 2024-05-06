@@ -65,7 +65,7 @@ const Blog2 = () => {
   if (categories.length === 0) {
     return (
       <div className="w-full h-screen flex justify-center items-center">
-        <p>No categories available</p>
+        <p>No category available</p>
       </div>
     );
   }
@@ -90,7 +90,7 @@ const Blog2 = () => {
                   <Loader />
                 </div>
               ) : categoryPosts.length === 0 ? (
-                <p>No posts available</p>
+                <p>No post available</p>
               ) : (
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-[3vw]">
                   {categoryPosts.map((post) => (

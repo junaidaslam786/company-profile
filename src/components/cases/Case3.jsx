@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import CaseCard from "@/components/constants/cases/CaseCard";
 import Loader from "@/components/constants/loader/Loader";
-import { getCode } from "country-list"; // Import getCode to convert names to codes
+import { getCode } from "country-list";
 
 const Case3 = () => {
   const [caseData, setCaseData] = useState([]);
@@ -17,7 +17,7 @@ const Case3 = () => {
       try {
         const response = await fetch(`${apiUrl}/api/cases/`);
         let data = await response.json();
-        // Enhance data with flag URLs
+        
         data = data.map((item) => {
           const countryCode = getCode(item.country);
           if (countryCode) {

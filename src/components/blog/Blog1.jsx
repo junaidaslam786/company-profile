@@ -54,9 +54,9 @@ const Blog1 = () => {
 
   if (category1Posts.length === 0) {
     return (
-      <div className="w-full h-screen flex justify-center items-center">
-        <Loader />
-      </div>
+      <p className="w-full h-screen flex justify-center items-center">
+        No featured post available
+      </p>
     );
   }
 

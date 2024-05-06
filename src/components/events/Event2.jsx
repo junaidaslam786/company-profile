@@ -2,9 +2,12 @@
 
 import React, { useState, useEffect } from "react";
 import EventCard from "@/components/constants/events/EventCard";
+import Loader from "@/components/constants/loader/Loader";
 
 const Event2 = () => {
   const [eventCards, setEventCards] = useState([]);
+  const [fetchingData, setFetchingData] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const apiUrl = process.env.NEXT_PUBLIC_BACKEND_API_URL;
@@ -15,11 +18,29 @@ const Event2 = () => {
         setEventCards(data);
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setFetchingData(false);
+        setLoading(false);
       }
     };
 
     fetchData();
   }, []);
+  if (loading || fetchingData) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <Loader />
+      </div>
+    );
+  }
+
+  if (eventCards.length === 0) {
+    return (
+      <div className="flex justify-center items-center w-full h-screen">
+        <p>No event available</p>
+      </div>
+    );
+  }
   return (
     <div className="grid grid-cols-1 gap-[3vw] md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 h-full">
       {eventCards.map((event) => (

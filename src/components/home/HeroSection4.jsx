@@ -3,24 +3,54 @@
 import React, { useState, useEffect, useRef } from "react";
 import StoryCard from "@/components/constants/home/StoryCard";
 import Image from "next/image";
-import { LiaFlagUsaSolid } from "react-icons/lia";
 import { IoRemoveOutline } from "react-icons/io5";
+import Loader from "@/components/constants/loader/Loader";
+import { getCode } from "country-list";
 
 const HeroSection4 = () => {
+  const [caseData, setCaseData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [backgroundColors, setBackgroundColors] = useState({});
   const [activeImage, setActiveImage] = useState(0);
-  const storyRefs = useRef([
-    React.createRef(),
-    React.createRef(),
-    React.createRef(),
-  ]);
+  const caseItemRefs = useRef({});
 
-  const images = [
-    "/images/65425876546fc7b49bafdd28_aws-mockup.png",
-    "/images/b07e0ebccccfcba7c2801f90a44e6158.jpg",
-    "/images/pexels-gdtography-911738.jpg",
-  ];
+  useEffect(() => {
+    const apiUrl = process.env.NEXT_PUBLIC_BACKEND_API_URL;
+    const fetchCaseData = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch(`${apiUrl}/api/cases/`);
+        let data = await response.json();
 
-  const backgroundColors = ["bg-pink-400", "bg-sky-400", "bg-lime-400"]; // Example background colors
+        data = data.map((item) => {
+          const countryCode = getCode(item.country);
+          if (countryCode) {
+            const flagUrl = `https://flagcdn.com/w320/${countryCode.toLowerCase()}.png`;
+            return { ...item, countryImage: flagUrl };
+          }
+          return item;
+        });
+
+        // Sort by case id numerically and limit the array to a maximum of 3 items
+        data.sort((a, b) => a.id - b.id).slice(0, 3);
+
+        setCaseData(data);
+        const updatedBackgroundColors = {};
+        data.forEach((caseItem, index) => {
+          updatedBackgroundColors[caseItem.id] =
+            generateRandomLightBackground();
+          caseItemRefs.current[index] = React.createRef();
+        });
+        setBackgroundColors(updatedBackgroundColors);
+      } catch (error) {
+        console.error("Error fetching case data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCaseData();
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -34,76 +64,70 @@ const HeroSection4 = () => {
       { threshold: 0.5 }
     );
 
-    storyRefs.current.forEach((ref) => {
-      if (ref.current) {
-        observer.observe(ref.current);
+    caseData.forEach((_, index) => {
+      if (caseItemRefs.current[index].current) {
+        observer.observe(caseItemRefs.current[index].current);
       }
     });
 
     return () => {
-      storyRefs.current.forEach((ref) => {
-        if (ref.current) {
-          observer.unobserve(ref.current);
+      caseData.forEach((_, index) => {
+        if (caseItemRefs.current[index].current) {
+          observer.unobserve(caseItemRefs.current[index].current);
         }
       });
     };
-  }, []);
+  }, [caseData]);
+
+  const generateRandomLightBackground = () => {
+    const lightColors = ["bg-indigo-400", "bg-pink-400", "bg-sky-400"];
+    return lightColors[Math.floor(Math.random() * lightColors.length)];
+  };
+
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (caseData.length === 0) {
+    return <div>No story available</div>;
+  }
 
   return (
-    <div className="flex flex-row w-full mt-32">
+    <div className="flex flex-row w-full mt-[8vw]">
       <div className="w-1/2 flex flex-col items-center">
         <div className="w-5/6">
-          <div className="w-2/3 mt-32">
+          <div className="w-2/3 mt-[8vw]">
             <div className="flex flex-row items-center text-orangeColor-0 font-semibold text-[1vw]">
               <IoRemoveOutline />
               <p className="uppercase">SUCCESS STORIES</p>
             </div>
-            <p className="text-white font-semibold leading-tight text-[4vw] mt-24">
+            <p className="text-white font-semibold leading-tight text-[4vw] mt-[6vw]">
               Custom business software development
             </p>
           </div>
         </div>
-        <div className="w-3/5 mt-32">
-          {[
-            {
-              id: "01",
-              title: "Intelligent property management software",
-              detail:
-                "Fazile is an intelligent and flexible property management software that gives an overview of the company's real estate portfolio.",
-            },
-            {
-              id: "02",
-              title: "Specialized hiring platform for student-athletes",
-              detail:
-                "Podium X helps student-athletes create standout CVs and find fitting jobs.",
-            },
-            {
-              id: "03",
-              title: "Web application for post-mini-offices",
-              detail:
-                "Point24 for Meest offers scalable software to enhance the operational activities of post offices.",
-            },
-          ].map((story, index) => (
+        <div className="w-3/5 mt-[8vw]">
+          {caseData.map((caseItem, index) => (
             <div
-              key={index}
-              ref={storyRefs.current[index]}
+              key={caseItem.id}
+              ref={caseItemRefs.current[index]}
               data-index={index}
-              className="mb-32"
+              className="mb-[8vw]"
             >
               <StoryCard
-                id={story.id}
-                business={"Real Estate"}
-                country={"Norway"}
-                countryFlag={<LiaFlagUsaSolid className="text-pink-700" />}
-                about={"Web App"}
-                title={story.title}
-                detail={story.detail}
+                id={caseItem.id}
+                business={caseItem.industries.name}
+                country={caseItem.country}
+                countryFlag={caseItem.countryImage}
+                serviceTypes={caseItem.service_type}
+                title={caseItem.title}
+                detail={caseItem.description}
               />
             </div>
           ))}
         </div>
       </div>
-      <div className={`w-1/2 ${backgroundColors[activeImage]}`}>
+      <div className={`w-1/2 ${backgroundColors[caseData[activeImage]?.id]}`}>
         <div
           style={{
             width: "100%",
@@ -122,7 +146,7 @@ const HeroSection4 = () => {
             }}
           >
             <Image
-              src={images[activeImage]}
+              src={caseData[activeImage]?.featured_image}
               alt={"Active Image"}
               width={500}
               height={500}

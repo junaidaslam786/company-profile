@@ -71,7 +71,7 @@ const HeroSection8 = () => {
 
   if (testimonials.length === 0) {
     return (
-      <div className="flex justify-center items-center w-full h-full">
+      <div className="flex justify-center items-center w-full h-screen">
         <p>No testimonials available</p>
       </div>
     );
