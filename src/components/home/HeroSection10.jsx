@@ -9,6 +9,7 @@ const HeroSection10 = () => {
   const [blogPosts, setBlogPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [fetchingData, setFetchingData] = useState(true);
+  const [readingTime, setReadingTime] = useState("");
 
   useEffect(() => {
     const apiUrl = process.env.NEXT_PUBLIC_BACKEND_API_URL;
@@ -16,8 +17,8 @@ const HeroSection10 = () => {
       try {
         const response = await fetch(`${apiUrl}/api/blogposts/`);
         const data = await response.json();
-        // Slice the data to only include up to 3 posts
         setBlogPosts(data.slice(0, 3));
+        setReadingTime(calculateReadingTime(data.content));
       } catch (error) {
         console.error("Error fetching blog posts:", error);
       } finally {
@@ -28,6 +29,12 @@ const HeroSection10 = () => {
 
     fetchBlogPosts();
   }, []);
+  const calculateReadingTime = (text) => {
+    const wordsPerMinute = 225;
+    const words = text ? text.match(/\w+/g).length : 0;
+    const time = Math.ceil(words / wordsPerMinute);
+    return `${time} minute read`;
+  };
 
   if (loading || fetchingData) {
     return (
@@ -64,9 +71,9 @@ const HeroSection10 = () => {
             key={post.id}
             src={post.image}
             title={post.title}
-            content={post.heading}
+            content={post.description}
             date={new Date(post.published_date).toLocaleDateString()}
-            time="15 minutes read"
+            time={readingTime}
           />
         ))}
       </div>

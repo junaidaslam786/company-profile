@@ -12,6 +12,7 @@ const BasicCard = ({ src, dateTime, title, content, time, href }) => {
         src={src}
         width={500}
         height={500}
+        alt={"Image Failed to Load"}
         className="w-screen h-[50vw] md:h-[25vw] lg:h-[17vw]"
       />
       <div className="h-2/3 w-full flex flex-col justify-between">

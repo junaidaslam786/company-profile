@@ -15,7 +15,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ["Montserrat", "sans-serif"],
-        lato: ["Lato", "sans-serif"]
+        lato: ["Lato", "sans-serif"],
       },
       textColor: {
         orangeColor: ["rgb(255 135 51)"],

@@ -26,6 +26,7 @@ const ReviewCard = ({src, title, content, date, time }) => {
               width={500}
               height={500}
               src={src}
+              alt={"Image Failed to Load"}
               className="w-[53vw] h-[30vw] mt-[5vw] md:mt-0 md:w-1/4 md:h-1/4 md:opacity-0 group-hover:w-full group-hover:h-full group-hover:opacity-100 duration-500"
             />
           </div>

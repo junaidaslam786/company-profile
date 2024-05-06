@@ -20,7 +20,7 @@ const Highlights = ({title, blogType, authorImage, author, role, date, timeToRea
                   src={authorImage}
                   width={50}
                   height={50}
-                  alt="Image Failed to Load"
+                  alt={"Image Failed to Load"}
                   className="w-[3.5vw] h-[3.5vw] rounded-full"
                 />
               </div>
@@ -56,6 +56,7 @@ const Highlights = ({title, blogType, authorImage, author, role, date, timeToRea
           src={featuredImage}
           width={500}
           height={500}
+          alt={"Image Failed to Load"}
           className="w-[30vw] h-[20vw]"
         />
       </div>

@@ -1,0 +1,101 @@
+.blogContent a {
+  color: blue;
+  text-decoration: underline;
+  font-family: "Lato", sans-serif;
+}
+
+.blogContent a p {
+  color: blue;
+  text-decoration: underline;
+  font-family: "Lato", sans-serif;
+}
+
+.blogContent ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.blogContent ol {
+  list-style-type: decimal;
+  margin-left: 20px;
+}
+
+.blogContent li {
+  margin-bottom: 10px;
+  font-size: 1.2vw;
+  color: rgb(20, 27, 77);
+  font-family: "Montserrat", sans-serif;
+}
+
+.blogContent li p {
+  font-size: 1.2vw;
+  color: rgb(20, 27, 77);
+  font-family: "Montserrat", sans-serif;
+}
+
+.blogContent p {
+  font-size: 1.2vw;
+  color: rgb(20, 27, 77);
+  font-family: "Montserrat", sans-serif;
+}
+
+.blogContent h1 {
+  font-size: 3vw;
+  font-weight: 800;
+  color: rgb(20, 27, 77);
+  font-family: "Montserrat", sans-serif;
+}
+
+.blogContent h2 {
+  font-size: 2.8vw;
+  font-weight: 800;
+  color: rgb(20, 27, 77);
+  font-family: "Montserrat", sans-serif;
+}
+
+.blogContent h3 {
+  font-size: 2vw;
+  font-weight: 700;
+  color: rgb(20, 27, 77);
+  font-family: "Montserrat", sans-serif;
+}
+
+.blogContent h4 {
+  font-size: 1.5vw;
+  font-weight: 700;
+  color: rgb(20, 27, 77);
+  font-family: "Montserrat", sans-serif;
+}
+
+.blogContent h5 {
+  font-size: 1.2vw;
+  font-weight: 700;
+  color: rgb(20, 27, 77);
+  font-family: "Montserrat", sans-serif;
+}
+
+.blogContent h6 {
+  font-size: 1vw;
+  font-weight: 700;
+  color: rgb(20, 27, 77);
+  font-family: "Montserrat", sans-serif;
+}
+
+.blogContent img {
+  width: 100%;
+}
+
+.blogContent figure {
+  width: 100%;
+}
+
+.blogContent iframe {
+  width: 100%;
+}
+
+.blogContent {
+  width: 70%;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}

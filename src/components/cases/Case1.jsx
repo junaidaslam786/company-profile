@@ -2,7 +2,6 @@
 import { motion } from "framer-motion";
 import { IoRemoveOutline } from "react-icons/io5";
 import Link from "next/link";
-import Image from "next/image";
 
 const Case = () => {
   // Animation variants for Framer Motion
@@ -26,13 +25,6 @@ const Case = () => {
 
   return (
     <div className="hero-container h-screen flex flex-col items-center w-full bg-white">
-      <Image
-        src={"/images/pexels-gdtography-911738.jpg"}
-        layout="fill"
-        objectFit="cover"
-        alt="Background Image"
-        className="w-full h-[80vh]"
-      />
       <div
         className="text-container flex flex-col w-[93%]"
         style={{

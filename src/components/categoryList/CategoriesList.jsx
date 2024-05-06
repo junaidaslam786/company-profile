@@ -117,6 +117,7 @@ const CategoriesList = ({ categoryId }) => {
           >
             {categories.map((category) => (
               <Link
+                key={category.id}
                 href={`/category/${category.id}`}
                 className="uppercase text-blueColor-0 text-[0.9vw] font-medium px-[1vw] py-[0.6vw] rounded-[1.2vw] hover:bg-sky-100 w-full"
               >
