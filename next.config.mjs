@@ -1,3 +1,5 @@
+import sharp from 'sharp';
+
 const nextConfig = {
   images: {
     remotePatterns: [
@@ -18,8 +20,11 @@ const nextConfig = {
   },
 };
 
-const sharpPath = require.resolve('sharp');
-process.env.NEXT_SHARP_PATH = sharpPath;
+// Assuming you still need to set this for some reason:
+const sharpPath = sharp ? sharp.path : undefined;
+if (sharpPath) {
+  process.env.NEXT_SHARP_PATH = sharpPath;
+}
 
 export default nextConfig;
 
