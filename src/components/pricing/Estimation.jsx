@@ -27,7 +27,7 @@ const Estimation = () => {
     } else {
       setUserAnswers({
         ...userAnswers,
-        [currentQuestionIndex]: [option], // Use an array for uniform handling
+        [currentQuestionIndex]: [option],
       });
     }
   };

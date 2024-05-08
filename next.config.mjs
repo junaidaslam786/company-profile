@@ -3,7 +3,7 @@ import sharp from 'sharp';
 const nextConfig = {
   images: {
     remotePatterns: [
-      { protocol: "http", hostname: "labverse.co" },
+      { protocol: "http", hostname: "api.labverse.co" },
       { protocol: "https", hostname: "flagcdn.com" },
       { protocol: "http", hostname: "127.0.0.1" },
     ],
@@ -15,7 +15,6 @@ const nextConfig = {
   },
 };
 
-// Assuming you still need to set this for some reason:
 const sharpPath = sharp ? sharp.path : undefined;
 if (sharpPath) {
   process.env.NEXT_SHARP_PATH = sharpPath;
