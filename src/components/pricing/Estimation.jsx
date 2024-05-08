@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import questions from "./questions";
+import questions from "./Questions";
 
 const Estimation = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
