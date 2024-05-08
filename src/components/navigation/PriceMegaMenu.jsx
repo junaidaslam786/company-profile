@@ -44,10 +44,10 @@ const Content = () => (
           </p>
         </div>
       </Link>
-      <Link href={'/'}>
+      <Link href={'/pricing/estimate'}>
         <div className="p-[2vw] md:p-[1vw] hover:bg-sky-100 hover:text-skyColor-0 rounded-md md:rounded-lg mt-[1.4vw] md:mt-[0.7vw]">
           <h2>
-            <p className="text-[2.4vw] md:text-[1.2vw] font-semibold">Estimate mobile app</p>
+            <p className="text-[2.4vw] md:text-[1.2vw] font-semibold">Estimate Your App</p>
           </h2>
           <p className="text-[1.8vw] md:text-[0.95vw] tracking-tighter">
             Take a quick poll and get a clear estimation for your future mobile
