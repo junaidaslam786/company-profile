@@ -113,33 +113,33 @@ const Navbar = () => {
                 {megaMenuOpen[menu] && renderMegaMenu()}
               </div>
             ))}
-            <Link href="/cases" className="mb-[2vw]">
-              <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[3vw] hover:text-sky-500 cursor-pointer">
+            <Link href="/cases" className="mb-[4vw]">
+              <p className="text-blueColor-0 tracking-widest font-semibold font-sans text-[3vw] hover:text-sky-500 cursor-pointer">
                 Cases
-              </span>
+              </p>
             </Link>
-            <Link href="/events" className="mb-[2vw]">
-              <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[3vw] hover:text-sky-500 cursor-pointer">
+            <Link href="/events" className="mb-[4vw]">
+              <p className="text-blueColor-0 tracking-widest font-semibold font-sans text-[3vw] hover:text-sky-500 cursor-pointer">
                 Events
-              </span>
+              </p>
             </Link>
-            <Link href="/blog" className="mb-[2vw]">
-              <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[3vw] hover:text-sky-500 cursor-pointer">
+            <Link href="/blog" className="mb-[4vw]">
+              <p className="text-blueColor-0 tracking-widest font-semibold font-sans text-[3vw] hover:text-sky-500 cursor-pointer">
                 Blog
-              </span>
+              </p>
             </Link>
-            <Link href="/contactus" className="mb-[2vw]">
-              <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[3vw] hover:text-sky-500 cursor-pointer">
+            <Link href="/contactus" className="mb-[4vw]">
+              <p className="text-blueColor-0 tracking-widest font-semibold font-sans text-[3vw] hover:text-sky-500 cursor-pointer">
                 Contact Us
-              </span>
+              </p>
             </Link>
-            <a href="https://wa.me/923137844595" className="mb-[2vw]">
-              <span className="flex flex-row group items-center border py-[2vw] border-transparent cursor-pointer">
+            <a href="https://wa.me/923137844595">
+              <p className="flex flex-row group items-center border py-[2vw] border-transparent cursor-pointer">
                 <p className="text-orangeColor-0 mr-[1vw] font-semibold text-[2.8vw]">
                   LET&apos;S CHAT!
                 </p>
                 <IoIosMail className="text-[4vw] w-[5vw] h-[5vw] text-white bg-orangeColor-0 hover:bg-opacity-90 rounded-full p-[1vw] group-hover:scale-110 duration-200" />
-              </span>
+              </p>
             </a>
           </div>
         </div>
@@ -156,10 +156,10 @@ const Navbar = () => {
               onClick={() => toggleMegaMenu(menu)}
               className="relative cursor-pointer"
             >
-              <button className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.8vw] hover:text-sky-500 px-[0.75vw] rounded-md uppercase flex items-center">
+              <button className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.8vw] hover:text-sky-500 px-[0.75vw] rounded-md uppercase flex flex-row items-center">
                 {menu.replace(/([A-Z])/g, " $1").trim()}
                 <FaChevronDown
-                  className="ml-1 text-[0.9vw]"
+                  className="ml-[0.2vw] text-[0.6vw]"
                   style={{
                     transform: megaMenuOpen[menu] ? "rotate(180deg)" : "none",
                   }}
@@ -169,24 +169,24 @@ const Navbar = () => {
             </div>
           ))}
           <Link href="/cases">
-            <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.8vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase cursor-pointer">
+            <p className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.8vw] hover:text-sky-500 px-[1vw] rounded-md uppercase cursor-pointer">
               Cases
-            </span>
+            </p>
           </Link>
           <Link href="/events">
-            <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.8vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase cursor-pointer">
+            <p className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.8vw] hover:text-sky-500 px-[1vw] rounded-md uppercase cursor-pointer">
               Events
-            </span>
+            </p>
           </Link>
           <Link href="/blog">
-            <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.8vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase cursor-pointer">
+            <p className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.8vw] hover:text-sky-500 px-[1vw] rounded-md uppercase cursor-pointer">
               Blog
-            </span>
+            </p>
           </Link>
           <Link href="/contactus">
-            <span className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.8vw] hover:text-sky-500 px-3 py-2 rounded-md uppercase cursor-pointer">
+            <p className="text-blueColor-0 tracking-widest font-semibold font-sans text-[0.8vw] hover:text-sky-500 px-[1vw] rounded-md uppercase cursor-pointer">
               Contact Us
-            </span>
+            </p>
           </Link>
         </div>
         <div
