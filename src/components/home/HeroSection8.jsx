@@ -11,7 +11,6 @@ const HeroSection8 = () => {
   const [loading, setLoading] = useState(true);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const cardRef = useRef(null);
-  const cardWidth = useRef(0);
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -19,6 +18,9 @@ const HeroSection8 = () => {
     const fetchTestimonials = async () => {
       try {
         const response = await fetch(`${apiUrl}/api/testimonials/`);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
         const data = await response.json();
         setTestimonials(data);
       } catch (error) {
@@ -33,28 +35,23 @@ const HeroSection8 = () => {
 
   useEffect(() => {
     if (containerRef.current && cardRef.current) {
-      cardWidth.current = cardRef.current.offsetWidth;
-      containerRef.current.style.width = `${
-        cardWidth.current * testimonials.length
-      }px`;
+      const cardWidth = cardRef.current.offsetWidth;
+      containerRef.current.style.width = `${cardWidth * testimonials.length}px`;
     }
   }, [testimonials]);
 
   const handleNext = () => {
     const nextIndex = (currentCardIndex + 1) % testimonials.length;
     setCurrentCardIndex(nextIndex);
-    containerRef.current.style.transform = `translateX(-${
-      cardWidth.current * nextIndex * 1.077
-    }px)`;
+    const cardWidth = cardRef.current ? cardRef.current.offsetWidth : 0;
+    containerRef.current.style.transform = `translateX(-${cardWidth * nextIndex}px)`;
   };
 
   const handlePrevious = () => {
-    const prevIndex =
-      currentCardIndex === 0 ? testimonials.length - 1 : currentCardIndex - 1;
+    const prevIndex = currentCardIndex === 0 ? testimonials.length - 1 : currentCardIndex - 1;
     setCurrentCardIndex(prevIndex);
-    containerRef.current.style.transform = `translateX(-${
-      cardWidth.current * prevIndex
-    }px)`;
+    const cardWidth = cardRef.current ? cardRef.current.offsetWidth : 0;
+    containerRef.current.style.transform = `translateX(-${cardWidth * prevIndex}px)`;
   };
 
   const renderStars = (rating) => {

@@ -20,6 +20,10 @@ const Blog2 = () => {
           fetch(`${apiUrl}/api/categories/`),
         ]);
 
+        if (!postsResponse.ok || !categoriesResponse.ok) {
+          throw new Error("Failed to fetch data");
+        }
+
         const [postsData, categoriesData] = await Promise.all([
           postsResponse.json(),
           categoriesResponse.json(),
@@ -31,9 +35,10 @@ const Blog2 = () => {
         }));
 
         setBlogPosts(postsWithReadingTime);
-        // Filter out "Category 1" from the categories array
         setCategories(
-          categoriesData.filter((category) => category.name !== ("Featured" || "featured" || "FEATURED"))
+          categoriesData.filter(
+            (category) => !["Featured", "featured", "FEATURED"].includes(category.name)
+          )
         );
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -49,7 +54,7 @@ const Blog2 = () => {
   const calculateReadingTime = (content) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(content, "text/html");
-    const words = doc.body.textContent.split(" ").length;
+    const words = doc.body.textContent?.split(" ").length || 0;
     const minutes = Math.ceil(words / 225);
     return `${minutes} minutes read`;
   };

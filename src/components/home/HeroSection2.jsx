@@ -16,7 +16,7 @@ const Herosection2 = () => {
       try {
         const response = await fetch(`${apiUrl}/api/services/`);
         const data = await response.json();
-        
+        console.log(data)
         const evenCount = Math.min(data.length, 8);
         setScrollCards(data.slice(0, evenCount % 2 === 0 ? evenCount : evenCount - 1));
       } catch (error) {
@@ -66,13 +66,13 @@ const Herosection2 = () => {
       <div className="w-full md:w-2/3">
         <div className="flex flex-col md:flex-row">
           <div className="w-full md:w-1/2">
-            {scrollCards.map((card, index) => {
+            {scrollCards?.map((card, index) => {
               if (index % 2 === 0) {
                 return (
                   <ScrollCard
-                    key={card.id}
-                    title={card.name}
-                    content={card.description}
+                    key={card?.id}
+                    title={card?.name}
+                    content={card?.description}
                     bottoms={index === scrollCards.length - 2 ? "" : "border-b"}
                   />
                 );

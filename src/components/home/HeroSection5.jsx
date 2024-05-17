@@ -8,13 +8,15 @@ import Loader from "@/components/constants/loader/Loader";
 const Herosection5 = () => {
   const [scrollCards, setScrollCards] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [fetchingData, setFetchingData] = useState(true);
 
   useEffect(() => {
     const apiUrl = process.env.NEXT_PUBLIC_BACKEND_API_URL;
     const fetchData = async () => {
       try {
         const response = await fetch(`${apiUrl}/api/industries/`);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
         const data = await response.json();
         // Modify the data to include up to 8 items and ensure the number is even
         const evenCount = Math.min(data.length, 8);
@@ -22,16 +24,12 @@ const Herosection5 = () => {
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
-        setFetchingData(false);
+        setLoading(false);
       }
     };
 
     fetchData();
   }, []);
-
-  useEffect(() => {
-    setLoading(fetchingData);
-  }, [fetchingData]);
 
   if (loading) {
     return (
@@ -69,34 +67,26 @@ const Herosection5 = () => {
       <div className="w-full md:w-2/3">
         <div className="flex flex-col md:flex-row">
           <div className="w-full md:w-1/2">
-            {scrollCards.map((card, index) => {
-              if (index % 2 === 0) {
-                return (
-                  <ScrollCard2
-                    key={card.id}
-                    title={card.name}
-                    content={card.description}
-                    src={card.image}
-                    bottoms={index === scrollCards.length - 2 ? "" : "border-b"}
-                  />
-                );
-              }
-            })}
+            {scrollCards.filter((_, index) => index % 2 === 0).map((card, index) => (
+              <ScrollCard2
+                key={card.id}
+                title={card.name}
+                content={card.description}
+                src={card.image}
+                bottoms={index === scrollCards.length / 2 - 1 ? "" : "border-b"}
+              />
+            ))}
           </div>
           <div className="w-full md:w-1/2 mt-0 md:mt-[8vw]">
-            {scrollCards.map((card, index) => {
-              if (index % 2 !== 0) {
-                return (
-                  <ScrollCard2
-                    key={card.id}
-                    title={card.name}
-                    content={card.description}
-                    src={card.image}
-                    bottoms={index === scrollCards.length - 1 ? "" : "border-b"}
-                  />
-                );
-              }
-            })}
+            {scrollCards.filter((_, index) => index % 2 !== 0).map((card, index) => (
+              <ScrollCard2
+                key={card.id}
+                title={card.name}
+                content={card.description}
+                src={card.image}
+                bottoms={index === scrollCards.length / 2 - 1 ? "" : "border-b"}
+              />
+            ))}
           </div>
         </div>
       </div>

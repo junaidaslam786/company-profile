@@ -9,19 +9,20 @@ import ServiceCard from "@/components/constants/home/ServiceCard";
 const HeroSection3 = () => {
   const [updates, setUpdates] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [fetchingData, setFetchingData] = useState(true);
 
   useEffect(() => {
     const apiUrl = process.env.NEXT_PUBLIC_BACKEND_API_URL;
     const fetchUpdates = async () => {
       try {
         const response = await fetch(`${apiUrl}/api/updates/`);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
         const data = await response.json();
-        setUpdates(data);
+        setUpdates(data || []);
       } catch (error) {
         console.error("Error fetching Updates:", error);
       } finally {
-        setFetchingData(false);
         setLoading(false);
       }
     };
@@ -29,7 +30,7 @@ const HeroSection3 = () => {
     fetchUpdates();
   }, []);
 
-  if (loading || fetchingData) {
+  if (loading) {
     return (
       <div className="w-full h-screen flex justify-center items-center">
         <Loader />
@@ -65,8 +66,8 @@ const HeroSection3 = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-[2vw] m-[2vw]">
-        {updates.map((update) =>
-          update.category === "expert" ? (
+        {updates.map((update) => 
+          update?.category === "expert" ? (
             <ExpertCard
               key={update.id}
               type={update.category}

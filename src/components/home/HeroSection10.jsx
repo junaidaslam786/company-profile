@@ -8,27 +8,31 @@ import Loader from "@/components/constants/loader/Loader";
 const HeroSection10 = () => {
   const [blogPosts, setBlogPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [fetchingData, setFetchingData] = useState(true);
-  const [readingTime, setReadingTime] = useState("");
 
   useEffect(() => {
     const apiUrl = process.env.NEXT_PUBLIC_BACKEND_API_URL;
     const fetchBlogPosts = async () => {
       try {
         const response = await fetch(`${apiUrl}/api/blogposts/`);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
         const data = await response.json();
-        setBlogPosts(data.slice(0, 3));
-        setReadingTime(calculateReadingTime(data.content));
+        const postsWithReadingTime = data.slice(0, 3).map((post) => ({
+          ...post,
+          readingTime: calculateReadingTime(post.content),
+        }));
+        setBlogPosts(postsWithReadingTime);
       } catch (error) {
         console.error("Error fetching blog posts:", error);
       } finally {
-        setFetchingData(false);
         setLoading(false);
       }
     };
 
     fetchBlogPosts();
   }, []);
+
   const calculateReadingTime = (text) => {
     const wordsPerMinute = 225;
     const words = text ? text.match(/\w+/g).length : 0;
@@ -36,7 +40,7 @@ const HeroSection10 = () => {
     return `${time} minute read`;
   };
 
-  if (loading || fetchingData) {
+  if (loading) {
     return (
       <div className="w-full h-screen flex justify-center items-center">
         <Loader />
@@ -73,7 +77,7 @@ const HeroSection10 = () => {
             title={post.title}
             content={post.description}
             date={new Date(post.published_date).toLocaleDateString()}
-            time={readingTime}
+            time={post.readingTime}
           />
         ))}
       </div>

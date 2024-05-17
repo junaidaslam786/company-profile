@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
+import PropTypes from 'prop-types';
 
 const Highlights = ({title, blogType, authorImage, author, role, date, timeToRead, featuredImage}) => {
   return (
@@ -20,8 +21,10 @@ const Highlights = ({title, blogType, authorImage, author, role, date, timeToRea
                   src={authorImage}
                   width={50}
                   height={50}
-                  alt={"Image Failed to Load"}
+                  alt="Author Image"
                   className="w-[3.5vw] h-[3.5vw] rounded-full"
+                  placeholder="blur"
+                  blurDataURL="/path/to/placeholder/image.jpg"
                 />
               </div>
               <div className="ml-[1vw]">
@@ -56,12 +59,25 @@ const Highlights = ({title, blogType, authorImage, author, role, date, timeToRea
           src={featuredImage}
           width={500}
           height={500}
-          alt={"Image Failed to Load"}
+          alt="Featured Image"
           className="w-[30vw] h-[20vw]"
+          placeholder="blur"
+          blurDataURL="/path/to/placeholder/image.jpg"
         />
       </div>
     </div>
   );
+};
+
+Highlights.propTypes = {
+  title: PropTypes.string.isRequired,
+  blogType: PropTypes.string.isRequired,
+  authorImage: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  timeToRead: PropTypes.string.isRequired,
+  featuredImage: PropTypes.string.isRequired,
 };
 
 export default Highlights;

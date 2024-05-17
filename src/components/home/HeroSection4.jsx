@@ -12,7 +12,7 @@ const HeroSection4 = () => {
   const [loading, setLoading] = useState(true);
   const [backgroundColors, setBackgroundColors] = useState({});
   const [activeImage, setActiveImage] = useState(0);
-  const caseItemRefs = useRef({});
+  const caseItemRefs = useRef([]);
 
   useEffect(() => {
     const apiUrl = process.env.NEXT_PUBLIC_BACKEND_API_URL;
@@ -20,7 +20,14 @@ const HeroSection4 = () => {
       setLoading(true);
       try {
         const response = await fetch(`${apiUrl}/api/cases/`);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
         let data = await response.json();
+        console.log('Fetched case data:', data);
+
+        // Filter out null or undefined values
+        data = data.filter(item => item && item.id && item.title && item.country);
 
         data = data.map((item) => {
           const countryCode = getCode(item.country);
@@ -32,13 +39,12 @@ const HeroSection4 = () => {
         });
 
         // Sort by case id numerically and limit the array to a maximum of 3 items
-        data.sort((a, b) => a.id - b.id).slice(0, 3);
+        data = data.sort((a, b) => a.id - b.id).slice(0, 3);
 
         setCaseData(data);
         const updatedBackgroundColors = {};
         data.forEach((caseItem, index) => {
-          updatedBackgroundColors[caseItem.id] =
-            generateRandomLightBackground();
+          updatedBackgroundColors[caseItem.id] = generateRandomLightBackground();
           caseItemRefs.current[index] = React.createRef();
         });
         setBackgroundColors(updatedBackgroundColors);
@@ -65,14 +71,14 @@ const HeroSection4 = () => {
     );
 
     caseData.forEach((_, index) => {
-      if (caseItemRefs.current[index].current) {
+      if (caseItemRefs.current[index]?.current) {
         observer.observe(caseItemRefs.current[index].current);
       }
     });
 
     return () => {
       caseData.forEach((_, index) => {
-        if (caseItemRefs.current[index].current) {
+        if (caseItemRefs.current[index]?.current) {
           observer.unobserve(caseItemRefs.current[index].current);
         }
       });
@@ -83,6 +89,8 @@ const HeroSection4 = () => {
     const lightColors = ["bg-indigo-400", "bg-pink-400", "bg-sky-400"];
     return lightColors[Math.floor(Math.random() * lightColors.length)];
   };
+
+  const defaultImage = '/path/to/default/image.jpg';
 
   if (loading) {
     return <Loader />;
@@ -116,7 +124,7 @@ const HeroSection4 = () => {
             >
               <StoryCard
                 id={caseItem.id}
-                business={caseItem.industries.name}
+                business={caseItem.industries?.name}
                 country={caseItem.country}
                 countryFlag={caseItem.countryImage}
                 serviceTypes={caseItem.service_type}
@@ -145,12 +153,21 @@ const HeroSection4 = () => {
               justifyContent: "center",
             }}
           >
-            <Image
-              src={caseData[activeImage]?.featured_image}
-              alt={"Active Image"}
-              width={500}
-              height={500}
-            />
+            {caseData[activeImage]?.featured_image ? (
+              <Image
+                src={caseData[activeImage].featured_image}
+                alt="Active Image"
+                width={500}
+                height={500}
+              />
+            ) : (
+              <Image
+                src={defaultImage}
+                alt="Default Image"
+                width={500}
+                height={500}
+              />
+            )}
           </div>
         </div>
       </div>

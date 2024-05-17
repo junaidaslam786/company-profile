@@ -7,7 +7,6 @@ import Loader from "@/components/constants/loader/Loader";
 
 const HeroSection12 = () => {
   const [questions, setQuestions] = useState([]);
-  const [fetchingData, setFetchingData] = useState(true);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -15,12 +14,14 @@ const HeroSection12 = () => {
     const fetchQuestions = async () => {
       try {
         const response = await fetch(`${apiUrl}/api/questionanswers/`);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
         const data = await response.json();
         setQuestions(data);
       } catch (error) {
         console.error("Error fetching Questions:", error);
       } finally {
-        setFetchingData(false);
         setLoading(false);
       }
     };
@@ -28,7 +29,7 @@ const HeroSection12 = () => {
     fetchQuestions();
   }, []);
 
-  if (loading || fetchingData) {
+  if (loading) {
     return (
       <div className="w-full h-screen flex justify-center items-center">
         <Loader />
@@ -43,6 +44,7 @@ const HeroSection12 = () => {
       </div>
     );
   }
+
   return (
     <div className="w-full mb-20">
       <div className="flex flex-col w-full items-center">

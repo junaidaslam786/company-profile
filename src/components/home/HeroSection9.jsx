@@ -17,11 +17,14 @@ const HeroSection9 = () => {
     const fetchTeamData = async () => {
       try {
         const response = await fetch(`${apiUrl}/api/teammembers/`);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
         const data = await response.json();
         setTeams(data);
-        setLoading(false);
       } catch (error) {
         console.error("Error fetching Team data:", error);
+      } finally {
         setLoading(false);
       }
     };
@@ -30,20 +33,19 @@ const HeroSection9 = () => {
   }, []);
 
   useEffect(() => {
-    // Dynamically calculate the container width and apply transform based on the current index
-    if (containerRef.current) {
-      const updateWidthAndTransform = () => {
-        const totalWidth = containerRef.current.clientWidth * teams.length;
+    const updateWidthAndTransform = () => {
+      if (containerRef.current) {
+        const cardWidth = containerRef.current.clientWidth / 3;
+        const totalWidth = cardWidth * teams.length;
         containerRef.current.style.width = `${totalWidth}px`;
-        containerRef.current.style.transform = `translateX(-${
-          containerRef.current.clientWidth * currentImageIndex / 3
-        }px)`;
-      };
-      updateWidthAndTransform();
-      window.addEventListener("resize", updateWidthAndTransform);
-      return () =>
-        window.removeEventListener("resize", updateWidthAndTransform);
-    }
+        containerRef.current.style.transform = `translateX(-${cardWidth * currentImageIndex}px)`;
+      }
+    };
+
+    updateWidthAndTransform();
+    window.addEventListener("resize", updateWidthAndTransform);
+
+    return () => window.removeEventListener("resize", updateWidthAndTransform);
   }, [teams, currentImageIndex]);
 
   const handleNext = () => {
@@ -51,9 +53,7 @@ const HeroSection9 = () => {
   };
 
   const handlePrevious = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === 0 ? teams.length - 1 : prevIndex - 1
-    );
+    setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? teams.length - 1 : prevIndex - 1));
   };
 
   if (loading) {
@@ -87,14 +87,11 @@ const HeroSection9 = () => {
       </div>
       <div className="relative w-full flex flex-col items-center mt-12">
         <div className="w-[90%] overflow-hidden flex flex-row">
-          <div
-            className="transition-transform duration-300 ease-in-out flex"
-            ref={containerRef}
-          >
+          <div className="transition-transform duration-300 ease-in-out flex" ref={containerRef}>
             {teams.map((team) => (
               <div
                 key={team.id}
-                className="mr-9 flex-shrink-0" // Ensure that divs do not shrink and are properly aligned
+                className="mr-9 flex-shrink-0"
                 style={{ width: "30.3%", flex: "0 0 auto" }}
               >
                 <Image
