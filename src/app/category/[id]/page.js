@@ -1,7 +1,7 @@
 "use client";
 
 import CategoriesList from "@/components/categoryList/CategoriesList";
-import Event3 from "@/components/events/Event3";
+import Event3 from "@/components/events/EventWorkText";
 import { useParams } from "next/navigation";
 
 const CategoryList = () => {

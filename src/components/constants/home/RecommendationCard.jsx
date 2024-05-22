@@ -8,13 +8,13 @@ const RecommendationCard = ({ content, company, date, rating }) => {
         <div className="flex flex-row items-center text-orangeColor-0">
           {rating}
         </div>
-        <p className="text-blueColor-0 text-[1.3vw] line-clamp-4 font-medium">
+        <p className="text-blueColor-0 text-[3vw] md:text-[1.3vw] line-clamp-4 font-medium">
           {content}
         </p>
         <div className="flex flex-row items-center">
-          <p className="mr-3 text-gray-500 text-[1vw] font-medium">{company}</p>
+          <p className="mr-3 text-gray-500 text-[2.5vw] md:text-[1vw] font-medium">{company}</p>
           |
-          <Link href={"/"} className="text-sky-600 ml-3 text-[1vw] underline">
+          <Link href={"/"} className="text-sky-600 ml-3 text-[2.5vw] md:text-[1vw] underline">
             Read full review
           </Link>
         </div>

@@ -1,13 +1,14 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
-const ReviewCard = ({src, title, content, date, time }) => {
+const ReviewCard = ({ src, title, content, date, time, href, category }) => {
   return (
-    <div className="w-full h-[50vh] group cursor-pointer pb-[2vw] md:pb-0 border-b md:border-none flex flex-col items-center">
+    <Link href={href} className="w-full h-[50vh] group cursor-pointer pb-[2vw] md:pb-0 border-b md:border-none flex flex-col items-center">
       <div className="w-5/6 h-full flex flex-col md:flex-row md:justify-between items-center">
         <div className="w-full md:w-2/3 h-[30vw] md:h-full flex flex-col md:border-b py-[2vw] items-start justify-between">
           <button className="text-blueColor-0 bg-sky-200 text-[2vw] md:text-[0.9vw] font-medium px-[2vw] py-[1.5vw] md:px-[1.5vw] md:py-[1vw] rounded-full">
-            COST ESTIMATION
+            {category}
           </button>
           <p className="text-[3.5vw] md:text-[2vw] text-blueColor-0 font-semibold md:font-medium tracking-tight">
             {title}
@@ -16,8 +17,12 @@ const ReviewCard = ({src, title, content, date, time }) => {
             {content}
           </p>
           <div className="w-full flex flex-row justify-between">
-            <p className="text-[1.5vw] md:text-[0.9vw] uppercase text-blueColor-0">{date}</p>
-            <p className="text-[1.5vw] md:text-[0.9vw] uppercase text-blueColor-0">{time}</p>
+            <p className="text-[1.5vw] md:text-[0.9vw] uppercase text-blueColor-0">
+              {date}
+            </p>
+            <p className="text-[1.5vw] md:text-[0.9vw] uppercase text-blueColor-0">
+              {time}
+            </p>
           </div>
         </div>
         <div className="w-full md:w-1/4">
@@ -32,7 +37,7 @@ const ReviewCard = ({src, title, content, date, time }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

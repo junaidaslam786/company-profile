@@ -5,7 +5,7 @@ import FAQCard from "@/components/constants/home/FAQCard";
 import { IoRemoveOutline } from "react-icons/io5";
 import Loader from "@/components/constants/loader/Loader";
 
-const HeroSection12 = () => {
+const HomeQuestions = () => {
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -46,29 +46,31 @@ const HeroSection12 = () => {
   }
 
   return (
-    <div className="w-full mb-20">
-      <div className="flex flex-col w-full items-center">
-        <div className="w-full md:w-[90%] flex flex-row items-center text-orangeColor-0 text-[1vw] font-semibold">
-          <IoRemoveOutline />
-          <p className="tracking-widest uppercase">faqs</p>
-        </div>
-        <div className="w-4/5">
-          <p className="text-blueColor-0 text-[3.5vw] font-bold font-sans tracking-wide mt-10">
-            Questions & Answers
-          </p>
-        </div>
-        <div className="w-4/5 mt-10">
-          {questions.map((question) => (
-            <FAQCard
-              key={question.id}
-              question={question.Question}
-              answer={question.Answer}
-            />
-          ))}
+    <div className="w-full flex flex-col items-center mb-[5vw]">
+      <div className="w-[90%]">
+        <div className="flex flex-col w-full items-center">
+          <div className="w-full md:w-[90%] flex flex-row items-center text-orangeColor-0 text-[2.5vw] md:text-[1vw] font-semibold">
+            <IoRemoveOutline />
+            <p className="tracking-widest uppercase">faqs</p>
+          </div>
+          <div className="w-4/5">
+            <p className="text-blueColor-0 text-[3.5vw] font-bold font-sans tracking-wide mt-[2.5vw]">
+              Questions & Answers
+            </p>
+          </div>
+          <div className="w-full md:w-4/5 mt-[2.5vw]">
+            {questions.map((question) => (
+              <FAQCard
+                key={question.id}
+                question={question.Question}
+                answer={question.Answer}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default HeroSection12;
+export default HomeQuestions;

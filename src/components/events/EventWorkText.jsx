@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { BsArrowRightCircleFill } from "react-icons/bs";
 
-const HeroSection11 = () => {
+const EventWorkText = () => {
   // Animation variants for Framer Motion
   const titleAnimation = {
     hidden: { y: -50, opacity: 0 },
@@ -23,9 +23,7 @@ const HeroSection11 = () => {
   };
 
   return (
-    <div
-      className="hero-container relative h-[80vh] w-full"
-    >
+    <div className="hero-container relative h-[80vh] w-full bg-white">
       <div
         className="text-container flex flex-col w-full"
         style={{
@@ -100,4 +98,4 @@ const HeroSection11 = () => {
   );
 };
 
-export default HeroSection11;
+export default EventWorkText;

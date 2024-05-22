@@ -134,12 +134,12 @@ const Navbar = () => {
               </p>
             </Link>
             <a href="https://wa.me/923137844595">
-              <p className="flex flex-row group items-center border py-[2vw] border-transparent cursor-pointer">
+              <div className="flex flex-row group items-center border py-[2vw] border-transparent cursor-pointer">
                 <p className="text-orangeColor-0 mr-[1vw] font-semibold text-[2.8vw]">
                   LET&apos;S CHAT!
                 </p>
                 <IoIosMail className="text-[4vw] w-[5vw] h-[5vw] text-white bg-orangeColor-0 hover:bg-opacity-90 rounded-full p-[1vw] group-hover:scale-110 duration-200" />
-              </p>
+              </div>
             </a>
           </div>
         </div>
@@ -193,12 +193,12 @@ const Navbar = () => {
           className={`hidden md:flex ${isBurgerMenuOpen ? "flex" : "hidden"}`}
         >
           <a href="https://wa.me/923137844595">
-            <span className="flex group items-center border border-transparent cursor-pointer">
+            <div className="flex group items-center border border-transparent cursor-pointer">
               <p className="text-orangeColor-0 mr-[1vw] font-semibold text-[0.9vw]">
                 LET&apos;S CHAT!
               </p>
               <IoIosMail className="text-[3vw] text-white bg-orangeColor-0 hover:bg-opacity-90 rounded-full p-[0.7vw] group-hover:scale-110 duration-200" />
-            </span>
+            </div>
           </a>
         </div>
       </div>

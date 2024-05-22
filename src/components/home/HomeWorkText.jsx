@@ -2,8 +2,7 @@
 import { motion } from "framer-motion";
 import { BsArrowRightCircleFill } from "react-icons/bs";
 
-const Event3 = () => {
-  // Animation variants for Framer Motion
+const HomeWorkText = () => {
   const titleAnimation = {
     hidden: { y: -50, opacity: 0 },
     visible: (custom) => ({
@@ -23,7 +22,9 @@ const Event3 = () => {
   };
 
   return (
-    <div className="hero-container relative h-[80vh] w-full bg-white">
+    <div
+      className="hero-container relative h-[80vw] md:h-screen w-full"
+    >
       <div
         className="text-container flex flex-col w-full"
         style={{
@@ -98,4 +99,4 @@ const Event3 = () => {
   );
 };
 
-export default Event3;
+export default HomeWorkText;

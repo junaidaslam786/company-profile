@@ -1,9 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
 import { IoRemoveOutline } from "react-icons/io5";
-import Link from "next/link";
 
-const Case = () => {
+const EventHeroSection = () => {
   // Animation variants for Framer Motion
   const titleAnimation = {
     hidden: { y: -50, opacity: 0 },
@@ -24,12 +23,12 @@ const Case = () => {
   };
 
   return (
-    <div className="hero-container h-screen flex flex-col items-center w-full bg-white">
+    <div className="hero-container h-[60vh] w-full bg-white">
       <div
-        className="text-container flex flex-col w-[93%]"
+        className="text-container flex flex-col w-[90%]"
         style={{
           position: "absolute",
-          top: "50%",
+          top: "35%",
           left: "50%",
           transform: "translate(-50%, -50%)",
         }}
@@ -43,7 +42,7 @@ const Case = () => {
             variants={titleAnimation}
             className="font-bold text-[1.5vw] text-orangeColor-0 uppercase tracking-wider leading-none flex justify-start"
           >
-            <IoRemoveOutline /> Our Projects
+            <IoRemoveOutline /> Community Activities
           </motion.div>
           <div className="flex flex-row justify-between items-center mt-[7vh]">
             <motion.div
@@ -51,35 +50,25 @@ const Case = () => {
               animate="visible"
               custom={{ delay: 0.2 }}
               variants={titleAnimation}
-              className="font-extrabold text-[6vw] text-blue-950 uppercase tracking-wider leading-none flex justify-start"
+              className="font-bold text-[5.5vw] text-blueColor-0 uppercase tracking-wider leading-none flex justify-start"
             >
-              Case Studies
+              Events
             </motion.div>
             <motion.div
               initial="hidden"
               animate="visible"
               custom={{ delay: 0.4 }}
               variants={subtitleAnimation}
-              className="text-blue-950 text-[1.3vw] w-1/3"
+              className="text-blueColor-0 text-[1.3vw] w-2/5"
             >
-              A preview of successful partnerships and mutual vision working
-              with our clients.
+              We love to organize events to share our knowledge and experience
+              in software development and everything related. Would be great to
+              see you there!
             </motion.div>
           </div>
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            custom={{ delay: 0.4 }}
-            variants={subtitleAnimation}
-            className="text-blue-950 text-[1.1vw] flex flex-start mt-[15vh]"
-          >
-            <Link href={"/cases"}>
-              Apply filters to find the most relevant cases:
-            </Link>
-          </motion.div>
         </div>
       </div>
     </div>
   );
 };
-export default Case;
+export default EventHeroSection;

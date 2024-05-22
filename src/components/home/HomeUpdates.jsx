@@ -6,7 +6,7 @@ import Loader from "@/components/constants/loader/Loader";
 import ExpertCard from "@/components/constants/home/ExpertCard";
 import ServiceCard from "@/components/constants/home/ServiceCard";
 
-const HeroSection3 = () => {
+const HomeUpdates = () => {
   const [updates, setUpdates] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -50,15 +50,15 @@ const HeroSection3 = () => {
     <div className="flex flex-col mt-[4vw]">
       <div className="flex flex-col w-full items-center">
         <div className="flex flex-col w-[90%]">
-          <div className="flex flex-row items-center text-orangeColor-0 text-[1vw] font-semibold">
+          <div className="flex flex-row items-center text-orangeColor-0 text-[2.5vw] md:text-[1vw] font-semibold">
             <IoRemoveOutline />
             <p className="tracking-widest uppercase">UPDATES</p>
           </div>
           <div className="flex flex-row justify-between items-center mt-[4vw]">
-            <p className="text-blue-950 text-[3.5vw] font-bold tracking-wide">
+            <p className="text-blueColor-0 text-[7vw] md:text-[3.5vw] font-bold tracking-wide">
               What&apos;s new?
             </p>
-            <p className="w-1/3 text-blue-950 text-[1.3vw]">
+            <p className="w-1/3 text-blueColor-0 text-[3vw] md:text-[1.3vw]">
               See fresh updates in our custom software development solutions and
               expert materials.
             </p>
@@ -89,4 +89,4 @@ const HeroSection3 = () => {
   );
 };
 
-export default HeroSection3;
+export default HomeUpdates;

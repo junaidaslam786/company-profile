@@ -2,21 +2,21 @@
 
 import { useState, useEffect } from "react";
 
-import HeroSection from "@/components/home/HeroSection1";
-import Herosection2 from "@/components/home/HeroSection2";
-import HeroSection3 from "@/components/home/HeroSection3";
-import HeroSection4 from "@/components/home/HeroSection4";
-import HeroSection5 from "@/components/home/HeroSection5";
-import HeroSection6 from "@/components/home/HeroSection6";
-import HeroSection7 from "@/components/home/HeroSection7";
-import HeroSection8 from "@/components/home/HeroSection8";
-import HeroSection9 from "@/components/home/HeroSection9";
-import HeroSection10 from "@/components/home/HeroSection10";
-import HeroSection11 from "@/components/home/HeroSection11";
-import HeroSection12 from "@/components/home/HeroSection12";
+import HeroSection from "@/components/home/HeroSection";
+import HomeServices from "@/components/home/HomeServices";
+import HomeUpdates from "@/components/home/HomeUpdates";
+import HomeCases from "@/components/home/HomeCases";
+import HomeIndustries from "@/components/home/HomeIndustries";
+import HomeTextScroll from "@/components/home/HomeTextScroll";
+import HomeCards from "@/components/home/HomeCards";
+import HomeTestimonials from "@/components/home/HomeTestimonials";
+import HomeTeamMembers from "@/components/home/HomeTeamMembers";
+import HomeBlogs from "@/components/home/HomeBlogs";
+import HomeWorkText from "@/components/home/HomeWorkText";
+import HomeQuestions from "@/components/home/HomeQuestions";
 
 const Home = () => {
-  const [bgColor, setBgColor] = useState("#ffffff"); // use HEX colors for inline styling
+  const [bgColor, setBgColor] = useState("#ffffff");
 
   const handleScroll = () => {
     const totalHeight =
@@ -24,10 +24,10 @@ const Home = () => {
     const scrollPosition = window.scrollY;
     const scrollPercentage = scrollPosition / totalHeight;
 
-    if (scrollPercentage <= 0.20 || scrollPercentage >= 0.73) {
-      setBgColor("#ffffff"); // White color
+    if (scrollPercentage <= 0.2 || scrollPercentage >= 0.73) {
+      setBgColor("#ffffff");
     } else {
-      setBgColor("#141b4d"); // Blue color, equivalent to Tailwind's blue-500
+      setBgColor("#141b4d");
     }
   };
 
@@ -40,8 +40,8 @@ const Home = () => {
   }, []);
 
   const style = {
-    transition: "background-color 1s ease", // Smooth transition for background color
-    backgroundColor: bgColor, // Dynamic background color
+    transition: "background-color 1s ease",
+    backgroundColor: bgColor,
   };
 
   return (
@@ -50,17 +50,17 @@ const Home = () => {
       className="flex font-sans min-h-screen flex-col items-center justify-between"
     >
       <HeroSection />
-      <Herosection2 />
-      <HeroSection3 />
-      <HeroSection4 />
-      <HeroSection5 />
-      <HeroSection6 />
-      <HeroSection7 />
-      <HeroSection8 />
-      <HeroSection9 />
-      <HeroSection10 />
-      <HeroSection11 />
-      <HeroSection12 />
+      <HomeServices />
+      <HomeUpdates />
+      <HomeCases />
+      <HomeIndustries />
+      <HomeTextScroll />
+      <HomeCards />
+      <HomeTestimonials />
+      <HomeTeamMembers />
+      <HomeBlogs />
+      <HomeWorkText />
+      <HomeQuestions />
     </main>
   );
 };

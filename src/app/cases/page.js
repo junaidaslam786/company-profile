@@ -1,13 +1,13 @@
-import Case from "@/components/cases/Case1";
-import Case2 from "@/components/cases/Case2";
-import Case3 from "@/components/cases/Case3";
+import CaseHeroSection from "@/components/cases/CaseHeroSection";
+import CaseHeader from "@/components/cases/CaseHeader";
+import CaseCards from "@/components/cases/CaseCards";
 
 const Cases = () => {
   return (
     <div className="flex font-sans min-h-screen w-full px-[4vw] flex-col items-center justify-between bg-white">
-      <Case />
-      <Case2 />
-      <Case3 />
+      <CaseHeroSection />
+      <CaseHeader />
+      <CaseCards />
     </div>
   );
 };

@@ -7,7 +7,7 @@ import { IoRemoveOutline } from "react-icons/io5";
 import Loader from "@/components/constants/loader/Loader";
 import { getCode } from "country-list";
 
-const HeroSection4 = () => {
+const HomeCases = () => {
   const [caseData, setCaseData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [backgroundColors, setBackgroundColors] = useState({});
@@ -105,11 +105,11 @@ const HeroSection4 = () => {
       <div className="w-1/2 flex flex-col items-center">
         <div className="w-5/6">
           <div className="w-2/3 mt-[8vw]">
-            <div className="flex flex-row items-center text-orangeColor-0 font-semibold text-[1vw]">
+            <div className="flex flex-row items-center text-orangeColor-0 font-semibold text-[2.5vw] md:text-[1vw]">
               <IoRemoveOutline />
               <p className="uppercase">SUCCESS STORIES</p>
             </div>
-            <p className="text-white font-semibold leading-tight text-[4vw] mt-[6vw]">
+            <p className="text-white font-semibold leading-tight text-[7vw] md:text-[4vw] mt-[6vw]">
               Custom business software development
             </p>
           </div>
@@ -175,4 +175,4 @@ const HeroSection4 = () => {
   );
 };
 
-export default HeroSection4;
+export default HomeCases;

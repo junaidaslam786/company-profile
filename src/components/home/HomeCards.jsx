@@ -2,20 +2,20 @@ import React from "react";
 import AnimationCard from "@/components/constants/home/AnimationCard";
 import { IoRemoveOutline } from "react-icons/io5";
 
-const HeroSection7 = () => {
+const HomeCards = () => {
   return (
-    <div className="w-full flex flex-col items-center pt-32 pb-10">
-      <div className="flex flex-col w-full items-center mb-[12vh]">
+    <div className="w-full flex flex-col items-center pt-[8vw] pb-10">
+      <div className="flex flex-col w-full items-center mb-[6vw]">
         <div className="flex flex-col w-4/5">
-          <div className="flex flex-row items-center text-orangeColor-0 text-[1vw] font-semibold">
+          <div className="flex flex-row items-center text-orangeColor-0 text-[2.5vw] md:text-[1vw] font-semibold">
             <IoRemoveOutline />
             <p className="tracking-widest uppercase">Advantages</p>
           </div>
-          <div className="flex flex-row justify-between items-center mt-16">
-            <p className="text-white text-[3.5vw] font-bold">
+          <div className="flex flex-col md:flex-row md:justify-between items-center md:mt-[4vw]">
+            <p className="text-white text-[6.5vw] md:text-[3.5vw] font-bold">
               Why choose Labverse?
             </p>
-            <p className="w-1/4 text-slate-300 text-[1.1vw] tracking-tight">
+            <p className="w-full md:w-1/3 text-slate-300 text-[3vw] md:text-[1.2vw] tracking-tight">
               Our custom software development agency helps our clients transform
               their business ideas into tangible results by developing unique
               software solutions.
@@ -81,4 +81,4 @@ const HeroSection7 = () => {
   );
 };
 
-export default HeroSection7;
+export default HomeCards;

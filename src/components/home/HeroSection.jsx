@@ -1,9 +1,28 @@
 "use client";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
 const HeroSection = () => {
-  // Animation variants for Framer Motion
+  const [topPosition, setTopPosition] = useState("50%");
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setTopPosition("30%");
+      } else {
+        setTopPosition("50%");
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const titleAnimation = {
     hidden: { y: -50, opacity: 0 },
     visible: (custom) => ({
@@ -24,7 +43,7 @@ const HeroSection = () => {
 
   return (
     <div
-      className="hero-container h-screen w-full"
+      className="hero-container h-[60vh] md:h-screen w-full"
       style={{
         margin: "0",
       }}
@@ -34,13 +53,13 @@ const HeroSection = () => {
         layout="fill"
         objectFit="cover"
         alt="Background Image"
-        className="w-full h-screen absolute"
+        className="w-full h-full absolute"
       />
       <div
         className="text-container flex flex-col w-[90%]"
         style={{
           position: "absolute",
-          top: "50%",
+          top: topPosition,
           left: "50%",
           transform: "translate(-50%, -50%)",
         }}

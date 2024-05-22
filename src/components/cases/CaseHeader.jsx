@@ -6,7 +6,7 @@ import DarkButton from "@/components/constants/cases/DarkButton";
 import RedButton from "@/components/constants/cases/RedButton";
 import Loader from "@/components/constants/loader/Loader";
 
-const Case2 = () => {
+const CaseHeader = () => {
   const [industries, setIndustries] = useState([]);
   const [technologies, setTechnologies] = useState([]);
   const [industriesLoading, setIndustriesLoading] = useState(true);
@@ -47,17 +47,17 @@ const Case2 = () => {
   }, []);
 
   return (
-    <div className="border-t w-full py-[3vw] grid grid-cols-[0.3fr,1fr,0.9fr] grid-rows-auto gap-x-[1.11vw]">
-      <div className="col-span-1 row-span-1">
-        <p className="text-[1vw] text-gray-500 mb-[2vh]">Select by type:</p>
-        <div className="flex flex-wrap gap-[0.69vw] justify-start">
+    <div className="border-t w-full py-[6vw] md:py-[3vw] grid grid-cols-1 gap-x-[2.22vw] md:grid-cols-[0.3fr,1fr,0.9fr] grid-rows-auto md:gap-x-[1.11vw]">
+      <div className="col-span-1 row-span-1 py-[5vw] md:py-0">
+        <p className="text-[2.5vw] md:text-[1vw] text-gray-500 mb-[2vw] md:mb-[1vw]">Select by type:</p>
+        <div className="flex flex-wrap gap-[1.38vw] md:gap-[0.69vw] justify-start">
           <DarkButton button={"Both"} />
           <DarkButton button={"Web App"} />
           <DarkButton button={"Mobile App"} />
         </div>
       </div>
-      <div className="col-span-1 row-span-1">
-        <p className="text-[1vw] text-gray-500 mb-[2vh]">Select by industry:</p>
+      <div className="col-span-1 row-span-1 py-[5vw] md:py-0">
+        <p className="text-[2.5vw] md:text-[1vw] text-gray-500 mb-[2vw] md:mb-[1vw]">Select by industry:</p>
         {industriesLoading ? (
           <div className="w-full flex justify-center items-center">
             <Loader />
@@ -65,15 +65,15 @@ const Case2 = () => {
         ) : industries.length === 0 ? (
           <p>No posts available</p>
         ) : (
-          <div className="flex flex-wrap gap-[0.69vw] justify-between">
+          <div className="flex flex-wrap gap-[1.38vw] md:gap-[0.69vw] justify-between">
             {industries.map((industry) => (
               <BlueButton key={industry.id} button={industry.name} />
             ))}
           </div>
         )}
       </div>
-      <div className="col-span-1 row-span-1">
-        <p className="text-[1vw] text-gray-500 mb-[2vh]">
+      <div className="col-span-1 row-span-1 py-[5vw] md:py-0">
+        <p className="text-[2.5vw] md:text-[1vw] text-gray-500 mb-[2vw] md:mb-[1vw]">
           Select by technology:
         </p>
         {technologiesLoading ? (
@@ -83,7 +83,7 @@ const Case2 = () => {
         ) : technologies.length === 0 ? (
           <p>No posts available</p>
         ) : (
-          <div className="flex flex-wrap gap-[0.69vw] justify-between">
+          <div className="flex flex-wrap gap-[1.38vw] md:gap-[0.69vw] justify-between">
             {technologies.map((technology) => (
               <RedButton key={technology.id} button={technology.name} />
             ))}
@@ -94,4 +94,4 @@ const Case2 = () => {
   );
 };
 
-export default Case2;
+export default CaseHeader;

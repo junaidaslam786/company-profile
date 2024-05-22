@@ -6,7 +6,7 @@ import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { IoRemoveOutline } from "react-icons/io5";
 import Loader from "@/components/constants/loader/Loader";
 
-const HeroSection9 = () => {
+const HomeTeamMembers = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [teams, setTeams] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -75,12 +75,12 @@ const HeroSection9 = () => {
   return (
     <div className="w-full py-24 relative">
       <div className="flex flex-col w-full items-center">
-        <div className="w-[90%] flex flex-row items-center text-orangeColor-0 text-[1vw] font-semibold">
+        <div className="w-[90%] flex flex-row items-center text-orangeColor-0 text-[2.5vw] md:text-[1vw] font-semibold">
           <IoRemoveOutline />
           <p className="tracking-widest uppercase">team</p>
         </div>
         <div className="w-[90%]">
-          <p className="text-blueColor-0 text-[3.5vw] font-bold tracking-wide mt-10">
+          <p className="text-blueColor-0 text-[7vw] md:text-[3.5vw] font-bold tracking-wide mt-10">
             Great people behind every project
           </p>
         </div>
@@ -109,13 +109,13 @@ const HeroSection9 = () => {
       <div className="absolute right-40 bottom-5 transform -translate-y-1/2 flex items-center">
         <button
           onClick={handlePrevious}
-          className="p-2 rounded-full text-white text-[1.5vw] font-bold bg-orangeColor-0 mr-5 opacity-80 hover:opacity-100"
+          className="p-[0.5vw] rounded-full text-white text-[3.5vw] md:text-[1.5vw] font-bold bg-orangeColor-0 mr-5 opacity-80 hover:opacity-100"
         >
           <FaArrowLeft />
         </button>
         <button
           onClick={handleNext}
-          className="p-2 rounded-full text-white text-[1.5vw] font-bold bg-orangeColor-0 opacity-80 hover:opacity-100"
+          className="p-[0.5vw] rounded-full text-white text-[3.5vw] md:text-[1.5vw] font-bold bg-orangeColor-0 opacity-80 hover:opacity-100"
         >
           <FaArrowRight />
         </button>
@@ -124,4 +124,4 @@ const HeroSection9 = () => {
   );
 };
 
-export default HeroSection9;
+export default HomeTeamMembers;

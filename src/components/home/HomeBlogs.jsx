@@ -5,7 +5,7 @@ import ReviewCard from "@/components/constants/home/ReviewCard";
 import { IoRemoveOutline } from "react-icons/io5";
 import Loader from "@/components/constants/loader/Loader";
 
-const HeroSection10 = () => {
+const HomeBlogs = () => {
   const [blogPosts, setBlogPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -59,7 +59,7 @@ const HeroSection10 = () => {
   return (
     <div className="w-full mt-32">
       <div className="flex flex-col w-full items-center">
-        <div className="w-[90%] flex flex-row items-center text-orangeColor-0 text-[1.5vw] md:text-[1vw] font-semibold">
+        <div className="w-[90%] flex flex-row items-center text-orangeColor-0 text-[2.5vw] md:text-[1vw] font-semibold">
           <IoRemoveOutline />
           <p className="tracking-widest uppercase">blog</p>
         </div>
@@ -73,6 +73,8 @@ const HeroSection10 = () => {
         {blogPosts.map((post) => (
           <ReviewCard
             key={post.id}
+            href={`blog/${post.id}`}
+            category={post.category.name}
             src={post.image}
             title={post.title}
             content={post.description}
@@ -85,4 +87,4 @@ const HeroSection10 = () => {
   );
 };
 
-export default HeroSection10;
+export default HomeBlogs;

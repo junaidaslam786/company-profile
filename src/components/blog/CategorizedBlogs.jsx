@@ -5,7 +5,7 @@ import BasicCard from "@/components/constants/blog/BasicCard";
 import Loader from "@/components/constants/loader/Loader";
 import BlogsLayout from "@/components/constants/blog/BlogsLayout";
 
-const Blog2 = () => {
+const CategorizedBlogs = () => {
   const [blogPosts, setBlogPosts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [loadingCategories, setLoadingCategories] = useState(true);
@@ -119,4 +119,4 @@ const Blog2 = () => {
   );
 };
 
-export default Blog2;
+export default CategorizedBlogs;

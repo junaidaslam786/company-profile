@@ -6,7 +6,7 @@ import { FaArrowRight, FaArrowLeft, FaStar } from "react-icons/fa";
 import { IoRemoveOutline } from "react-icons/io5";
 import Loader from "@/components/constants/loader/Loader";
 
-const HeroSection8 = () => {
+const HomeTestimonials = () => {
   const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
@@ -78,12 +78,12 @@ const HeroSection8 = () => {
     <div className="w-full py-24 relative">
       <div className="flex flex-col w-full items-center">
         <div className="flex flex-col items-center w-[90%]">
-          <div className="w-full flex flex-row items-center text-orangeColor-0 text-[1vw] font-semibold">
+          <div className="w-full flex flex-row items-center text-orangeColor-0 text-[2.5vw] md:text-[1vw] font-semibold">
             <IoRemoveOutline />
             <p className="tracking-widest uppercase">Trusted by clients</p>
           </div>
           <div className="w-5/6">
-            <p className="text-blueColor-0 text-[3.5vw] font-bold tracking-wide mt-10">
+            <p className="text-blueColor-0 text-[7vw] md:text-[3.5vw] font-bold tracking-wide mt-10">
               Our clients recommend us
             </p>
           </div>
@@ -111,13 +111,13 @@ const HeroSection8 = () => {
       <div className="absolute right-[10%] bottom-0 transform -translate-y-1/2 flex items-center">
         <button
           onClick={handlePrevious}
-          className="p-2 rounded-full text-white text-[1.5vw] font-bold bg-orangeColor-0 mr-5 opacity-80 hover:opacity-100"
+          className="p-2 rounded-full text-white text-[3.5vw] md:text-[1.5vw] font-bold bg-orangeColor-0 mr-5 opacity-80 hover:opacity-100"
         >
           <FaArrowLeft />
         </button>
         <button
           onClick={handleNext}
-          className="p-2 rounded-full text-white text-[1.5vw] font-bold bg-orangeColor-0 opacity-80 hover:opacity-100"
+          className="p-2 rounded-full text-white text-[3.5vw] md:text-[1.5vw] font-bold bg-orangeColor-0 opacity-80 hover:opacity-100"
         >
           <FaArrowRight />
         </button>
@@ -126,4 +126,4 @@ const HeroSection8 = () => {
   );
 };
 
-export default HeroSection8;
+export default HomeTestimonials;

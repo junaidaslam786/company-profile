@@ -6,7 +6,7 @@ import ScrollSectionRight from "@/components/constants/blog/ScrollSectionRight";
 import Loader from "@/components/constants/loader/Loader";
 import BlogsLayout from "@/components/constants/blog/BlogsLayout";
 
-const Blog1 = () => {
+const FeaturedBlogs = () => {
   const [category1Posts, setCategory1Posts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -102,4 +102,4 @@ const Blog1 = () => {
   );
 };
 
-export default Blog1;
+export default FeaturedBlogs;

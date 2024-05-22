@@ -5,7 +5,7 @@ import CaseCard from "@/components/constants/cases/CaseCard";
 import Loader from "@/components/constants/loader/Loader";
 import { getCode } from "country-list";
 
-const Case3 = () => {
+const CaseCards = () => {
   const [caseData, setCaseData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [backgroundColors, setBackgroundColors] = useState({});
@@ -68,7 +68,11 @@ const Case3 = () => {
   }
 
   if (caseData.length === 0) {
-    return <div>No data available</div>;
+    return (
+      <div className="w-full h-screen flex flex-col items-center justify-center">
+        No Cases Available
+      </div>
+    );
   }
 
   return (
@@ -90,4 +94,4 @@ const Case3 = () => {
   );
 };
 
-export default Case3;
+export default CaseCards;

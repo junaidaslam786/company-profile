@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import EventCard from "@/components/constants/events/EventCard";
 import Loader from "@/components/constants/loader/Loader";
 
-const Event2 = () => {
+const EventCards = () => {
   const [eventCards, setEventCards] = useState([]);
   const [fetchingData, setFetchingData] = useState(true);
   const [loading, setLoading] = useState(true);
@@ -58,4 +58,4 @@ const Event2 = () => {
   );
 };
 
-export default Event2;
+export default EventCards;
