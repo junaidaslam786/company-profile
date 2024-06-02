@@ -1,9 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { IoRemoveOutline } from "react-icons/io5";
-import Link from "next/link";
 
-const CaseHeroSection = () => {
+const ContactUsHeroSection = () => {
   // Animation variants for Framer Motion
   const titleAnimation = {
     hidden: { y: -50, opacity: 0 },
@@ -25,6 +25,13 @@ const CaseHeroSection = () => {
 
   return (
     <div className="hero-container h-screen flex flex-col items-center w-full bg-white">
+      <Image
+        src={"/images/634e812eaf4208d64d22f870_try_wormhole.svg"}
+        layout="fill"
+        objectFit="cover"
+        alt="Background Image"
+        className="w-full h-full absolute"
+      />
       <div
         className="text-container flex flex-col w-[93%]"
         style={{
@@ -41,9 +48,9 @@ const CaseHeroSection = () => {
             animate="visible"
             custom={{ delay: 0.2 }}
             variants={titleAnimation}
-            className="font-bold text-[1.5vw] text-orangeColor-0 uppercase tracking-wider leading-none flex justify-start"
+            className="font-bold text-[1.5vw] text-orangeColor-0 uppercase leading-none flex justify-start"
           >
-            <IoRemoveOutline /> Our Projects
+            <IoRemoveOutline /> Contact Us
           </motion.div>
           <div className="flex flex-row justify-between items-center mt-[7vh]">
             <motion.div
@@ -51,35 +58,15 @@ const CaseHeroSection = () => {
               animate="visible"
               custom={{ delay: 0.2 }}
               variants={titleAnimation}
-              className="font-extrabold text-[6vw] text-blue-950 uppercase tracking-wider leading-none flex justify-start"
+              className="font-extrabold text-[6vw] text-blue-950 uppercase leading-none flex justify-start"
             >
-              Case Studies
-            </motion.div>
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              custom={{ delay: 0.4 }}
-              variants={subtitleAnimation}
-              className="text-blue-950 text-[1.3vw] w-1/3 font-lato"
-            >
-              A preview of successful partnerships and mutual vision working
-              with our clients.
+              Get in touch
             </motion.div>
           </div>
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            custom={{ delay: 0.4 }}
-            variants={subtitleAnimation}
-            className="text-blue-950 text-[1.1vw] flex flex-start mt-[15vh] font-lato"
-          >
-            <Link href={"/cases"}>
-              Apply filters to find the most relevant cases:
-            </Link>
-          </motion.div>
         </div>
       </div>
     </div>
   );
 };
-export default CaseHeroSection;
+
+export default ContactUsHeroSection;

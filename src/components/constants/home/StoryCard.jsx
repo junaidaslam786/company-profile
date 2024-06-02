@@ -1,6 +1,6 @@
 import React from "react";
 import { TbCircleArrowRightFilled } from "react-icons/tb";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 const StoryCard = ({
   id,

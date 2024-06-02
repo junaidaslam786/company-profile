@@ -16,7 +16,7 @@ const HomeServices = () => {
       setIsMobile(window.innerWidth < 768);
     };
 
-    handleResize(); // Set initial value
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -29,7 +29,6 @@ const HomeServices = () => {
       try {
         const response = await fetch(`${apiUrl}/api/services/`);
         const data = await response.json();
-        console.log(data);
         const evenCount = Math.min(data.length, 8);
         setScrollCards(data.slice(0, evenCount % 2 === 0 ? evenCount : evenCount - 1));
       } catch (error) {

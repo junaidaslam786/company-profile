@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 const HeroSection = () => {
   const [topPosition, setTopPosition] = useState("50%");
@@ -43,7 +43,7 @@ const HeroSection = () => {
 
   return (
     <div
-      className="hero-container h-[60vh] md:h-screen w-full"
+      className="hero-container relative h-[60vh] md:h-screen w-full"
       style={{
         margin: "0",
       }}

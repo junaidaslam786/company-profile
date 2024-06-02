@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { BsArrowRightCircleFill } from "react-icons/bs";
+import Link from "next/link";
 
 const HomeWorkText = () => {
   const titleAnimation = {
@@ -22,9 +23,7 @@ const HomeWorkText = () => {
   };
 
   return (
-    <div
-      className="hero-container relative h-[80vw] md:h-screen w-full"
-    >
+    <div className="hero-container relative h-[80vw] md:h-screen w-full">
       <div
         className="text-container flex flex-col w-full"
         style={{
@@ -46,15 +45,17 @@ const HomeWorkText = () => {
             >
               Let&apos;s work
             </motion.div>
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              custom={{ delay: 0.2 }}
-              variants={titleAnimation}
-              className="text-orangeColor-0 text-[7vw] flex justify-center"
-            >
-              <BsArrowRightCircleFill className="transition-transform transform -rotate-45" />
-            </motion.div>
+            <Link href={'/contactus'}>
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                custom={{ delay: 0.2 }}
+                variants={titleAnimation}
+                className="text-orangeColor-0 text-[7vw] flex justify-center"
+              >
+                <BsArrowRightCircleFill className="transition-transform transform -rotate-45" />
+              </motion.div>
+            </Link>
           </div>
         </div>
 

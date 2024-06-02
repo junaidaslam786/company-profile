@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import StoryCard from "@/components/constants/home/StoryCard";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { IoRemoveOutline } from "react-icons/io5";
 import Loader from "@/components/constants/loader/Loader";
 import { getCode } from "country-list";
@@ -24,10 +24,10 @@ const HomeCases = () => {
           throw new Error("Network response was not ok");
         }
         let data = await response.json();
-        console.log('Fetched case data:', data);
 
-        // Filter out null or undefined values
-        data = data.filter(item => item && item.id && item.title && item.country);
+        data = data.filter(
+          (item) => item && item.id && item.title && item.country
+        );
 
         data = data.map((item) => {
           const countryCode = getCode(item.country);
@@ -44,7 +44,8 @@ const HomeCases = () => {
         setCaseData(data);
         const updatedBackgroundColors = {};
         data.forEach((caseItem, index) => {
-          updatedBackgroundColors[caseItem.id] = generateRandomLightBackground();
+          updatedBackgroundColors[caseItem.id] =
+            generateRandomLightBackground();
           caseItemRefs.current[index] = React.createRef();
         });
         setBackgroundColors(updatedBackgroundColors);
@@ -90,14 +91,14 @@ const HomeCases = () => {
     return lightColors[Math.floor(Math.random() * lightColors.length)];
   };
 
-  const defaultImage = '/path/to/default/image.jpg';
+  const defaultImage = "/path/to/default/image.jpg";
 
   if (loading) {
     return <Loader />;
   }
 
   if (caseData.length === 0) {
-    return <div>No story available</div>;
+    return <div className="h-full w-full">No story available</div>;
   }
 
   return (

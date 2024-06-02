@@ -18,7 +18,7 @@ const Content = () => (
       About Us
     </h1>
     <div className="w-full md:w-1/2">
-      <Link href={'/'}>
+      <Link href={'/aboutus'}>
         <div className="p-[2vw] md:p-[1vw] hover:bg-sky-100 hover:text-skyColor-0 md:rounded-lg rounded-md md:mt-[0.7vw] mt-[1.4vw]">
           <div>
             <p className="text-[2.4vw] md:text-[1.2vw] font-semibold">Labverse Story</p>

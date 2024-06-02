@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 const BasicCard = ({ src, dateTime, title, content, time, href }) => {
   return (

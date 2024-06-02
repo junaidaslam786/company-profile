@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 
 import HeroSection from "@/components/home/HeroSection";
 import HomeServices from "@/components/home/HomeServices";
-import HomeUpdates from "@/components/home/HomeUpdates";
 import HomeCases from "@/components/home/HomeCases";
 import HomeIndustries from "@/components/home/HomeIndustries";
 import HomeTextScroll from "@/components/home/HomeTextScroll";
@@ -51,7 +50,6 @@ const Home = () => {
     >
       <HeroSection />
       <HomeServices />
-      <HomeUpdates />
       <HomeCases />
       <HomeIndustries />
       <HomeTextScroll />
