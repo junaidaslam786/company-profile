@@ -28,13 +28,15 @@ const CaseCard = ({
                 <p className="text-[0.8vw] text-blueColor-0 font-medium">
                   {industry}
                 </p>
-                <Image
-                  src={countrySource}
-                  width={30}
-                  height={30}
-                  alt="Country"
-                  className="ml-[2vw] shadow w-[1.53vw] h-[1.11vw]"
-                />
+                <div className="ml-[2vw]">
+                  <Image
+                    src={countrySource}
+                    width={30}
+                    height={20}
+                    alt="Country"
+                    className="shadow w-[1.53vw] h-[1.11vw]"
+                  />
+                </div>
               </div>
             </div>
             <div>

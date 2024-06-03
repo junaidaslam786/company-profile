@@ -17,13 +17,15 @@ const StoryCard = ({
         <p className="text-gray-300 text-[1vw]">[{id}]</p>
         <div className="flex flex-row items-center text-orangeColor-0 text-[1vw]">
           <p className="mr-[1.2vw] text-[0.9vw] uppercase">{business}</p> /
-          <Image
-            src={countryFlag}
-            alt="Image failed to load"
-            width={30}
-            height={30}
-            className="ml-[1.2vw] mr-2 shadow w-[1.53vw] h-[1.11vw]"
-          />
+          <div className="mx-[1vw]">
+            <Image
+              src={countryFlag}
+              alt="Image failed to load"
+              width={30}
+              height={20}
+              className="shadow w-[1.53vw] h-[1.11vw]"
+            />
+          </div>
           <p className="mr-[1.2vw] text-[0.9vw] uppercase">{country}</p> /{" "}
           <p className="ml-[2.2vw] text-[0.9vw] uppercase">
             {serviceTypes.map((service) => service.choice_name).join(", ")}

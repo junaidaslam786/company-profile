@@ -159,14 +159,15 @@ const HomeCases = () => {
                 src={caseData[activeImage].featured_image}
                 alt="Active Image"
                 width={500}
-                height={500}
+                height={300}
+                className="w-[45vw]"
               />
             ) : (
               <Image
                 src={defaultImage}
                 alt="Default Image"
                 width={500}
-                height={500}
+                height={300}
               />
             )}
           </div>
