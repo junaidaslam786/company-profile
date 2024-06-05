@@ -9,6 +9,8 @@ import SolutionsMegaMenu from "@/components/navigation/SolutionsMegaMenu";
 import { FaBars } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { FaChevronDown } from "react-icons/fa6";
+import Image from "next/image";
+// import logo from 'public/images/Labverse.png'
 
 const Navbar = () => {
   const [megaMenuOpen, setMegaMenuOpen] = useState({
@@ -78,7 +80,7 @@ const Navbar = () => {
           <div className="flex-shrink-0">
             <Link href="/">
               <span className="font-semibold text-[4vw] md:text-[2.5vw] text-sky-500 hover:opacity-90 cursor-pointer">
-                Labverse
+                <Image src="/images/Labverse.png" alt="Logo" height={300} width={300} />
               </span>
             </Link>
           </div>
